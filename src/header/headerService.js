@@ -4,18 +4,42 @@ angular.module('stpCommon.header').factory('HeaderService', [function(){
     var customerLastName;
     var policyHolderFirstName;
     var policyHolderLastName;
+    var objectName;
+    var eventName;
 
     var service = {
         showCustomerInfo: showCustomerInfo,
         setCustomerFirstName: setCustomerFirstName,
+        getCustomerFirstName: getCustomerFirstName,
         setCustomerLastName: setCustomerLastName,
         setPolicyHolderFirstName: setPolicyHolderFirstName,
         setPolicyHolderLastName: setPolicyHolderLastName,
         hasName: hasName,
         getCustomerFullName: getCustomerFullName,
-        getPolicyHolderFullName: getPolicyHolderFullName
+        getPolicyHolderFullName: getPolicyHolderFullName,
+        setObjectName: setObjectName,
+        getObjectName: getObjectName,
+        setEventName: setEventName,
+        getEventName: getEventName
+
     };
     return service;
+
+    function setObjectName(name){
+        objectName = name;
+    }
+
+    function getObjectName(){
+        return objectName;
+    }
+
+    function setEventName(name){
+        eventName = name;
+    }
+
+    function getEventName(){
+        return eventName;
+    }
 
     function showCustomerInfo(){
         return true;
@@ -23,6 +47,10 @@ angular.module('stpCommon.header').factory('HeaderService', [function(){
 
     function setCustomerFirstName(name){
         customerFirstName = name;
+    }
+
+    function getCustomerFirstName(){
+        return customerFirstName;
     }
 
     function setCustomerLastName(name){
