@@ -1,26 +1,12 @@
-<!--
-<section class="masthead u-bgcolor-blue-2">
-    <div class="content-wrapper">
-        <div class="masthead__content">
-            <p ng-if="HeaderService.hasName() && $state.current.name !== 'identification'" translate translate-values="{customer: CUSTOMER_OBJECT.customer}" class="masthead__intro">VIEW.MOBILE.QUESTIONS.OBJECT.HEADER.GREETING</p>
-            <p ng-if="CUSTOMER_OBJECT.hasName() && $state.current.name !== 'identification'" translate translate-values="{objectName: EVENT_AND_OBJECT.objectName, eventName: EVENT_AND_OBJECT.eventName}" class="masthead__largetype">VIEW.MOBILE.QUESTIONS.OBJECT.HEADER.MESSAGE</p>
-
-            <p class="masthead__intro" ng-show="(!CUSTOMER_OBJECT.hasName() || $state.current.name === 'identification') && !$phase">{{'VIEW.MOBILE.QUESTIONS.OBJECT.HEADER.MESSAGE_UNIDENTIFIED'}}</p>
-            <p class="masthead__contact">{{'VIEW.MOBILE.QUESTIONS.OBJECT.HEADER.SUB_MESSAGE'}} <a href="tel://{{'VIEW.MOBILE.QUESTIONS.OBJECT.HEADER.PHONE_NOFORMAT'}}" class="tel" tabindex="-1">{{'VIEW.MOBILE.QUESTIONS.OBJECT.HEADER.PHONE'}}</a></p>
-        </div>
-        <div class="masthead__img-container">
-            <!--[if IE 8]><img src="assets/svg/bg-masthead-claims.svg" alt=""><![endif]-->
-            <!--[if gt IE 8]><!--><img src="assets/svg/bg-masthead-claims.svg" alt=""><!--<![endif]-->
-<!--
-        </div>
-    </div>
-</section>
--->
 <section class="masthead u-bgcolor-blue-2" ng-show="HeaderService.showIdentificationHeader()">
     <div class="content-wrapper">
         <div class="masthead__content">
             <p class="masthead__intro">{{'VIEW.MOBILE.QUESTIONS.OBJECT.HEADER.MESSAGE_UNIDENTIFIED'}}</p>
             <p class="masthead__contact">{{'VIEW.MOBILE.QUESTIONS.OBJECT.HEADER.SUB_MESSAGE'}} <a href="tel://{{'VIEW.MOBILE.QUESTIONS.OBJECT.HEADER.PHONE_NOFORMAT'}}" class="tel" tabindex="-1">{{'VIEW.MOBILE.QUESTIONS.OBJECT.HEADER.PHONE'}}</a></p>
+        </div>
+        <div class="masthead__img-container">
+            <!--[if IE 8]><img src="assets/svg/bg-masthead-claims.svg" alt=""><![endif]-->
+            <!--[if gt IE 8]><!--><img src="assets/svg/bg-masthead-claims.svg" alt=""><!--<![endif]-->
         </div>
     </div>
 </section>
@@ -31,6 +17,10 @@
             <p translate translate-values="{customer: CUSTOMER_OBJECT.customer}" class="masthead__intro">VIEW.MOBILE.QUESTIONS.OBJECT.HEADER.GREETING</p>
             <p translate translate-values="{objectName: EVENT_AND_OBJECT.objectName, eventName: EVENT_AND_OBJECT.eventName}" class="masthead__largetype">VIEW.MOBILE.QUESTIONS.OBJECT.HEADER.MESSAGE</p>
             <p class="masthead__contact">{{'VIEW.MOBILE.QUESTIONS.OBJECT.HEADER.SUB_MESSAGE'}} <a href="tel://{{'VIEW.MOBILE.QUESTIONS.OBJECT.HEADER.PHONE_NOFORMAT'}}" class="tel" tabindex="-1">{{'VIEW.MOBILE.QUESTIONS.OBJECT.HEADER.PHONE'}}</a></p>
+        </div>
+        <div class="masthead__img-container">
+            <!--[if IE 8]><img src="assets/svg/bg-masthead-claims.svg" alt=""><![endif]-->
+            <!--[if gt IE 8]><!--><img src="assets/svg/bg-masthead-claims.svg" alt=""><!--<![endif]-->
         </div>
     </div>
 </section>
