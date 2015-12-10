@@ -93,11 +93,11 @@ angular.module("header/customerInfo.tpl.html", []).run(["$templateCache", functi
     "    <div class=\"grid-wrapper u-spacing-above-narrow \">\n" +
     "        <div class=\"grid\">\n" +
     "            <div class=\"grid__item md--eight-twelfths u-space-words\">\n" +
-    "                <div class=\"u-inline-block\"><b>{{'GENERAL.CUSTOMER_INFO.NOTIFIER'}}</b> {{HeaderService.getCustomerFullName()}}</div>\n" +
-    "                <div class=\"u-inline-block\"><b>{{'GENERAL.CUSTOMER_INFO.POLICYHOLDER' }}</b> {{HeaderService.getPolicyHolderFullName()}}</div>\n" +
+    "                <div class=\"u-inline-block\"><b>{{'GENERAL.CUSTOMER_INFO.NOTIFIER' | translate}}</b> {{HeaderService.getCustomerFullName()}}</div>\n" +
+    "                <div class=\"u-inline-block\"><b>{{'GENERAL.CUSTOMER_INFO.POLICYHOLDER' | translate}}</b> {{HeaderService.getPolicyHolderFullName()}}</div>\n" +
     "            </div>\n" +
     "            <div class=\"grid__item md--four-twelfths\">\n" +
-    "                <div class=\"u-align-right\"><a ui-sref=\"identification\" class=\"u-font-semibold\" tabindex=\"-1\">{{'GENERAL.CUSTOMER_INFO.GO_BACK'}}</a></div>\n" +
+    "                <div class=\"u-align-right\"><a ui-sref=\"identification\" class=\"u-font-semibold\" tabindex=\"-1\">{{'GENERAL.CUSTOMER_INFO.GO_BACK' | translate}}</a></div>\n" +
     "            </div>\n" +
     "        </div>\n" +
     "    </div>\n" +
