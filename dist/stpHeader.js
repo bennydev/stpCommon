@@ -1,11 +1,7 @@
-"use strict";
-angular.module('stpCommon.header', ['ui.router']).controller('HeaderCtrl', ['$scope', '$state', function($scope, $state, showCustomerInfo){
-    $scope.showCustomerInfo = showCustomerInfo;
-}]);
-angular.module('stpHeaderTemplates', ['src/header/customerInfo.tpl.html', 'src/header/header.tpl.html', 'src/header/siteHeader.tpl.html', 'src/header/siteTop.tpl.html']);
+angular.module('stpHeaderTemplates', ['header/customerInfo.tpl.html', 'header/header.tpl.html', 'header/siteHeader.tpl.html', 'header/siteTop.tpl.html']);
 
-angular.module("src/header/customerInfo.tpl.html", []).run(["$templateCache", function($templateCache) {
-  $templateCache.put("src/header/customerInfo.tpl.html",
+angular.module("header/customerInfo.tpl.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("header/customerInfo.tpl.html",
     "<div class=\"u-bgcolor-yellow-4 u-clearfix u-small-type u-hide-print\">\n" +
     "    <div class=\"grid-wrapper u-spacing-above-narrow \">\n" +
     "        <div class=\"grid\">\n" +
@@ -21,8 +17,8 @@ angular.module("src/header/customerInfo.tpl.html", []).run(["$templateCache", fu
     "</div>");
 }]);
 
-angular.module("src/header/header.tpl.html", []).run(["$templateCache", function($templateCache) {
-  $templateCache.put("src/header/header.tpl.html",
+angular.module("header/header.tpl.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("header/header.tpl.html",
     "<div ng-controller=\"HeaderCtrl\">\n" +
     "    <ng-include src=\"'header/siteTop.tpl.html'\"></ng-include>\n" +
     "    <ng-include src=\"'header/siteHeader.tpl.html'\"></ng-include>\n" +
@@ -32,8 +28,8 @@ angular.module("src/header/header.tpl.html", []).run(["$templateCache", function
     "</div>");
 }]);
 
-angular.module("src/header/siteHeader.tpl.html", []).run(["$templateCache", function($templateCache) {
-  $templateCache.put("src/header/siteHeader.tpl.html",
+angular.module("header/siteHeader.tpl.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("header/siteHeader.tpl.html",
     "<section class=\"masthead u-bgcolor-blue-2\">\n" +
     "    <div class=\"content-wrapper\">\n" +
     "        <div class=\"masthead__content\">\n" +
@@ -53,8 +49,8 @@ angular.module("src/header/siteHeader.tpl.html", []).run(["$templateCache", func
     "");
 }]);
 
-angular.module("src/header/siteTop.tpl.html", []).run(["$templateCache", function($templateCache) {
-  $templateCache.put("src/header/siteTop.tpl.html",
+angular.module("header/siteTop.tpl.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("header/siteTop.tpl.html",
     "<div class=\"site-top-wrapper\">\n" +
     "    <div class=\"site-top site-top--non-sticky\">\n" +
     "        <header class=\"site-header\" role=\"banner\">\n" +

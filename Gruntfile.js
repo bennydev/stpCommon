@@ -42,22 +42,11 @@ module.exports = function (grunt) {
          */
         copy: {
             build: {
-                src: ['src/header/**/**', '!src/**/*.spec.js'],
-                dest: 'build/header',
+                src: ['src/header/**/*', '!src/**/*.spec.js'],
+                dest: 'build',
                 expand: true
             }
 
-        },
-
-        concat: {
-            compile_js: {
-                options: {
-                },
-                src: [
-                    'build/header/**/*.js'
-                ],
-                dest: 'dist/stpHeader.js'
-            }
         },
         html2js: {
             /**
@@ -65,14 +54,23 @@ module.exports = function (grunt) {
              */
             app: {
                 options: {
-                    base: 'build/header',
+                    base: 'build/src',
                     module: 'stpHeaderTemplates'
                 },
-                src: ['build/header/**/*.html'],
+                src: ['build/src/header/**/*.html'],
                 dest: 'build/header/stpHeaderTemplates.js'
             }
+        },
+        concat: {
+            compile_js: {
+                options: {
+                },
+                src: [
+                    'build/header/*.js'
+                ],
+                dest: 'dist/stpHeader.js'
+            }
         }
-
         };
 
     grunt.initConfig(taskConfig);
@@ -84,7 +82,7 @@ module.exports = function (grunt) {
      * The default task is to build and compile. When build and compile is finished
      * the project opened in your browser served by the connect-server.
      */
-    grunt.registerTask( 'default', [ 'clean', 'copy', 'html2js', 'concat' ] );
+    grunt.registerTask( 'default', [ 'clean', 'copy', 'html2js', 'concat'] );
 
     //grunt.registerTask( 'default', [ 'build', 'compile', 'configureProxies:server', 'connect:dist:keepalive' ] );
 
