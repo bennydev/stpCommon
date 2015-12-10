@@ -2,6 +2,6 @@
     <ng-include src="'header/siteTop.tpl.html'"></ng-include>
     <ng-include src="'header/siteHeader.tpl.html'"></ng-include>
     <div class="content-wrapper">
-        <ng-include src="'header/customerInfo.tpl.html'" ng-show="showCustomerInfo"></ng-include>
+        <ng-include src="'header/customerInfo.tpl.html'" ng-show="HeaderService.showCustomerInfo()"></ng-include>
     </div>
 </div>
