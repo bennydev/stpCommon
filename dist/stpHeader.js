@@ -11,18 +11,42 @@ angular.module('stpCommon.header').factory('HeaderService', [function(){
     var customerLastName;
     var policyHolderFirstName;
     var policyHolderLastName;
+    var objectName;
+    var eventName;
 
     var service = {
         showCustomerInfo: showCustomerInfo,
         setCustomerFirstName: setCustomerFirstName,
+        getCustomerFirstName: getCustomerFirstName,
         setCustomerLastName: setCustomerLastName,
         setPolicyHolderFirstName: setPolicyHolderFirstName,
         setPolicyHolderLastName: setPolicyHolderLastName,
         hasName: hasName,
         getCustomerFullName: getCustomerFullName,
-        getPolicyHolderFullName: getPolicyHolderFullName
+        getPolicyHolderFullName: getPolicyHolderFullName,
+        setObjectName: setObjectName,
+        getObjectName: getObjectName,
+        setEventName: setEventName,
+        getEventName: getEventName
+
     };
     return service;
+
+    function setObjectName(name){
+        objectName = name;
+    }
+
+    function getObjectName(){
+        return objectName;
+    }
+
+    function setEventName(name){
+        eventName = name;
+    }
+
+    function getEventName(){
+        return eventName;
+    }
 
     function showCustomerInfo(){
         return true;
@@ -30,6 +54,10 @@ angular.module('stpCommon.header').factory('HeaderService', [function(){
 
     function setCustomerFirstName(name){
         customerFirstName = name;
+    }
+
+    function getCustomerFirstName(){
+        return customerFirstName;
     }
 
     function setCustomerLastName(name){
@@ -92,8 +120,8 @@ angular.module("header/siteHeader.tpl.html", []).run(["$templateCache", function
     "<section class=\"masthead u-bgcolor-blue-2\" ng-show=\"HeaderService.showIdentificationHeader()\">\n" +
     "    <div class=\"content-wrapper\">\n" +
     "        <div class=\"masthead__content\">\n" +
-    "            <p class=\"masthead__intro\">{{'VIEW.MOBILE.QUESTIONS.OBJECT.HEADER.MESSAGE_UNIDENTIFIED'}}</p>\n" +
-    "            <p class=\"masthead__contact\">{{'VIEW.MOBILE.QUESTIONS.OBJECT.HEADER.SUB_MESSAGE'}} <a href=\"tel://{{'VIEW.MOBILE.QUESTIONS.OBJECT.HEADER.PHONE_NOFORMAT'}}\" class=\"tel\" tabindex=\"-1\">{{'VIEW.MOBILE.QUESTIONS.OBJECT.HEADER.PHONE'}}</a></p>\n" +
+    "            <p class=\"masthead__intro\">{{'GENERAL.HEADER.MESSAGE' | translate}}</p>\n" +
+    "            <p class=\"masthead__contact\">{{'GENERAL.HEADER.CONTACT_US' | translate}} <a href=\"tel://{{'GENERAL.HEADER.PHONE_NOFORMAT' | translate}}\" class=\"tel\" tabindex=\"-1\">{{'GENERAL.HEADER.PHONE' | translate}}</a></p>\n" +
     "        </div>\n" +
     "        <div class=\"masthead__img-container\">\n" +
     "            <!--[if IE 8]><img src=\"assets/svg/bg-masthead-claims.svg\" alt=\"\"><![endif]-->\n" +
@@ -105,9 +133,9 @@ angular.module("header/siteHeader.tpl.html", []).run(["$templateCache", function
     "<section class=\"masthead u-bgcolor-blue-2\" ng-show=\"HeaderService.showSectionsHeader()\">\n" +
     "    <div class=\"content-wrapper\">\n" +
     "        <div class=\"masthead__content\">\n" +
-    "            <p translate translate-values=\"{customer: CUSTOMER_OBJECT.customer}\" class=\"masthead__intro\">VIEW.MOBILE.QUESTIONS.OBJECT.HEADER.GREETING</p>\n" +
-    "            <p translate translate-values=\"{objectName: EVENT_AND_OBJECT.objectName, eventName: EVENT_AND_OBJECT.eventName}\" class=\"masthead__largetype\">VIEW.MOBILE.QUESTIONS.OBJECT.HEADER.MESSAGE</p>\n" +
-    "            <p class=\"masthead__contact\">{{'VIEW.MOBILE.QUESTIONS.OBJECT.HEADER.SUB_MESSAGE'}} <a href=\"tel://{{'VIEW.MOBILE.QUESTIONS.OBJECT.HEADER.PHONE_NOFORMAT'}}\" class=\"tel\" tabindex=\"-1\">{{'VIEW.MOBILE.QUESTIONS.OBJECT.HEADER.PHONE'}}</a></p>\n" +
+    "            <p translate translate-values=\"{firstName: HeaderService.getCustomerFirstName()}\" class=\"masthead__intro\">GENERAL.HEADER.GREETING</p>\n" +
+    "            <p translate translate-values=\"{objectName: HeaderService.getObjectName(), eventName: HeaderService.getEventName()}\" class=\"masthead__largetype\">GENERAL.HEADER.MESSAGE</p>\n" +
+    "            <p class=\"masthead__contact\">{{'GENERAL.HEADER.CONTACT_US' | translate}} <a href=\"tel://{{'VIEW.MOBILE.QUESTIONS.OBJECT.HEADER.PHONE_NOFORMAT' | translate}}\" class=\"tel\" tabindex=\"-1\">{{'GENERAL.HEADER.PHONE' | translate}}</a></p>\n" +
     "        </div>\n" +
     "        <div class=\"masthead__img-container\">\n" +
     "            <!--[if IE 8]><img src=\"assets/svg/bg-masthead-claims.svg\" alt=\"\"><![endif]-->\n" +
