@@ -1,0 +1,28 @@
+{
+  "name": "stpCommon",
+  "version": "0.0.1",
+  "description": "Generic STP Commons library",
+  "directory": "dist",
+  "main": ["stpHeader.js"],
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "Folksam",
+    "Commons",
+    "angularjs",
+    "insurance"
+  ],
+  "authors": [
+    "A-Team"
+  ],
+  "license": "Folksam",
+  "homepage": "http://www.folksam.se",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "src",
+    "spec",
+    "Gruntfile.js"
+  ]
+}

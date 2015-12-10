@@ -1,0 +1,9 @@
+{
+  "directory": "vendor",
+  "json": "bower.json",
+  "registry": {
+    "register": "https://github.com/bennydev/stpCommon",
+    "publish": "https://github.com/bennydev/stpCommon"
+  }
+}
+
