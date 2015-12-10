@@ -2,7 +2,7 @@
 angular.module('stpCommon.header', ['ui.router']);
 
 "use strict";
-angular.module('stpCommon.header').controller('HeaderCtrl', ['$scope', '$state', function($scope, $state, HeaderService){
+angular.module('stpCommon.header').controller('HeaderCtrl', ['$scope', '$state', 'HeaderService', function($scope, $state, HeaderService){
     $scope.HeaderService = HeaderService;
 }]);
 "use strict";
@@ -89,29 +89,15 @@ angular.module("header/header.tpl.html", []).run(["$templateCache", function($te
 
 angular.module("header/siteHeader.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("header/siteHeader.tpl.html",
-    "<!--\n" +
-    "<section class=\"masthead u-bgcolor-blue-2\">\n" +
-    "    <div class=\"content-wrapper\">\n" +
-    "        <div class=\"masthead__content\">\n" +
-    "            <p ng-if=\"HeaderService.hasName() && $state.current.name !== 'identification'\" translate translate-values=\"{customer: CUSTOMER_OBJECT.customer}\" class=\"masthead__intro\">VIEW.MOBILE.QUESTIONS.OBJECT.HEADER.GREETING</p>\n" +
-    "            <p ng-if=\"CUSTOMER_OBJECT.hasName() && $state.current.name !== 'identification'\" translate translate-values=\"{objectName: EVENT_AND_OBJECT.objectName, eventName: EVENT_AND_OBJECT.eventName}\" class=\"masthead__largetype\">VIEW.MOBILE.QUESTIONS.OBJECT.HEADER.MESSAGE</p>\n" +
-    "\n" +
-    "            <p class=\"masthead__intro\" ng-show=\"(!CUSTOMER_OBJECT.hasName() || $state.current.name === 'identification') && !$phase\">{{'VIEW.MOBILE.QUESTIONS.OBJECT.HEADER.MESSAGE_UNIDENTIFIED'}}</p>\n" +
-    "            <p class=\"masthead__contact\">{{'VIEW.MOBILE.QUESTIONS.OBJECT.HEADER.SUB_MESSAGE'}} <a href=\"tel://{{'VIEW.MOBILE.QUESTIONS.OBJECT.HEADER.PHONE_NOFORMAT'}}\" class=\"tel\" tabindex=\"-1\">{{'VIEW.MOBILE.QUESTIONS.OBJECT.HEADER.PHONE'}}</a></p>\n" +
-    "        </div>\n" +
-    "        <div class=\"masthead__img-container\">\n" +
-    "            <!--[if IE 8]><img src=\"assets/svg/bg-masthead-claims.svg\" alt=\"\"><![endif]-->\n" +
-    "            <!--[if gt IE 8]><!--><img src=\"assets/svg/bg-masthead-claims.svg\" alt=\"\"><!--<![endif]-->\n" +
-    "<!--\n" +
-    "        </div>\n" +
-    "    </div>\n" +
-    "</section>\n" +
-    "-->\n" +
     "<section class=\"masthead u-bgcolor-blue-2\" ng-show=\"HeaderService.showIdentificationHeader()\">\n" +
     "    <div class=\"content-wrapper\">\n" +
     "        <div class=\"masthead__content\">\n" +
     "            <p class=\"masthead__intro\">{{'VIEW.MOBILE.QUESTIONS.OBJECT.HEADER.MESSAGE_UNIDENTIFIED'}}</p>\n" +
     "            <p class=\"masthead__contact\">{{'VIEW.MOBILE.QUESTIONS.OBJECT.HEADER.SUB_MESSAGE'}} <a href=\"tel://{{'VIEW.MOBILE.QUESTIONS.OBJECT.HEADER.PHONE_NOFORMAT'}}\" class=\"tel\" tabindex=\"-1\">{{'VIEW.MOBILE.QUESTIONS.OBJECT.HEADER.PHONE'}}</a></p>\n" +
+    "        </div>\n" +
+    "        <div class=\"masthead__img-container\">\n" +
+    "            <!--[if IE 8]><img src=\"assets/svg/bg-masthead-claims.svg\" alt=\"\"><![endif]-->\n" +
+    "            <!--[if gt IE 8]><!--><img src=\"assets/svg/bg-masthead-claims.svg\" alt=\"\"><!--<![endif]-->\n" +
     "        </div>\n" +
     "    </div>\n" +
     "</section>\n" +
@@ -122,6 +108,10 @@ angular.module("header/siteHeader.tpl.html", []).run(["$templateCache", function
     "            <p translate translate-values=\"{customer: CUSTOMER_OBJECT.customer}\" class=\"masthead__intro\">VIEW.MOBILE.QUESTIONS.OBJECT.HEADER.GREETING</p>\n" +
     "            <p translate translate-values=\"{objectName: EVENT_AND_OBJECT.objectName, eventName: EVENT_AND_OBJECT.eventName}\" class=\"masthead__largetype\">VIEW.MOBILE.QUESTIONS.OBJECT.HEADER.MESSAGE</p>\n" +
     "            <p class=\"masthead__contact\">{{'VIEW.MOBILE.QUESTIONS.OBJECT.HEADER.SUB_MESSAGE'}} <a href=\"tel://{{'VIEW.MOBILE.QUESTIONS.OBJECT.HEADER.PHONE_NOFORMAT'}}\" class=\"tel\" tabindex=\"-1\">{{'VIEW.MOBILE.QUESTIONS.OBJECT.HEADER.PHONE'}}</a></p>\n" +
+    "        </div>\n" +
+    "        <div class=\"masthead__img-container\">\n" +
+    "            <!--[if IE 8]><img src=\"assets/svg/bg-masthead-claims.svg\" alt=\"\"><![endif]-->\n" +
+    "            <!--[if gt IE 8]><!--><img src=\"assets/svg/bg-masthead-claims.svg\" alt=\"\"><!--<![endif]-->\n" +
     "        </div>\n" +
     "    </div>\n" +
     "</section>\n" +
