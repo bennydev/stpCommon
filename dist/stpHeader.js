@@ -1,3 +1,7 @@
+"use strict";
+angular.module('stpCommon.header', ['ui.router']).controller('HeaderCtrl', ['$scope', '$state', function($scope, $state, showCustomerInfo){
+    $scope.showCustomerInfo = showCustomerInfo;
+}]);
 angular.module('stpHeaderTemplates', ['header/customerInfo.tpl.html', 'header/header.tpl.html', 'header/siteHeader.tpl.html', 'header/siteTop.tpl.html']);
 
 angular.module("header/customerInfo.tpl.html", []).run(["$templateCache", function($templateCache) {

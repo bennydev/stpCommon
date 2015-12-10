@@ -58,7 +58,7 @@ module.exports = function (grunt) {
                     module: 'stpHeaderTemplates'
                 },
                 src: ['build/src/header/**/*.html'],
-                dest: 'build/header/stpHeaderTemplates.js'
+                dest: 'build/src/header/stpHeaderTemplates.js'
             }
         },
         concat: {
@@ -66,7 +66,7 @@ module.exports = function (grunt) {
                 options: {
                 },
                 src: [
-                    'build/header/*.js'
+                    'build/src/header/*.js'
                 ],
                 dest: 'dist/stpHeader.js'
             }
