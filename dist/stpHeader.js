@@ -16,6 +16,8 @@ angular.module('stpCommon.header').factory('HeaderService', [function(){
 
     var service = {
         showCustomerInfo: showCustomerInfo,
+        showIdentificationHeader: showIdentificationHeader,
+        showSectionsHeader: showSectionsHeader,
         setCustomerFirstName: setCustomerFirstName,
         getCustomerFirstName: getCustomerFirstName,
         setCustomerLastName: setCustomerLastName,
@@ -49,6 +51,14 @@ angular.module('stpCommon.header').factory('HeaderService', [function(){
     }
 
     function showCustomerInfo(){
+        return true;
+    }
+
+    function showIdentificationHeader(){
+        return true;
+    }
+
+    function showSectionsHeader(){
         return true;
     }
 

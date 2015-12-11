@@ -1,0 +1,41 @@
+<div ng-controller="SummaryCtrl">
+    <div class="grid-wrapper">
+        <div class="u-spacing-above u-spacing-under">
+            <div class="grid">
+                <div class="grid__item sm--one-half">
+                    <p translate>VIEW.SUMMARY.TEXT</p>
+                </div>
+                <div class="grid__item sm--one-half">
+                    <dl class="info-tile">
+                        <dt translate>VIEW.SUMMARY.NOTIFIER</dt>
+                        <dd>{{customer.fullName}}</dd>
+                        <dt translate>VIEW.SUMMARY.POLICYHOLDER</dt>
+                        <dd>{{policyHolder.fullName}}</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+
+        <div ng-repeat="summaryContainer in summaryModel track by $index">
+            <h3>{{summaryContainer.header}}</h3>
+            <a href="#questions-about-your-phone"
+               ng-click="goTo(summaryContainer.section)"
+               class="form-section__change u-font-bold slidedown-anchor" translate>VIEW.SUMMARY.CHANGE</a>
+            <table class="standard-table standard-table--summary standard-table--fixed">
+                <tbody ng-repeat="block in summaryContainer.blocks track by $index">
+                <tr>
+                    <td class="form-section__subheading" colspan="2" ng-show="block.header">{{block.header}}</td>
+                </tr>
+                <tr ng-repeat="question in block.questions track by $index"
+                    class="summary-item"
+                    ng-class="{'even-row' : $index % 2 === 0}">
+                    <th>{{question.question}}</th>
+                    <td>{{question.answer}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+    <stp-Navigation></stp-Navigation>
+</div>

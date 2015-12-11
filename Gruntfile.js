@@ -46,6 +46,7 @@ module.exports = function (grunt) {
                     'src/header/**/*',
                     'src/modal/**/*',
                     'src/navigation/**/*',
+                    'src/summary/**/*',
                     '!src/**/*.spec.js'],
                 dest: 'build',
                 expand: true
@@ -79,6 +80,14 @@ module.exports = function (grunt) {
                 },
                 src: ['build/src/navigation/**/*.html'],
                 dest: 'build/src/navigation/stpNavigationTemplates.js'
+            },
+            summary: {
+                options: {
+                    base: 'build/src',
+                    module: 'stpSummaryTemplates'
+                },
+                src: ['build/src/summary/**/*.html'],
+                dest: 'build/src/summary/stpSummaryTemplates.js'
             }
         },
         concat: {
@@ -99,6 +108,12 @@ module.exports = function (grunt) {
                     'build/src/navigation/*.js'
                 ],
                 dest: 'dist/stpNavigation.js'
+            },
+            compile_summary_js: {
+                src: [
+                    'build/src/summary/*.js'
+                ],
+                dest: 'dist/stpSummary.js'
             }
         }
         };
