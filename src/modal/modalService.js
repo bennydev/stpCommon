@@ -1,5 +1,5 @@
 "use strict";
-angular.module('stpCommon.modal')
+angular.module('stpCommon.modal', [])
     .factory('ModalService', ['$window', function($window){
         var error = {};
         var modalTemplate;
