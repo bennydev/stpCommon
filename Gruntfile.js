@@ -42,7 +42,11 @@ module.exports = function (grunt) {
          */
         copy: {
             build: {
-                src: ['src/header/**/*', '!src/**/*.spec.js'],
+                src: [
+                    'src/header/**/*',
+                    'src/modal/**/*',
+                    'src/navigation/**/*',
+                    '!src/**/*.spec.js'],
                 dest: 'build',
                 expand: true
             }
@@ -52,23 +56,49 @@ module.exports = function (grunt) {
             /**
              * These are the templates from `src/app`.
              */
-            app: {
+            header: {
                 options: {
                     base: 'build/src',
                     module: 'stpHeaderTemplates'
                 },
                 src: ['build/src/header/**/*.html'],
                 dest: 'build/src/header/stpHeaderTemplates.js'
+            },
+            modal: {
+                options: {
+                    base: 'build/src',
+                    module: 'stpModalTemplates'
+                },
+                src: ['build/src/modal/**/*.html'],
+                dest: 'build/src/modal/stpModalTemplates.js'
+            },
+            navigation: {
+                options: {
+                    base: 'build/src',
+                    module: 'stpNavigationTemplates'
+                },
+                src: ['build/src/navigation/**/*.html'],
+                dest: 'build/src/navigation/stpNavigationTemplates.js'
             }
         },
         concat: {
-            compile_js: {
-                options: {
-                },
+            compile_header_js: {
                 src: [
                     'build/src/header/*.js'
                 ],
                 dest: 'dist/stpHeader.js'
+            },
+            compile_modal_js: {
+                src: [
+                    'build/src/modal/*.js'
+                ],
+                dest: 'dist/stpModal.js'
+            },
+            compile_navigation_js: {
+                src: [
+                    'build/src/navigation/*.js'
+                ],
+                dest: 'dist/stpNavigation.js'
             }
         }
         };
