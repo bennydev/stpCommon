@@ -15,7 +15,7 @@ angular.module('stpCommon.summary',
         function goTo(section){}
         function next(){}
     }])
-    .controller('SummaryCtrl', ['$scope', 'HeaderService', function($scope, HeaderService, SummaryService){
+    .controller('SummaryCtrl', ['$scope', 'HeaderService', 'SummaryService', function($scope, HeaderService, SummaryService){
         $scope.customer = {fullName: HeaderService.getCustomerFullName()};
         $scope.policyHolder = {fullName: HeaderService.getPolicyHolderFullName()};
         $scope.goTo = SummaryService.goTo;
