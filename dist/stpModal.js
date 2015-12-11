@@ -21,7 +21,7 @@ angular.module('stpCommon.modal', [])
             error.title = textRoot +".TITLE";
             error.message = textRoot + ".MESSAGE";
             error.close = textRoot + ".CLOSE";
-            open('modalError.tpl.html');
+            open('modal/modalError.tpl.html');
         }
 
         function open(template){
