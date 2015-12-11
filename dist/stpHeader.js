@@ -18,6 +18,7 @@ angular.module('stpCommon.header').factory('HeaderService', [function(){
         showCustomerInfo: showCustomerInfo,
         showIdentificationHeader: showIdentificationHeader,
         showSectionsHeader: showSectionsHeader,
+        restart: restart,
         setCustomerFirstName: setCustomerFirstName,
         getCustomerFirstName: getCustomerFirstName,
         setCustomerLastName: setCustomerLastName,
@@ -33,6 +34,8 @@ angular.module('stpCommon.header').factory('HeaderService', [function(){
 
     };
     return service;
+
+    function restart(){}
 
     function setObjectName(name){
         objectName = name;
@@ -107,7 +110,7 @@ angular.module("header/customerInfo.tpl.html", []).run(["$templateCache", functi
     "                <div class=\"u-inline-block\"><b>{{'GENERAL.CUSTOMER_INFO.POLICYHOLDER' | translate}}</b> {{HeaderService.getPolicyHolderFullName()}}</div>\n" +
     "            </div>\n" +
     "            <div class=\"grid__item md--four-twelfths\">\n" +
-    "                <div class=\"u-align-right\"><a ui-sref=\"identification\" class=\"u-font-semibold\" tabindex=\"-1\">{{'GENERAL.CUSTOMER_INFO.GO_BACK' | translate}}</a></div>\n" +
+    "                <div class=\"u-align-right\"><a ui-sref=\"identification\" ng-click=\"HeaderService.restart()\" class=\"u-font-semibold\" tabindex=\"-1\">{{'GENERAL.CUSTOMER_INFO.GO_BACK' | translate}}</a></div>\n" +
     "            </div>\n" +
     "        </div>\n" +
     "    </div>\n" +

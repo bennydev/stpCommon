@@ -11,6 +11,7 @@ angular.module('stpCommon.header').factory('HeaderService', [function(){
         showCustomerInfo: showCustomerInfo,
         showIdentificationHeader: showIdentificationHeader,
         showSectionsHeader: showSectionsHeader,
+        restart: restart,
         setCustomerFirstName: setCustomerFirstName,
         getCustomerFirstName: getCustomerFirstName,
         setCustomerLastName: setCustomerLastName,
@@ -26,6 +27,8 @@ angular.module('stpCommon.header').factory('HeaderService', [function(){
 
     };
     return service;
+
+    function restart(){}
 
     function setObjectName(name){
         objectName = name;
