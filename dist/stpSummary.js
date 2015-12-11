@@ -7,7 +7,7 @@ angular.module("summary/summary.tpl.html", []).run(["$templateCache", function($
     "        <div class=\"u-spacing-above u-spacing-under\">\n" +
     "            <div class=\"grid\">\n" +
     "                <div class=\"grid__item sm--one-half\">\n" +
-    "                    <p translate>VIEW.SUMMARY.TEXT</p>\n" +
+    "                    <p translate>VIEW.SECTIONS.SUMMARY.TEXT</p>\n" +
     "                </div>\n" +
     "                <div class=\"grid__item sm--one-half\">\n" +
     "                    <dl class=\"info-tile\">\n" +
@@ -24,7 +24,7 @@ angular.module("summary/summary.tpl.html", []).run(["$templateCache", function($
     "            <h3>{{summaryContainer.header}}</h3>\n" +
     "            <a href=\"#questions-about-your-phone\"\n" +
     "               ng-click=\"goTo(summaryContainer.section)\"\n" +
-    "               class=\"form-section__change u-font-bold slidedown-anchor\" translate>VIEW.SUMMARY.CHANGE</a>\n" +
+    "               class=\"form-section__change u-font-bold slidedown-anchor\" translate>VIEW.SECTIONS.SUMMARY.CHANGE</a>\n" +
     "            <table class=\"standard-table standard-table--summary standard-table--fixed\">\n" +
     "                <tbody ng-repeat=\"block in summaryContainer.blocks track by $index\">\n" +
     "                <tr>\n" +
