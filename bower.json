@@ -1,9 +1,9 @@
 {
   "name": "stpCommon",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Generic STP Commons library",
   "directory": "dist",
-  "main": ["stpHeader.js", "stpModal.js"],
+  "main": ["stpHeader.js", "stpModal.js", "stpNavigation.js"],
   "moduleType": [
     "globals"
   ],

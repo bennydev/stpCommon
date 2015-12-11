@@ -1,5 +1,5 @@
 "use strict";
-angular.module('stpCommon.navigation')
+angular.module('stpCommon.navigation', [])
     .directive('stpNavigation', [function(){
         return {
             restrict: 'E',
