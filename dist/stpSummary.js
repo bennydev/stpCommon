@@ -11,9 +11,9 @@ angular.module("summary/summary.tpl.html", []).run(["$templateCache", function($
     "                </div>\n" +
     "                <div class=\"grid__item sm--one-half\">\n" +
     "                    <dl class=\"info-tile\">\n" +
-    "                        <dt translate>VIEW.SUMMARY.NOTIFIER</dt>\n" +
+    "                        <dt translate>GENERAL.CUSTOMER_INFO.NOTIFIER</dt>\n" +
     "                        <dd>{{customer.fullName}}</dd>\n" +
-    "                        <dt translate>VIEW.SUMMARY.POLICYHOLDER</dt>\n" +
+    "                        <dt translate>GENERAL.CUSTOMER_INFO.POLICYHOLDER</dt>\n" +
     "                        <dd>{{policyHolder.fullName}}</dd>\n" +
     "                    </dl>\n" +
     "                </div>\n" +
