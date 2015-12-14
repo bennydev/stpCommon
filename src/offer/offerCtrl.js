@@ -12,7 +12,7 @@ angular.module('stpCommon.offer', [])
 
         function getOfferModel(){
             var model = {
-                getClaimType: getClaimId,
+                getClaimType: getClaimType,
                 getClaimId: getClaimId
             };
             return model;
