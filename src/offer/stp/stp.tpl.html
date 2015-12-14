@@ -1,0 +1,74 @@
+<div ng-controller="STPCtrl">
+
+    <div class="grid-wrapper">
+        <div class="u-spacing-above u-spacing-under">
+            <div class="grid">
+                <div class="grid__item sm--one-half">
+                    <h3 class="u-typography-2" translate>VIEW.SECTIONS.OFFER.STP.HEADER</h3>
+
+                    <p translate translate-values="{compensation: offerModel.compensation}">VIEW.SECTIONS.OFFER.STP.INFO_COMPENSATION</p>
+
+                    <p ng-if="!offerModel.customerIsPolicyHolder">{{'VIEW.SECTIONS.OFFER.STP.PAYMENT_RECIEVER' | translate}}</p>
+                </div>
+                <div class="grid__item sm--one-half">
+
+                    <dl class="info-tile">
+                        <dt translate>VIEW.SUMMARY.NOTIFIER</dt>
+                        <dd>{{customer.fullName}}</dd>
+                        <dt translate>VIEW.SUMMARY.POLICYHOLDER</dt>
+                        <dd>{{policyHolder.fullName}}</dd>
+                    </dl>
+
+                </div>
+            </div>
+        </div>
+
+        <h3 class="u-typography-4" translate>VIEW.SECTIONS.OFFER.STP.CALCULATION_HEADER</h3>
+
+        <table class="standard-table standard-table--fixed standard-table--summary standard-table--calculation">
+            <tbody>
+                <tr ng-repeat="row in offerModel.calculation">
+                    <th>{{row.description}}</th>
+                    <td>
+                        <span ng-if="row.type === '-'"> -</span>
+                        <span ng-if="row.type === '+'"> </span>
+                        {{row.value}}
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th translate>VIEW.SECTIONS.OFFER.STP.PAYMENT_HEADING</th>
+                    <td>{{offerModel.compensation}}</td>
+                </tr>
+            </tfoot>
+
+        </table>
+        <p ng-if='offerModel.deductionExplanation'
+           class="form-note" translate>{{offerModel.deductionExplanation}}
+        </p>
+    </div>
+
+    <div ng-if="!thankYouTemplate">
+        <div class="u-align-center u-bgcolor-blue-5">
+            <fsm-question question="acceptanceQuestion" translate-values="{compensation: offerModel.compensation}"></fsm-question>
+        </div>
+        <div class="u-align-center u-bgcolor-blue-4">
+            <button class="button button--primary u-spacing-above-narrow u-spacing-under-narrow u-no-transition"
+                    ng-if="acceptanceQuestion.getAnswer() !== options.no.value"
+                    ng-click="confirmOffer();"
+                    name="offerConfirmation"
+                    translate>VIEW.SECTIONS.OFFER.STP.CONFIRM_OFFER
+            </button>
+            <button class="button button--primary u-spacing-above-narrow u-spacing-under-narrow u-no-transition"
+                    ng-if="acceptanceQuestion.getAnswer() === options.no.value"
+                    id="offerConfirmation"
+                    name="noOfferConfirmation"
+                    ng-click="confirmOffer();"
+                    ng-cloak translate>VIEW.SECTIONS.OFFER.STP.CONTACT_ME
+            </button>
+        </div>
+    </div>
+
+    <div ng-include="thankYouTemplate" ng-if="thankYouTemplate"></div>
+</div>
