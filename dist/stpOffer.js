@@ -26,11 +26,17 @@ angular.module('stpCommon.offer', [])
             }
         }
     }])
-    .controller('STPCtrl', ['$scope', 'OfferService', 'HeaderService', 'ErrorReporter', function($scope, OfferService, HeaderService, ErrorReporter){
+    .controller('STPCtrl', ['$scope', 'OfferService', 'HeaderService', 'ErrorReporter', 'QuestionService', function($scope, OfferService, HeaderService, ErrorReporter, QuestionService){
         $scope.offerModel = OfferService.getOfferModel();
         $scope.customer = {fullName: HeaderService.getCustomerFullName()};
         $scope.policyHolder = {fullName: HeaderService.getPolicyHolderFullName()};
-
+        $scope.acceptanceQuestion = QuestionService.getQuestionBuilder()
+            .id('acceptance')
+            .textRoot('VIEW.SECTIONS.OFFER.STP.QUESTIONS.ACCEPTANCE')
+            .type('buttongroup')
+            .values({label: 'VIEW.OPTIONS.YES', value: 'YES'}, {label: 'VIEW.OPTIONS.NO', value: 'NO'})
+            .required(true)
+            .createQuestion();
         $scope.confirmOffer = function(){
             if(!ErrorReporter.hasErrors()){
                 $scope.thankYouTemplate = 'offer/stp/thanks.tpl.html';
