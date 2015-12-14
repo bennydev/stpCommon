@@ -39,16 +39,16 @@ angular.module("offer/ltp/thanks.tpl.html", []).run(["$templateCache", function(
     "    <div class=\"grid-wrapper\">\n" +
     "        <div class=\"u-padding-above\">\n" +
     "\n" +
-    "            <h3 class=\"u-typography-2 u-spacing-under-narrow\" translate>VIEW.OFFER.LTP.THANKS.HEADER</h3>\n" +
+    "            <h3 class=\"u-typography-2 u-spacing-under-narrow\" translate>VIEW.SECTIONS.OFFER.LTP.THANKS.HEADER</h3>\n" +
     "\n" +
     "            <div class=\"grid grid--wide\">\n" +
     "                <div class=\"grid__item sm--one-half\">\n" +
-    "                    <p translate translate-values=\"{claimId: claimId}\">VIEW.OFFER.LTP.THANKS.INFO_CLAIM_ID</p>\n" +
+    "                    <p translate translate-values=\"{claimId: claimId}\">VIEW.SECTIONS.OFFER.LTP.THANKS.INFO_CLAIM_ID</p>\n" +
     "\n" +
     "                    <div class=\"u-spacing-above\">\n" +
-    "                        <p translate translate-values=\"{eventType: offerModel.eventType}\">VIEW.OFFER.LTP.THANKS.INFO_CONTACT</p>\n" +
-    "                        <p translate>VIEW.OFFER.REGARDS</p>\n" +
-    "                        <p translate>VIEW.OFFER.FOLKSAM</p>\n" +
+    "                        <p translate translate-values=\"{eventType: offerModel.eventType}\">VIEW.SECTIONS.OFFER.LTP.THANKS.INFO_CONTACT</p>\n" +
+    "                        <p translate>VIEW.SECTIONS.OFFER.REGARDS</p>\n" +
+    "                        <p translate>VIEW.SECTIONS.OFFER.FOLKSAM</p>\n" +
     "                    </div>\n" +
     "\n" +
     "                </div>\n" +
