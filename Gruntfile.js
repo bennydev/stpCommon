@@ -47,6 +47,7 @@ module.exports = function (grunt) {
                     'src/modal/**/*',
                     'src/navigation/**/*',
                     'src/summary/**/*',
+                    'src/offer/**/*',
                     '!src/**/*.spec.js'],
                 dest: 'build',
                 expand: true
@@ -88,6 +89,14 @@ module.exports = function (grunt) {
                 },
                 src: ['build/src/summary/**/*.html'],
                 dest: 'build/src/summary/stpSummaryTemplates.js'
+            },
+            offer: {
+                options: {
+                    base: 'build/src',
+                    module: 'stpOfferTemplates'
+                },
+                src: ['build/src/offer/**/*.html'],
+                dest: 'build/src/offer/stpOfferTemplates.js'
             }
         },
         concat: {
@@ -114,6 +123,12 @@ module.exports = function (grunt) {
                     'build/src/summary/*.js'
                 ],
                 dest: 'dist/stpSummary.js'
+            },
+            compile_offer_js: {
+                src: [
+                    'build/src/offer/*.js'
+                ],
+                dest: 'dist/stpOffer.js'
             }
         }
         };
