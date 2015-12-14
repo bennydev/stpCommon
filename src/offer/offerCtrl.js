@@ -26,7 +26,7 @@ angular.module('stpCommon.offer', [])
             }
         }
     }])
-    .controller('STPCtrl', ['$scope', '$http', 'OfferService', 'HeaderService', 'ErrorReporter', function($scope, OfferService, HeaderService, ErrorReporter){
+    .controller('STPCtrl', ['$scope', 'OfferService', 'HeaderService', 'ErrorReporter', function($scope, OfferService, HeaderService, ErrorReporter){
         $scope.offerModel = OfferService.getOfferModel();
         $scope.customer = {fullName: HeaderService.getCustomerFullName()};
         $scope.policyHolder = {fullName: HeaderService.getPolicyHolderFullName()};
