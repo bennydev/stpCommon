@@ -33,7 +33,7 @@ angular.module('stpCommon.offer', [])
         $scope.acceptanceQuestion = QuestionService.getQuestionBuilder()
             .id('acceptance')
             .text({root:'VIEW.SECTIONS.OFFER.STP.QUESTIONS.ACCEPTANCE', translateValues: {compensation: '1000'}})
-            .type('buttongroup')
+            .type('buttongroupbig')
             .values([{label: 'VIEW.OPTIONS.YES', value: 'YES'}, {label: 'VIEW.OPTIONS.NO', value: 'NO'}])
             .required(true)
             .createQuestion();
