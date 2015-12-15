@@ -1,6 +1,6 @@
 {
   "name": "stpCommon",
-  "version": "0.4.11",
+  "version": "0.4.12",
   "description": "Generic STP Commons library",
   "directory": "dist",
   "main": ["stpHeader.js", "stpModal.js", "stpNavigation.js", "stpSummary.js", "stpOffer.js"],
