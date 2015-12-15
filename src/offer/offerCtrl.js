@@ -32,7 +32,7 @@ angular.module('stpCommon.offer', [])
         $scope.policyHolder = {fullName: HeaderService.getPolicyHolderFullName()};
         $scope.acceptanceQuestion = QuestionService.getQuestionBuilder()
             .id('acceptance')
-            .textRoot('VIEW.SECTIONS.OFFER.STP.QUESTIONS.ACCEPTANCE')
+            .text({root:'VIEW.SECTIONS.OFFER.STP.QUESTIONS.ACCEPTANCE', translateValues: {compensation: '1000'}})
             .type('buttongroup')
             .values([{label: 'VIEW.OPTIONS.YES', value: 'YES'}, {label: 'VIEW.OPTIONS.NO', value: 'NO'}])
             .required(true)
