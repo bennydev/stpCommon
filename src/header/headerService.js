@@ -2,8 +2,10 @@
 angular.module('stpCommon.header').factory('HeaderService', [function(){
     var customerFirstName;
     var customerLastName;
+    var customerPersonId;
     var policyHolderFirstName;
     var policyHolderLastName;
+    var policyHolderPersonId;
     var objectName;
     var eventName;
 
@@ -15,8 +17,12 @@ angular.module('stpCommon.header').factory('HeaderService', [function(){
         setCustomerFirstName: setCustomerFirstName,
         getCustomerFirstName: getCustomerFirstName,
         setCustomerLastName: setCustomerLastName,
+        setCustomerPersonId: setCustomerPersonId,
+        getCustomerPersonId: getCustomerPersonId,
         setPolicyHolderFirstName: setPolicyHolderFirstName,
         setPolicyHolderLastName: setPolicyHolderLastName,
+        setPolicyHolderPersonId: setPolicyHolderPersonId,
+        getPolicyHolderPersonId: getPolicyHolderPersonId,
         hasName: hasName,
         getCustomerFullName: getCustomerFullName,
         getPolicyHolderFullName: getPolicyHolderFullName,
@@ -88,6 +94,22 @@ angular.module('stpCommon.header').factory('HeaderService', [function(){
 
     function getPolicyHolderFullName(){
         return (policyHolderFirstName || '') + ' ' + (policyHolderLastName || '');
+    }
+
+    function setCustomerPersonId(id){
+        customerPersonId = id;
+    }
+
+    function getCustomerPersonId(){
+        return customerPersonId;
+    }
+
+    function setPolicyHolderPersonId(id){
+        policyHolderPersonId = id;
+    }
+
+    function getPolicyHolderPersonId(){
+        return policyHolderPersonId;
     }
 
 }]);

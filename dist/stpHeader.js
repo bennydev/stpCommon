@@ -9,8 +9,10 @@ angular.module('stpCommon.header').controller('HeaderCtrl', ['$scope', '$state',
 angular.module('stpCommon.header').factory('HeaderService', [function(){
     var customerFirstName;
     var customerLastName;
+    var customerPersonId;
     var policyHolderFirstName;
     var policyHolderLastName;
+    var policyHolderPersonId;
     var objectName;
     var eventName;
 
@@ -22,8 +24,12 @@ angular.module('stpCommon.header').factory('HeaderService', [function(){
         setCustomerFirstName: setCustomerFirstName,
         getCustomerFirstName: getCustomerFirstName,
         setCustomerLastName: setCustomerLastName,
+        setCustomerPersonId: setCustomerPersonId,
+        getCustomerPersonId: getCustomerPersonId,
         setPolicyHolderFirstName: setPolicyHolderFirstName,
         setPolicyHolderLastName: setPolicyHolderLastName,
+        setPolicyHolderPersonId: setPolicyHolderPersonId,
+        getPolicyHolderPersonId: getPolicyHolderPersonId,
         hasName: hasName,
         getCustomerFullName: getCustomerFullName,
         getPolicyHolderFullName: getPolicyHolderFullName,
@@ -97,6 +103,22 @@ angular.module('stpCommon.header').factory('HeaderService', [function(){
         return (policyHolderFirstName || '') + ' ' + (policyHolderLastName || '');
     }
 
+    function setCustomerPersonId(id){
+        customerPersonId = id;
+    }
+
+    function getCustomerPersonId(){
+        return customerPersonId;
+    }
+
+    function setPolicyHolderPersonId(id){
+        policyHolderPersonId = id;
+    }
+
+    function getPolicyHolderPersonId(){
+        return policyHolderPersonId;
+    }
+
 }]);
 angular.module('stpHeaderTemplates', ['header/customerInfo.tpl.html', 'header/header.tpl.html', 'header/siteHeader.tpl.html', 'header/siteTop.tpl.html']);
 
@@ -106,8 +128,8 @@ angular.module("header/customerInfo.tpl.html", []).run(["$templateCache", functi
     "    <div class=\"grid-wrapper u-spacing-above-narrow \">\n" +
     "        <div class=\"grid\">\n" +
     "            <div class=\"grid__item md--eight-twelfths u-space-words\">\n" +
-    "                <div class=\"u-inline-block\"><b>{{'GENERAL.CUSTOMER_INFO.NOTIFIER' | translate}}</b> {{HeaderService.getCustomerFullName()}}</div>\n" +
-    "                <div class=\"u-inline-block\"><b>{{'GENERAL.CUSTOMER_INFO.POLICYHOLDER' | translate}}</b> {{HeaderService.getPolicyHolderFullName()}}</div>\n" +
+    "                <div class=\"u-inline-block\"><b>{{'GENERAL.CUSTOMER_INFO.NOTIFIER' | translate}}</b> {{HeaderService.getCustomerFirstName() ? HeaderService.getCustomerFullName() : HeaderService.getCustomerPersonId()}}</div>\n" +
+    "                <div class=\"u-inline-block\"><b>{{'GENERAL.CUSTOMER_INFO.POLICYHOLDER' | translate}}</b> {{HeaderService.getPolicyHolderFirstName() ? HeaderService.getPolicyHolderFullName() : HeaderService.getPolicyHolderPersonId()}}</div>\n" +
     "            </div>\n" +
     "            <div class=\"grid__item md--four-twelfths\">\n" +
     "                <div class=\"u-align-right\"><a ui-sref=\"identification\" ng-click=\"HeaderService.restart()\" class=\"u-font-semibold\" tabindex=\"-1\">{{'GENERAL.CUSTOMER_INFO.GO_BACK' | translate}}</a></div>\n" +
