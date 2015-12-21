@@ -90,11 +90,11 @@ angular.module('stpCommon.header').factory('HeaderService', [function(){
     }
 
     function getCustomerFullName(){
-        return customerFirstName || '' + ' ' + customerLastName || '';
+        return (customerFirstName || '') + ' ' + (customerLastName || '');
     }
 
     function getPolicyHolderFullName(){
-        return policyHolderFirstName || '' + ' ' + policyHolderLastName || '';
+        return (policyHolderFirstName || '') + ' ' + (policyHolderLastName || '');
     }
 
 }]);
