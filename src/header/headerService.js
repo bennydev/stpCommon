@@ -20,6 +20,7 @@ angular.module('stpCommon.header').factory('HeaderService', [function(){
         setCustomerPersonId: setCustomerPersonId,
         getCustomerPersonId: getCustomerPersonId,
         setPolicyHolderFirstName: setPolicyHolderFirstName,
+        getPolicyHolderFirstName: getPolicyHolderFirstName,
         setPolicyHolderLastName: setPolicyHolderLastName,
         setPolicyHolderPersonId: setPolicyHolderPersonId,
         getPolicyHolderPersonId: getPolicyHolderPersonId,
@@ -78,6 +79,10 @@ angular.module('stpCommon.header').factory('HeaderService', [function(){
 
     function setPolicyHolderFirstName(name){
         policyHolderFirstName = name;
+    }
+
+    function getPolicyHolderFirstName(){
+        return policyHolderFirstName;
     }
 
     function setPolicyHolderLastName(name){
