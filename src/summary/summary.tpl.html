@@ -17,20 +17,20 @@
         </div>
 
         <div ng-repeat="summaryContainer in summaryModel track by $index">
-            <h3>{{summaryContainer.header}}</h3>
+            <h3>{{summaryContainer.header | translate}}</h3>
             <a href="#questions-about-your-phone"
                ng-click="goTo(summaryContainer.section)"
                class="form-section__change u-font-bold slidedown-anchor" translate>VIEW.SECTIONS.SUMMARY.CHANGE</a>
             <table class="standard-table standard-table--summary standard-table--fixed">
                 <tbody ng-repeat="block in summaryContainer.blocks track by $index">
                 <tr>
-                    <td class="form-section__subheading" colspan="2" ng-show="block.header">{{block.header}}</td>
+                    <td class="form-section__subheading" colspan="2" ng-show="block.header">{{block.header | translate}}</td>
                 </tr>
-                <tr ng-repeat="question in block.questions track by $index"
+                <tr ng-repeat="summary in block.summaries track by $index"
                     class="summary-item"
                     ng-class="{'even-row' : $index % 2 === 0}">
-                    <th>{{question.question}}</th>
-                    <td>{{question.answer}}</td>
+                    <th>{{summary.question | translate}}</th>
+                    <td>{{summary.answer | translate}}</td>
                 </tr>
                 </tbody>
             </table>

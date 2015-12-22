@@ -8,12 +8,31 @@ angular.module('stpCommon.summary',
     .factory('SummaryService', [function(){
         var service = {
             goTo: goTo,
-            next: next
+            next: next,
+            createSummaryContainer: createSummaryContainer,
+            createSummaryBlock: createSummaryBlock,
+            createSummary: createSummary
         };
         return service;
 
         function goTo(section){}
         function next(){}
+
+        function createSummaryContainer(header, sectionName){
+            return {header: header, blocks: [], section: sectionName};
+        }
+
+        function createSummaryBlock(header){
+            var block = {header: header, summaries: [], addSummary: addSummary};
+            return block;
+            function addSummary(summary){
+                block.summaries.push(summary);
+            }
+        }
+
+        function createSummary(question, answer){
+            return {question: question, answer: answer};
+        }
     }])
     .controller('SummaryCtrl', ['$scope', 'HeaderService', 'SummaryService', function($scope, HeaderService, SummaryService){
         $scope.navigationTextKey = 'VIEW.SECTIONS.SUMMARY.NAVIGATION.NEXT';

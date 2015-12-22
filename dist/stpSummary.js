@@ -21,20 +21,20 @@ angular.module("summary/summary.tpl.html", []).run(["$templateCache", function($
     "        </div>\n" +
     "\n" +
     "        <div ng-repeat=\"summaryContainer in summaryModel track by $index\">\n" +
-    "            <h3>{{summaryContainer.header}}</h3>\n" +
+    "            <h3>{{summaryContainer.header | translate}}</h3>\n" +
     "            <a href=\"#questions-about-your-phone\"\n" +
     "               ng-click=\"goTo(summaryContainer.section)\"\n" +
     "               class=\"form-section__change u-font-bold slidedown-anchor\" translate>VIEW.SECTIONS.SUMMARY.CHANGE</a>\n" +
     "            <table class=\"standard-table standard-table--summary standard-table--fixed\">\n" +
     "                <tbody ng-repeat=\"block in summaryContainer.blocks track by $index\">\n" +
     "                <tr>\n" +
-    "                    <td class=\"form-section__subheading\" colspan=\"2\" ng-show=\"block.header\">{{block.header}}</td>\n" +
+    "                    <td class=\"form-section__subheading\" colspan=\"2\" ng-show=\"block.header\">{{block.header | translate}}</td>\n" +
     "                </tr>\n" +
-    "                <tr ng-repeat=\"question in block.questions track by $index\"\n" +
+    "                <tr ng-repeat=\"summary in block.summaries track by $index\"\n" +
     "                    class=\"summary-item\"\n" +
     "                    ng-class=\"{'even-row' : $index % 2 === 0}\">\n" +
-    "                    <th>{{question.question}}</th>\n" +
-    "                    <td>{{question.answer}}</td>\n" +
+    "                    <th>{{summary.question | translate}}</th>\n" +
+    "                    <td>{{summary.answer | translate}}</td>\n" +
     "                </tr>\n" +
     "                </tbody>\n" +
     "            </table>\n" +
@@ -55,12 +55,31 @@ angular.module('stpCommon.summary',
     .factory('SummaryService', [function(){
         var service = {
             goTo: goTo,
-            next: next
+            next: next,
+            createSummaryContainer: createSummaryContainer,
+            createSummaryBlock: createSummaryBlock,
+            createSummary: createSummary
         };
         return service;
 
         function goTo(section){}
         function next(){}
+
+        function createSummaryContainer(header, sectionName){
+            return {header: header, blocks: [], section: sectionName};
+        }
+
+        function createSummaryBlock(header){
+            var block = {header: header, summaries: [], addSummary: addSummary};
+            return block;
+            function addSummary(summary){
+                block.summaries.push(summary);
+            }
+        }
+
+        function createSummary(question, answer){
+            return {question: question, answer: answer};
+        }
     }])
     .controller('SummaryCtrl', ['$scope', 'HeaderService', 'SummaryService', function($scope, HeaderService, SummaryService){
         $scope.navigationTextKey = 'VIEW.SECTIONS.SUMMARY.NAVIGATION.NEXT';
