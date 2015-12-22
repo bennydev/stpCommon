@@ -9,6 +9,7 @@ angular.module('stpCommon.summary',
         var service = {
             goTo: goTo,
             next: next,
+            getSummaryModel: getSummaryModel,
             createSummaryContainer: createSummaryContainer,
             createSummaryBlock: createSummaryBlock,
             createSummary: createSummary
@@ -17,6 +18,7 @@ angular.module('stpCommon.summary',
 
         function goTo(section){}
         function next(){}
+        function getSummaryModel(){}
 
         function createSummaryContainer(header, sectionName){
             return {header: header, blocks: [], section: sectionName};
@@ -38,6 +40,7 @@ angular.module('stpCommon.summary',
         $scope.navigationTextKey = 'VIEW.SECTIONS.SUMMARY.NAVIGATION.NEXT';
         $scope.customer = {fullName: HeaderService.getCustomerFullName()};
         $scope.policyHolder = {fullName: HeaderService.getPolicyHolderFullName()};
+        $scope.summaryModel = SummaryService.getSummaryModel();
         $scope.goTo = SummaryService.goTo;
         $scope.next = SummaryService.next;
     }]);
