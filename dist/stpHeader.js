@@ -133,8 +133,14 @@ angular.module("header/customerInfo.tpl.html", []).run(["$templateCache", functi
     "    <div class=\"grid-wrapper u-spacing-above-narrow \">\n" +
     "        <div class=\"grid\">\n" +
     "            <div class=\"grid__item md--eight-twelfths u-space-words\">\n" +
-    "                <div class=\"u-inline-block\"><b>{{'GENERAL.CUSTOMER_INFO.NOTIFIER' | translate}}</b> {{HeaderService.getCustomerFirstName() ? HeaderService.getCustomerFullName() : HeaderService.getCustomerPersonId()}}</div>\n" +
-    "                <div class=\"u-inline-block\"><b>{{'GENERAL.CUSTOMER_INFO.POLICYHOLDER' | translate}}</b> {{HeaderService.getPolicyHolderFirstName() ? HeaderService.getPolicyHolderFullName() : HeaderService.getPolicyHolderPersonId()}}</div>\n" +
+    "                <div class=\"u-inline-block\">\n" +
+    "                    <b>{{'GENERAL.CUSTOMER_INFO.NOTIFIER' | translate}}</b>\n" +
+    "                    <span id=\"notifierName\">{{HeaderService.getCustomerFirstName() ? HeaderService.getCustomerFullName() : HeaderService.getCustomerPersonId()}}</span>\n" +
+    "                </div>\n" +
+    "                <div class=\"u-inline-block\">\n" +
+    "                    <b>{{'GENERAL.CUSTOMER_INFO.POLICYHOLDER' | translate}}</b>\n" +
+    "                    <span id=\"policyHolderName\">{{HeaderService.getPolicyHolderFirstName() ? HeaderService.getPolicyHolderFullName() : HeaderService.getPolicyHolderPersonId()}}</span>\n" +
+    "                </div>\n" +
     "            </div>\n" +
     "            <div class=\"grid__item md--four-twelfths\">\n" +
     "                <div class=\"u-align-right\"><a ui-sref=\"identification\" ng-click=\"HeaderService.restart()\" class=\"u-font-semibold\" tabindex=\"-1\">{{'GENERAL.CUSTOMER_INFO.GO_BACK' | translate}}</a></div>\n" +
@@ -160,8 +166,8 @@ angular.module("header/siteHeader.tpl.html", []).run(["$templateCache", function
     "<section class=\"masthead u-bgcolor-blue-2\" ng-show=\"HeaderService.showIdentificationHeader()\">\n" +
     "    <div class=\"content-wrapper\">\n" +
     "        <div class=\"masthead__content\">\n" +
-    "            <p class=\"masthead__intro\">{{'GENERAL.HEADER.MESSAGE' | translate}}</p>\n" +
-    "            <p class=\"masthead__contact\">{{'GENERAL.HEADER.CONTACT_US' | translate}} <a href=\"tel://{{'GENERAL.HEADER.PHONE_NOFORMAT' | translate}}\" class=\"tel\" tabindex=\"-1\">{{'GENERAL.HEADER.PHONE' | translate}}</a></p>\n" +
+    "            <p id=\"headerMessage\" class=\"masthead__intro\">{{'GENERAL.HEADER.MESSAGE' | translate}}</p>\n" +
+    "            <p id=\"headerContact\" class=\"masthead__contact\">{{'GENERAL.HEADER.CONTACT_US' | translate}} <a id=\"headerPhone\" href=\"tel://{{'GENERAL.HEADER.PHONE_NOFORMAT' | translate}}\" class=\"tel\" tabindex=\"-1\">{{'GENERAL.HEADER.PHONE' | translate}}</a></p>\n" +
     "        </div>\n" +
     "        <div class=\"masthead__img-container\">\n" +
     "            <!--[if IE 8]><img src=\"assets/svg/bg-masthead-claims.svg\" alt=\"\"><![endif]-->\n" +
@@ -173,9 +179,9 @@ angular.module("header/siteHeader.tpl.html", []).run(["$templateCache", function
     "<section class=\"masthead u-bgcolor-blue-2\" ng-show=\"HeaderService.showSectionsHeader()\">\n" +
     "    <div class=\"content-wrapper\">\n" +
     "        <div class=\"masthead__content\">\n" +
-    "            <p translate translate-values=\"{firstName: HeaderService.getCustomerFirstName()}\" class=\"masthead__intro\">GENERAL.HEADER.GREETING</p>\n" +
-    "            <p translate translate-values=\"{objectName: HeaderService.getObjectName(), eventName: HeaderService.getEventName()}\" class=\"masthead__largetype\">GENERAL.HEADER.MESSAGE</p>\n" +
-    "            <p class=\"masthead__contact\">{{'GENERAL.HEADER.CONTACT_US' | translate}} <a href=\"tel://{{'VIEW.MOBILE.QUESTIONS.OBJECT.HEADER.PHONE_NOFORMAT' | translate}}\" class=\"tel\" tabindex=\"-1\">{{'GENERAL.HEADER.PHONE' | translate}}</a></p>\n" +
+    "            <p id=\"headerGreeting\" translate translate-values=\"{firstName: HeaderService.getCustomerFirstName()}\" class=\"masthead__intro\">GENERAL.HEADER.GREETING</p>\n" +
+    "            <p id=\"headerMessage\" translate translate-values=\"{objectName: HeaderService.getObjectName(), eventName: HeaderService.getEventName()}\" class=\"masthead__largetype\">GENERAL.HEADER.MESSAGE</p>\n" +
+    "            <p id=\"headerContact\" class=\"masthead__contact\">{{'GENERAL.HEADER.CONTACT_US' | translate}} <a id=\"headerPhone\" href=\"tel://{{'VIEW.MOBILE.QUESTIONS.OBJECT.HEADER.PHONE_NOFORMAT' | translate}}\" class=\"tel\" tabindex=\"-1\">{{'GENERAL.HEADER.PHONE' | translate}}</a></p>\n" +
     "        </div>\n" +
     "        <div class=\"masthead__img-container\">\n" +
     "            <!--[if IE 8]><img src=\"assets/svg/bg-masthead-claims.svg\" alt=\"\"><![endif]-->\n" +
