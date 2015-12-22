@@ -26,6 +26,6 @@
     "Gruntfile.js"
   ],
   "dependencies": {
-    "fsmQuestion": "https://github.com/bennydev/fsmQuestion.git#0.1.22"
+    "fsmQuestion": "https://github.com/bennydev/fsmQuestion.git#0.1.26"
   }
 }
