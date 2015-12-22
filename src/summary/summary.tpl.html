@@ -8,9 +8,9 @@
                 <div class="grid__item sm--one-half">
                     <dl class="info-tile">
                         <dt translate>GENERAL.CUSTOMER_INFO.NOTIFIER</dt>
-                        <dd>{{customer.fullName}}</dd>
+                        <dd id="summaryNotifierName">{{customer.fullName}}</dd>
                         <dt translate>GENERAL.CUSTOMER_INFO.POLICYHOLDER</dt>
-                        <dd>{{policyHolder.fullName}}</dd>
+                        <dd id="summaryPolicyHolderName">{{policyHolder.fullName}}</dd>
                     </dl>
                 </div>
             </div>
@@ -29,8 +29,8 @@
                 <tr ng-repeat="summary in block.summaries track by $index"
                     class="summary-item"
                     ng-class="{'even-row' : $index % 2 === 0}">
-                    <th>{{summary.question | translate}}</th>
-                    <td>{{summary.answer | translate}}</td>
+                    <th id="{{summary.id +'Question'}}">{{summary.question | translate}}</th>
+                    <td id="{{summary.id +'Answer'}}">{{summary.answer | translate}}</td>
                 </tr>
                 </tbody>
             </table>

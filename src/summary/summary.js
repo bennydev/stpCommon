@@ -32,8 +32,8 @@ angular.module('stpCommon.summary',
             }
         }
 
-        function createSummary(question, answer){
-            return {question: question, answer: answer};
+        function createSummary(id, question, answer){
+            return {id: id, question: question, answer: answer};
         }
     }])
     .controller('SummaryCtrl', ['$scope', 'HeaderService', 'SummaryService', function($scope, HeaderService, SummaryService){

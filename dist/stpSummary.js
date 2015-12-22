@@ -1,3 +1,7 @@
+/**
+ * Created by FNJO05 on 2015-12-11.
+ */
+
 angular.module('stpSummaryTemplates', ['summary/summary.tpl.html']);
 
 angular.module("summary/summary.tpl.html", []).run(["$templateCache", function($templateCache) {
@@ -12,9 +16,9 @@ angular.module("summary/summary.tpl.html", []).run(["$templateCache", function($
     "                <div class=\"grid__item sm--one-half\">\n" +
     "                    <dl class=\"info-tile\">\n" +
     "                        <dt translate>GENERAL.CUSTOMER_INFO.NOTIFIER</dt>\n" +
-    "                        <dd>{{customer.fullName}}</dd>\n" +
+    "                        <dd id=\"summaryNotifierName\">{{customer.fullName}}</dd>\n" +
     "                        <dt translate>GENERAL.CUSTOMER_INFO.POLICYHOLDER</dt>\n" +
-    "                        <dd>{{policyHolder.fullName}}</dd>\n" +
+    "                        <dd id=\"summaryPolicyHolderName\">{{policyHolder.fullName}}</dd>\n" +
     "                    </dl>\n" +
     "                </div>\n" +
     "            </div>\n" +
@@ -33,8 +37,8 @@ angular.module("summary/summary.tpl.html", []).run(["$templateCache", function($
     "                <tr ng-repeat=\"summary in block.summaries track by $index\"\n" +
     "                    class=\"summary-item\"\n" +
     "                    ng-class=\"{'even-row' : $index % 2 === 0}\">\n" +
-    "                    <th>{{summary.question | translate}}</th>\n" +
-    "                    <td>{{summary.answer | translate}}</td>\n" +
+    "                    <th id=\"{{summary.id +'Question'}}\">{{summary.question | translate}}</th>\n" +
+    "                    <td id=\"{{summary.id +'Answer'}}\">{{summary.answer | translate}}</td>\n" +
     "                </tr>\n" +
     "                </tbody>\n" +
     "            </table>\n" +
@@ -79,8 +83,8 @@ angular.module('stpCommon.summary',
             }
         }
 
-        function createSummary(question, answer){
-            return {question: question, answer: answer};
+        function createSummary(id, question, answer){
+            return {id: id, question: question, answer: answer};
         }
     }])
     .controller('SummaryCtrl', ['$scope', 'HeaderService', 'SummaryService', function($scope, HeaderService, SummaryService){
