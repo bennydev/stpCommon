@@ -94,11 +94,22 @@ angular.module('stpCommon.header').factory('HeaderService', [function(){
     }
 
     function getCustomerFullName(){
-        return (customerFirstName || '') + ' ' + (customerLastName || '');
+        return fullName(customerFirstName, customerLastName);
     }
 
     function getPolicyHolderFullName(){
-        return (policyHolderFirstName || '') + ' ' + (policyHolderLastName || '');
+        return fullName(policyHolderFirstName, policyHolderLastName);
+    }
+
+    function fullName(firstName, lastName){
+        var fullName = '';
+        if(firstName){
+            fullName = firstName + ' ';
+        }
+        if(lastName){
+            fullName += lastName;
+        }
+        return fullName;
     }
 
     function setCustomerPersonId(id){

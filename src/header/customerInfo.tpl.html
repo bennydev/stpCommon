@@ -4,11 +4,11 @@
             <div class="grid__item md--eight-twelfths u-space-words">
                 <div class="u-inline-block">
                     <b>{{'GENERAL.CUSTOMER_INFO.NOTIFIER' | translate}}</b>
-                    <span id="notifierName">{{HeaderService.getCustomerFirstName() ? HeaderService.getCustomerFullName() : HeaderService.getCustomerPersonId()}}</span>
+                    <span id="notifierName">{{HeaderService.getCustomerFullName() ? HeaderService.getCustomerFullName() : HeaderService.getCustomerPersonId()}}</span>
                 </div>
                 <div class="u-inline-block">
                     <b>{{'GENERAL.CUSTOMER_INFO.POLICYHOLDER' | translate}}</b>
-                    <span id="policyHolderName">{{HeaderService.getPolicyHolderFirstName() ? HeaderService.getPolicyHolderFullName() : HeaderService.getPolicyHolderPersonId()}}</span>
+                    <span id="policyHolderName">{{HeaderService.getPolicyHolderFullName() ? HeaderService.getPolicyHolderFullName() : HeaderService.getPolicyHolderPersonId()}}</span>
                 </div>
             </div>
             <div class="grid__item md--four-twelfths">

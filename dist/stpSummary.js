@@ -89,8 +89,8 @@ angular.module('stpCommon.summary',
     }])
     .controller('SummaryCtrl', ['$scope', 'HeaderService', 'SummaryService', function($scope, HeaderService, SummaryService){
         $scope.navigationTextKey = 'VIEW.SECTIONS.SUMMARY.NAVIGATION.NEXT';
-        $scope.customer = {fullName: HeaderService.getCustomerFullName()};
-        $scope.policyHolder = {fullName: HeaderService.getPolicyHolderFullName()};
+        $scope.customer = {fullName: HeaderService.getCustomerFullName() ? HeaderService.getCustomerFullName() : HeaderService.getCustomerPersonId()};
+        $scope.policyHolder = {fullName: HeaderService.getPolicyHolderFullName() ? HeaderService.getPolicyHolderFullName() : HeaderService.getPolicyHolderPersonId()};
         $scope.summaryModel = SummaryService.getSummaryModel();
         $scope.goTo = SummaryService.goTo;
         $scope.next = SummaryService.next;

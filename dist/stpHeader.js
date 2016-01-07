@@ -101,11 +101,22 @@ angular.module('stpCommon.header').factory('HeaderService', [function(){
     }
 
     function getCustomerFullName(){
-        return (customerFirstName || '') + ' ' + (customerLastName || '');
+        return fullName(customerFirstName, customerLastName);
     }
 
     function getPolicyHolderFullName(){
-        return (policyHolderFirstName || '') + ' ' + (policyHolderLastName || '');
+        return fullName(policyHolderFirstName, policyHolderLastName);
+    }
+
+    function fullName(firstName, lastName){
+        var fullName = '';
+        if(firstName){
+            fullName = firstName + ' ';
+        }
+        if(lastName){
+            fullName += lastName;
+        }
+        return fullName;
     }
 
     function setCustomerPersonId(id){
@@ -135,11 +146,11 @@ angular.module("header/customerInfo.tpl.html", []).run(["$templateCache", functi
     "            <div class=\"grid__item md--eight-twelfths u-space-words\">\n" +
     "                <div class=\"u-inline-block\">\n" +
     "                    <b>{{'GENERAL.CUSTOMER_INFO.NOTIFIER' | translate}}</b>\n" +
-    "                    <span id=\"notifierName\">{{HeaderService.getCustomerFirstName() ? HeaderService.getCustomerFullName() : HeaderService.getCustomerPersonId()}}</span>\n" +
+    "                    <span id=\"notifierName\">{{HeaderService.getCustomerFullName() ? HeaderService.getCustomerFullName() : HeaderService.getCustomerPersonId()}}</span>\n" +
     "                </div>\n" +
     "                <div class=\"u-inline-block\">\n" +
     "                    <b>{{'GENERAL.CUSTOMER_INFO.POLICYHOLDER' | translate}}</b>\n" +
-    "                    <span id=\"policyHolderName\">{{HeaderService.getPolicyHolderFirstName() ? HeaderService.getPolicyHolderFullName() : HeaderService.getPolicyHolderPersonId()}}</span>\n" +
+    "                    <span id=\"policyHolderName\">{{HeaderService.getPolicyHolderFullName() ? HeaderService.getPolicyHolderFullName() : HeaderService.getPolicyHolderPersonId()}}</span>\n" +
     "                </div>\n" +
     "            </div>\n" +
     "            <div class=\"grid__item md--four-twelfths\">\n" +
