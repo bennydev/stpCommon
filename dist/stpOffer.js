@@ -28,8 +28,8 @@ angular.module('stpCommon.offer', [])
     }])
     .controller('STPCtrl', ['$scope', 'OfferService', 'HeaderService', 'ErrorReporter', 'QuestionService', function($scope, OfferService, HeaderService, ErrorReporter, QuestionService){
         $scope.offerModel = OfferService.getOfferModel();
-        $scope.customer = {fullName: HeaderService.getCustomerFullName()};
-        $scope.policyHolder = {fullName: HeaderService.getPolicyHolderFullName()};
+        $scope.customer = {fullName: HeaderService.getCustomerFullName() ? HeaderService.getCustomerFullName() : HeaderService.getCustomerPersonId()};
+        $scope.policyHolder = {fullName: HeaderService.getPolicyHolderFullName() ? HeaderService.getPolicyHolderFullName() : HeaderService.getPolicyHolderPersonId()};
         $scope.acceptanceQuestion = QuestionService.getQuestionBuilder()
             .id('acceptance')
             .text({root:'VIEW.SECTIONS.OFFER.STP.QUESTIONS.ACCEPTANCE', translateValues: {compensation: '1000'}})
