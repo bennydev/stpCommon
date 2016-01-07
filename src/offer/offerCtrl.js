@@ -34,7 +34,7 @@ angular.module('stpCommon.offer', [])
             .id('acceptance')
             .text({root:'VIEW.SECTIONS.OFFER.STP.QUESTIONS.ACCEPTANCE', translateValues: {compensation: '1000'}})
             .type('buttongroupbig')
-            .values([{label: 'VIEW.OPTIONS.YES', value: 'YES'}, {label: 'VIEW.OPTIONS.NO', value: 'NO'}])
+            .values([{label: 'OPTIONS.YES', value: 'YES'}, {label: 'OPTIONS.NO', value: 'NO'}])
             .required(true)
             .createQuestion();
         $scope.confirmOffer = function(){

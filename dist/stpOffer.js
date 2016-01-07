@@ -34,7 +34,7 @@ angular.module('stpCommon.offer', [])
             .id('acceptance')
             .text({root:'VIEW.SECTIONS.OFFER.STP.QUESTIONS.ACCEPTANCE', translateValues: {compensation: '1000'}})
             .type('buttongroupbig')
-            .values([{label: 'VIEW.OPTIONS.YES', value: 'YES'}, {label: 'VIEW.OPTIONS.NO', value: 'NO'}])
+            .values([{label: 'OPTIONS.YES', value: 'YES'}, {label: 'OPTIONS.NO', value: 'NO'}])
             .required(true)
             .createQuestion();
         $scope.confirmOffer = function(){
@@ -99,9 +99,9 @@ angular.module("offer/stp/stp.tpl.html", []).run(["$templateCache", function($te
     "                <div class=\"grid__item sm--one-half\">\n" +
     "\n" +
     "                    <dl class=\"info-tile\">\n" +
-    "                        <dt translate>VIEW.SUMMARY.NOTIFIER</dt>\n" +
+    "                        <dt translate>GENERAL.CUSTOMER_INFO.NOTIFIER</dt>\n" +
     "                        <dd>{{customer.fullName}}</dd>\n" +
-    "                        <dt translate>VIEW.SUMMARY.POLICYHOLDER</dt>\n" +
+    "                        <dt translate>GENERAL.CUSTOMER_INFO.POLICYHOLDER</dt>\n" +
     "                        <dd>{{policyHolder.fullName}}</dd>\n" +
     "                    </dl>\n" +
     "\n" +
