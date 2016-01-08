@@ -1,4 +1,12 @@
 "use strict";
+angular.module('stpCommon.header').filter('capitalAndLowerCase', function() {
+    return function (str){
+        return str.replace(/[^-'\s]+/g, function(txt){
+            return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+        });
+    };
+});
+"use strict";
 angular.module('stpCommon.header', ['ui.router']);
 
 "use strict";
@@ -146,11 +154,11 @@ angular.module("header/customerInfo.tpl.html", []).run(["$templateCache", functi
     "            <div class=\"grid__item md--eight-twelfths u-space-words\">\n" +
     "                <div class=\"u-inline-block\">\n" +
     "                    <b>{{'GENERAL.CUSTOMER_INFO.NOTIFIER' | translate}}</b>\n" +
-    "                    <span id=\"notifierName\">{{HeaderService.getCustomerFullName() ? HeaderService.getCustomerFullName() : HeaderService.getCustomerPersonId()}}</span>\n" +
+    "                    <span id=\"notifierName\">{{HeaderService.getCustomerFirstName() ? HeaderService.getCustomerFullName() : HeaderService.getCustomerPersonId() | capitalAndLowerCase}}</span>\n" +
     "                </div>\n" +
     "                <div class=\"u-inline-block\">\n" +
     "                    <b>{{'GENERAL.CUSTOMER_INFO.POLICYHOLDER' | translate}}</b>\n" +
-    "                    <span id=\"policyHolderName\">{{HeaderService.getPolicyHolderFullName() ? HeaderService.getPolicyHolderFullName() : HeaderService.getPolicyHolderPersonId()}}</span>\n" +
+    "                    <span id=\"policyHolderName\">{{HeaderService.getPolicyHolderFirstName() ? HeaderService.getPolicyHolderFullName() : HeaderService.getPolicyHolderPersonId() | capitalAndLowerCase}}</span>\n" +
     "                </div>\n" +
     "            </div>\n" +
     "            <div class=\"grid__item md--four-twelfths\">\n" +
