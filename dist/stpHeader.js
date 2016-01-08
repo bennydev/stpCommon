@@ -1,16 +1,4 @@
 "use strict";
-angular.module('stpCommon.header').filter('capitalAndLowerCase', function() {
-
-    return function (str){
-        if (str !== undefined) {
-            return str.replace(/[^-'\s]+/g, function (txt) {
-                return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-            });
-        }
-
-    };
-});
-"use strict";
 angular.module('stpCommon.header', ['ui.router']);
 
 "use strict";
@@ -157,6 +145,18 @@ angular.module('stpCommon.header').factory('HeaderService', [function(){
     }
 
 }]);
+"use strict";
+angular.module('stpCommon.header').filter('capitalAndLowerCase', function() {
+
+    return function (str){
+        if (str !== undefined) {
+            return str.replace(/[^-'\s]+/g, function (txt) {
+                return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+            });
+        }
+
+    };
+});
 angular.module('stpHeaderTemplates', ['header/customerInfo.tpl.html', 'header/header.tpl.html', 'header/siteHeader.tpl.html', 'header/siteTop.tpl.html']);
 
 angular.module("header/customerInfo.tpl.html", []).run(["$templateCache", function($templateCache) {
