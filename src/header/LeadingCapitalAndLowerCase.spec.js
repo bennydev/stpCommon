@@ -19,5 +19,9 @@ describe('format filter tests.', function () {
         var result = capitalAndLowerCaseFilter(name);
         expect(result).toBe('');
     }));
+    it('should not format undefined name', inject(function (capitalAndLowerCaseFilter) {
+        var result = capitalAndLowerCaseFilter();
+        expect(result).toBeUndefined();
+    }));
 
 });

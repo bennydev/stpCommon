@@ -149,9 +149,12 @@ angular.module('stpCommon.header').factory('HeaderService', [function(){
 angular.module('stpCommon.header').filter('capitalAndLowerCase', function() {
 
     return function (str){
-        return str.replace(/[^-'\s]+/g, function(txt){
-            return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-        });
+        if (str !== undefined) {
+            return str.replace(/[^-'\s]+/g, function (txt) {
+                return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+            });
+        }
+        
     };
 });
 angular.module('stpHeaderTemplates', ['header/customerInfo.tpl.html', 'header/header.tpl.html', 'header/siteHeader.tpl.html', 'header/siteTop.tpl.html']);
