@@ -229,7 +229,7 @@ module.exports = function (grunt) {
      */
     function filterForJS(files) {
         return files.filter(function (file) {
-            console.log('File: ' + file);
+            //console.log('File: ' + file);
             return file.match(/\.js$/);
         });
     }
