@@ -17,11 +17,13 @@ angular.module('stpCommon.header').factory('HeaderService', [function(){
         setCustomerFirstName: setCustomerFirstName,
         getCustomerFirstName: getCustomerFirstName,
         setCustomerLastName: setCustomerLastName,
+        getCustomerLastName: getCustomerLastName,
         setCustomerPersonId: setCustomerPersonId,
         getCustomerPersonId: getCustomerPersonId,
         setPolicyHolderFirstName: setPolicyHolderFirstName,
         getPolicyHolderFirstName: getPolicyHolderFirstName,
         setPolicyHolderLastName: setPolicyHolderLastName,
+        getPolicyHolderLastName: getPolicyHolderLastName,
         setPolicyHolderPersonId: setPolicyHolderPersonId,
         getPolicyHolderPersonId: getPolicyHolderPersonId,
         hasName: hasName,
@@ -77,6 +79,10 @@ angular.module('stpCommon.header').factory('HeaderService', [function(){
         customerLastName = name;
     }
 
+    function getCustomerLastName(){
+        return customerLastName;
+    }
+
     function setPolicyHolderFirstName(name){
         policyHolderFirstName = name;
     }
@@ -87,6 +93,9 @@ angular.module('stpCommon.header').factory('HeaderService', [function(){
 
     function setPolicyHolderLastName(name){
         policyHolderLastName = name;
+    }
+    function getPolicyHolderLastName(){
+        return policyHolderLastName;
     }
 
     function hasName(){
