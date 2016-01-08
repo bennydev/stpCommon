@@ -43,12 +43,21 @@ module.exports = function (grunt) {
         copy: {
             build: {
                 src: [
+                    'vendor/angular/angular.js',
+                    'vendor/angular-sanitize/angular-sanitize.js',
+                    'vendor/angular-translate/angular-translate.js',
+                    'vendor/angular-translate-loader-static-files/angular-translate-loader-static-files.js',
+                    'vendor/angular-ui-router/release/angular-ui-router.js',
+                    'vendor/fsmQuestion/dist/fsmQuestion.js',
+                    'vendor/angular-mocks/angular-mocks.js',
                     'src/header/**/*',
                     'src/modal/**/*',
                     'src/navigation/**/*',
                     'src/summary/**/*',
                     'src/offer/**/*',
-                    '!src/**/*.spec.js'],
+                    'karma/helpers/**/*.js',
+                    'karma/mocks/**/*.js'
+                ],
                 dest: 'build',
                 expand: true
             }
@@ -102,31 +111,36 @@ module.exports = function (grunt) {
         concat: {
             compile_header_js: {
                 src: [
-                    'build/src/header/*.js'
+                    'build/src/header/*.js',
+                    '!build/src/**/*.spec.js'
                 ],
                 dest: 'dist/stpHeader.js'
             },
             compile_modal_js: {
                 src: [
-                    'build/src/modal/*.js'
+                    'build/src/modal/*.js',
+                    '!build/src/**/*.spec.js'
                 ],
                 dest: 'dist/stpModal.js'
             },
             compile_navigation_js: {
                 src: [
-                    'build/src/navigation/*.js'
+                    'build/src/navigation/*.js',
+                    '!build/src/**/*.spec.js'
                 ],
                 dest: 'dist/stpNavigation.js'
             },
             compile_summary_js: {
                 src: [
-                    'build/src/summary/*.js'
+                    'build/src/summary/*.js',
+                    '!build/src/**/*.spec.js'
                 ],
                 dest: 'dist/stpSummary.js'
             },
             compile_offer_js: {
                 src: [
-                    'build/src/offer/*.js'
+                    'build/src/offer/*.js',
+                    '!build/src/**/*.spec.js'
                 ],
                 dest: 'dist/stpOffer.js'
             }
@@ -149,16 +163,29 @@ module.exports = function (grunt) {
         /**
          * This task compiles the karma template so that changes to its file array
          * don't have to be managed manually.
+         *
+         * NOTE: The ordering of the modules is important!
          */
         karmaconfig: {
             unit: {
                 dir: 'build',
                 src: [
-                    'src/header',
-                    'src/modal',
-                    'src/navigation',
-                    'src/offer',
-                    'src/summary'
+                    'vendor/angular/angular.js',
+                    'vendor/angular-sanitize/angular-sanitize.js',
+                    'vendor/angular-translate/angular-translate.js',
+                    'vendor/angular-translate-loader-static-files/angular-translate-loader-static-files.js',
+                    'vendor/angular-ui-router/release/angular-ui-router.js',
+                    'vendor/angular-mocks/angular-mocks.js',
+                    'vendor/fsmQuestion/dist/fsmQuestion.js',
+                    'src/header/header.js',
+                    'src/header/*.js',
+                    'src/modal/*.js',
+                    'src/navigation/*.js',
+                    'src/offer/*.js',
+                    'src/summary/*.js',
+                    '!src/**/*.spec.js',
+                    'karma/helpers/**/*.js',
+                    'karma/mocks/**/*.js'
                 ]
             }
 
@@ -174,7 +201,7 @@ module.exports = function (grunt) {
     /**
      * The default task is to copy files to the dist folder.
      */
-    grunt.registerTask( 'default', [ 'clean', 'copy', 'html2js', 'concat', 'karmaconfig', 'karma:unit:run'] );
+    grunt.registerTask( 'default', [ 'clean', 'copy', 'html2js', 'concat', 'karmaconfig',  'karma:continuous', 'karma:unit'] );
 
     //grunt.registerTask( 'default', [ 'build', 'compile', 'configureProxies:server', 'connect:dist:keepalive' ] );
 
@@ -202,6 +229,7 @@ module.exports = function (grunt) {
      */
     function filterForJS(files) {
         return files.filter(function (file) {
+            console.log('File: ' + file);
             return file.match(/\.js$/);
         });
     }

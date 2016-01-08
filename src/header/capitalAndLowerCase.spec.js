@@ -13,7 +13,7 @@ describe('format filter tests.', function () {
     it('should format last name properly', inject(function (capitalAndLowerCaseFilter) {
         var name = 'AXELSSON JOHNSON';
         var result = capitalAndLowerCaseFilter(name);
-        //console.log(result);
+        console.log(result);
         expect(result).toBe('Axelsson Johnson');
     }));
     it('should not format empty name properly', inject(function (capitalAndLowerCaseFilter) {

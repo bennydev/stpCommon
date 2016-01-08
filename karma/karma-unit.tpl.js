@@ -3,7 +3,7 @@ module.exports = function ( karma ) {
     /**
      * From where to look for files, starting with the location of this file.
      */
-    basePath: '../webapp_src',
+    basePath: '../build',
 
     /**
      * This is the list of file patterns to load into the browser during testing.
