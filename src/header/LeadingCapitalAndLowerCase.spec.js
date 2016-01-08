@@ -4,7 +4,6 @@ describe('format filter tests.', function () {
 
     beforeEach(module('stpCommon.header'));
 
-
     it('should format first name properly', inject(function (capitalAndLowerCaseFilter) {
         var name = 'CARL-JAN';
         var result = capitalAndLowerCaseFilter(name);
