@@ -1,7 +1,3 @@
-/**
- * Created by FNJO05 on 2015-12-11.
- */
-
 angular.module('stpSummaryTemplates', ['summary/summary.tpl.html']);
 
 angular.module("summary/summary.tpl.html", []).run(["$templateCache", function($templateCache) {
@@ -16,9 +12,9 @@ angular.module("summary/summary.tpl.html", []).run(["$templateCache", function($
     "                <div class=\"grid__item sm--one-half\">\n" +
     "                    <dl class=\"info-tile\">\n" +
     "                        <dt translate>GENERAL.CUSTOMER_INFO.NOTIFIER</dt>\n" +
-    "                        <dd id=\"summaryNotifierName\">{{customer.fullName}}</dd>\n" +
+    "                        <dd id=\"summaryNotifierName\">{{customer.fullName | capitalAndLowerCase}}</dd>\n" +
     "                        <dt translate>GENERAL.CUSTOMER_INFO.POLICYHOLDER</dt>\n" +
-    "                        <dd id=\"summaryPolicyHolderName\">{{policyHolder.fullName}}</dd>\n" +
+    "                        <dd id=\"summaryPolicyHolderName\">{{policyHolder.fullName | capitalAndLowerCase}}</dd>\n" +
     "                    </dl>\n" +
     "                </div>\n" +
     "            </div>\n" +
@@ -90,7 +86,7 @@ angular.module('stpCommon.summary',
     .controller('SummaryCtrl', ['$scope', 'HeaderService', 'SummaryService', function($scope, HeaderService, SummaryService){
         $scope.navigationTextKey = 'VIEW.SECTIONS.SUMMARY.NAVIGATION.NEXT';
         $scope.customer = {fullName: HeaderService.getCustomerFullName() ? HeaderService.getCustomerFullName() : HeaderService.getCustomerPersonId()};
-        $scope.policyHolder = {fullName: HeaderService.getPolicyHolderFullName() ? HeaderService.getPolicyHolderFullName() : HeaderService.getPolicyHolderPersonId()};
+        $scope.policyHolder = {fullName: HeaderService.getPolicyHolderFullName() ? HeaderService.getPolicyHolderFullName() : HeaderService.getPolicyHolderPersonId() ? HeaderService.getPolicyHolderPersonId() : HeaderService.getCustomerFullName() ? HeaderService.getCustomerFullName() : HeaderService.getCustomerPersonId()};
         $scope.summaryModel = SummaryService.getSummaryModel();
         $scope.goTo = SummaryService.goTo;
         $scope.next = SummaryService.next;
