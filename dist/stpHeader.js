@@ -2,8 +2,12 @@
 angular.module('stpCommon.header', ['ui.router']);
 
 "use strict";
-angular.module('stpCommon.header').controller('HeaderCtrl', ['$scope', '$state', 'HeaderService', function($scope, $state, HeaderService){
+angular.module('stpCommon.header')
+    .controller('HeaderCtrl', ['$scope', '$state', '$window', 'HeaderService', function($scope, $state, $window, HeaderService){
     $scope.HeaderService = HeaderService;
+    $scope.logoClick = function(){
+        $window.location.href = 'http://www.folksam.se';
+    };
 }]);
 "use strict";
 angular.module('stpCommon.header').factory('HeaderService', [function(){
@@ -230,7 +234,7 @@ angular.module("header/siteTop.tpl.html", []).run(["$templateCache", function($t
     "    <div class=\"site-top site-top--non-sticky\">\n" +
     "        <header class=\"site-header\" role=\"banner\">\n" +
     "            <div class=\"content-wrapper\">\n" +
-    "                <div class=\"site-header__logo icon icon-folksam\" tabindex=\"-1\"><span>Folksam</span></div>\n" +
+    "                <div class=\"site-header__logo icon icon-folksam\" tabindex=\"-1\" ng-click=\"logoClick();\"><span>Folksam</span></div>\n" +
     "            </div>\n" +
     "        </header>\n" +
     "    </div>\n" +
