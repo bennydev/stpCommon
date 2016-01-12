@@ -188,9 +188,6 @@ module.exports = function (grunt) {
                     'karma/mocks/**/*.js'
                 ]
             }
-
-
-
         }
 
 

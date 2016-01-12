@@ -14,6 +14,11 @@ describe('format filter tests.', function () {
         var result = capitalAndLowerCaseFilter(name);
         expect(result).toBe('Axelsson Johnson');
     }));
+    it('should format three names properly', inject(function (capitalAndLowerCaseFilter) {
+        var name = 'STINA AXELSSON JOHNSON';
+        var result = capitalAndLowerCaseFilter(name);
+        expect(result).toBe('Stina Axelsson Johnson');
+    }));
     it('should not format empty name properly', inject(function (capitalAndLowerCaseFilter) {
         var name = '';
         var result = capitalAndLowerCaseFilter(name);
