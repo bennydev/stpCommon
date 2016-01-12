@@ -2,7 +2,8 @@
 angular.module('stpCommon.header', ['ui.router']);
 
 "use strict";
-angular.module('stpCommon.header').controller('HeaderCtrl', ['$scope', '$state', 'HeaderService', function($scope, $state, HeaderService){
+angular.module('stpCommon.header')
+    .controller('HeaderCtrl', ['$scope', '$state', '$window', 'HeaderService', function($scope, $state, $window, HeaderService){
     $scope.HeaderService = HeaderService;
 }]);
 "use strict";
@@ -230,7 +231,9 @@ angular.module("header/siteTop.tpl.html", []).run(["$templateCache", function($t
     "    <div class=\"site-top site-top--non-sticky\">\n" +
     "        <header class=\"site-header\" role=\"banner\">\n" +
     "            <div class=\"content-wrapper\">\n" +
-    "                <div class=\"site-header__logo icon icon-folksam\" tabindex=\"-1\"><span>Folksam</span></div>\n" +
+    "                    <a class=\"site-header__logo icon icon-folksam\" tabindex=\"-1\" href=\"/\">\n" +
+    "                        <span>Folksam</span>\n" +
+    "                    </a>\n" +
     "            </div>\n" +
     "        </header>\n" +
     "    </div>\n" +
