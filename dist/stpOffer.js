@@ -165,7 +165,7 @@ angular.module("offer/stp/stp.tpl.html", []).run(["$templateCache", function($te
     "                    translate>VIEW.SECTIONS.OFFER.STP.CONFIRM_OFFER\n" +
     "            </button>\n" +
     "            <button class=\"button button--primary u-spacing-above-narrow u-spacing-under-narrow u-no-transition\"\n" +
-    "                    ng-if=\"acceptanceQuestion.answer === 'NO\"\n" +
+    "                    ng-if=\"acceptanceQuestion.answer === 'NO'\"\n" +
     "                    id=\"offerConfirmation\"\n" +
     "                    name=\"noOfferConfirmation\"\n" +
     "                    ng-click=\"confirmOffer();\"\n" +
