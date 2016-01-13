@@ -3,17 +3,29 @@ angular.module('stpCommon.offer', [])
     .controller('OfferCtrl', ['$scope', 'OfferService', function($scope, OfferService){
         $scope.template = OfferService.getOfferModel().getClaimType() === 'LTP' ? 'offer/ltp/ltp.tpl.html' : 'offer/stp/stp.tpl.html';
         $scope.claimId = OfferService.getOfferModel().getClaimId();
+        $scope.event = OfferService.getOfferModel().getEvent();
+        $scope.rightColumnTemplate = OfferService.getRightColumnTemplateUrl();
     }])
     .factory('OfferService', [function(){
         var service = {
-            getOfferModel: getOfferModel
+            getOfferModel: getOfferModel,
+            getRightColumnTemplateUrl: getRightColumnTemplateUrl()
         };
         return service;
+
+        function getRightColumnTemplateUrl(){
+            return 'REPLACE_THIS_URL';
+        }
 
         function getOfferModel(){
             var model = {
                 getClaimType: getClaimType,
-                getClaimId: getClaimId
+                getClaimId: getClaimId,
+                getEvent: getEvent,
+                calculation: [{description: 'REPLACE_THIS', value: 999, type: '-'}],
+                compensation: 1000,
+                customerIsPolicyHolder: true,
+                deductionExplanation: 'REPLACE_THIS_EXPLANATION'
             };
             return model;
 
@@ -22,7 +34,11 @@ angular.module('stpCommon.offer', [])
             }
 
             function getClaimId(){
-                return 'FF123456789S'
+                return 'REPLACE_THIS';
+            }
+
+            function getEvent(){
+                return 'REPLACE_THIS';
             }
         }
     }])
@@ -60,14 +76,16 @@ angular.module("offer/ltp/thanks.tpl.html", []).run(["$templateCache", function(
     "\n" +
     "            <div class=\"grid grid--wide\">\n" +
     "                <div class=\"grid__item sm--one-half\">\n" +
+    "                    <p translate translate-values=\"{event: event}\">VIEW.SECTIONS.OFFER.LTP.THANKS.INFO_RECEIVED</p>\n" +
     "                    <p translate translate-values=\"{claimId: claimId}\">VIEW.SECTIONS.OFFER.LTP.THANKS.INFO_CLAIM_ID</p>\n" +
-    "\n" +
     "                    <div class=\"u-spacing-above\">\n" +
     "                        <p translate translate-values=\"{eventType: offerModel.eventType}\">VIEW.SECTIONS.OFFER.LTP.THANKS.INFO_CONTACT</p>\n" +
     "                        <p translate>VIEW.SECTIONS.OFFER.REGARDS</p>\n" +
     "                        <p translate>VIEW.SECTIONS.OFFER.FOLKSAM</p>\n" +
     "                    </div>\n" +
-    "\n" +
+    "                </div>\n" +
+    "                <div class=\"grid__item sm--one-half\">\n" +
+    "                    <ng-include src=\"rightColumnTemplate\"></ng-include>\n" +
     "                </div>\n" +
     "            </div>\n" +
     "        </div>\n" +
@@ -141,13 +159,13 @@ angular.module("offer/stp/stp.tpl.html", []).run(["$templateCache", function($te
     "        </div>\n" +
     "        <div class=\"u-align-center u-bgcolor-blue-4\">\n" +
     "            <button class=\"button button--primary u-spacing-above-narrow u-spacing-under-narrow u-no-transition\"\n" +
-    "                    ng-if=\"acceptanceQuestion.getAnswer() !== options.no.value\"\n" +
+    "                    ng-if=\"acceptanceQuestion.answer !== 'NO'\"\n" +
     "                    ng-click=\"confirmOffer();\"\n" +
     "                    name=\"offerConfirmation\"\n" +
     "                    translate>VIEW.SECTIONS.OFFER.STP.CONFIRM_OFFER\n" +
     "            </button>\n" +
     "            <button class=\"button button--primary u-spacing-above-narrow u-spacing-under-narrow u-no-transition\"\n" +
-    "                    ng-if=\"acceptanceQuestion.getAnswer() === options.no.value\"\n" +
+    "                    ng-if=\"acceptanceQuestion.answer === 'NO\"\n" +
     "                    id=\"offerConfirmation\"\n" +
     "                    name=\"noOfferConfirmation\"\n" +
     "                    ng-click=\"confirmOffer();\"\n" +

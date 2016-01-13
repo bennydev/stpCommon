@@ -3,17 +3,29 @@ angular.module('stpCommon.offer', [])
     .controller('OfferCtrl', ['$scope', 'OfferService', function($scope, OfferService){
         $scope.template = OfferService.getOfferModel().getClaimType() === 'LTP' ? 'offer/ltp/ltp.tpl.html' : 'offer/stp/stp.tpl.html';
         $scope.claimId = OfferService.getOfferModel().getClaimId();
+        $scope.event = OfferService.getOfferModel().getEvent();
+        $scope.rightColumnTemplate = OfferService.getRightColumnTemplateUrl();
     }])
     .factory('OfferService', [function(){
         var service = {
-            getOfferModel: getOfferModel
+            getOfferModel: getOfferModel,
+            getRightColumnTemplateUrl: getRightColumnTemplateUrl()
         };
         return service;
+
+        function getRightColumnTemplateUrl(){
+            return 'REPLACE_THIS_URL';
+        }
 
         function getOfferModel(){
             var model = {
                 getClaimType: getClaimType,
-                getClaimId: getClaimId
+                getClaimId: getClaimId,
+                getEvent: getEvent,
+                calculation: [{description: 'REPLACE_THIS', value: 999, type: '-'}],
+                compensation: 1000,
+                customerIsPolicyHolder: true,
+                deductionExplanation: 'REPLACE_THIS_EXPLANATION'
             };
             return model;
 
@@ -22,7 +34,11 @@ angular.module('stpCommon.offer', [])
             }
 
             function getClaimId(){
-                return 'FF123456789S'
+                return 'REPLACE_THIS';
+            }
+
+            function getEvent(){
+                return 'REPLACE_THIS';
             }
         }
     }])
