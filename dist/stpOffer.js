@@ -4,12 +4,10 @@ angular.module('stpCommon.offer', [])
         $scope.template = OfferService.getOfferModel().getClaimType() === 'LTP' ? 'offer/ltp/ltp.tpl.html' : 'offer/stp/stp.tpl.html';
         $scope.claimId = OfferService.getOfferModel().getClaimId();
         $scope.event = OfferService.getOfferModel().getEvent();
-        $scope.rightColumnTemplate = OfferService.getRightColumnTemplateUrl();
     }])
     .factory('OfferService', [function(){
         var service = {
-            getOfferModel: getOfferModel,
-            getRightColumnTemplateUrl: getRightColumnTemplateUrl()
+            getOfferModel: getOfferModel
         };
         return service;
 
@@ -91,11 +89,18 @@ angular.module("offer/ltp/thanks.tpl.html", []).run(["$templateCache", function(
     "                    </div>\n" +
     "                </div>\n" +
     "                <div class=\"grid__item sm--one-half\">\n" +
-    "                    <ng-include src=\"rightColumnTemplate\"></ng-include>\n" +
+    "                    <div class=\"suggestion\" ng-if=\"!offerModel.policeIsReported\">\n" +
+    "                        <h4 translate translate-values=\"{eventType: offerModel.eventType}\">VIEW.SECTIONS.OFFER.INFO_POLICE_REPORT</h4>\n" +
+    "                        <p>\n" +
+    "                            <a class=\"link-external\" href=\"https://polisen.se/Utsatt-for-brott/Gor-en-anmalan/\" translate translate-values=\"{eventType: offerModel.eventType}\" target=\"_blank\">VIEW.SECTIONS.OFFER.LINK_POLICE_REPORT</a>\n" +
+    "                        </p>\n" +
+    "                    </div>\n" +
     "                </div>\n" +
     "            </div>\n" +
     "        </div>\n" +
     "    </div>\n" +
+    "</div>\n" +
+    "<div class=\"u-align-center u-bgcolor-blue-4\">\n" +
     "</div>");
 }]);
 
@@ -209,9 +214,9 @@ angular.module("offer/stp/thanks.no.tpl.html", []).run(["$templateCache", functi
     "                    </div>\n" +
     "\n" +
     "                    <div class=\"suggestion\" ng-if=\"!offerModel.policeIsReported\">\n" +
-    "                        <h4 translate translate-values=\"{eventType: offerModel.eventType}\">VIEW.SECTIONS.OFFER.STP.INFO_POLICE_REPORT</h4>\n" +
+    "                        <h4 translate translate-values=\"{eventType: offerModel.eventType}\">VIEW.SECTIONS.OFFER.INFO_POLICE_REPORT</h4>\n" +
     "                        <p>\n" +
-    "                            <a class=\"link-external\" href=\"https://polisen.se/Utsatt-for-brott/Gor-en-anmalan/\" translate translate-values=\"{eventType: offerModel.eventType}\" target=\"_blank\">VIEW.SECTIONS.OFFER.STP.LINK_POLICE_REPORT</a>\n" +
+    "                            <a class=\"link-external\" href=\"https://polisen.se/Utsatt-for-brott/Gor-en-anmalan/\" translate translate-values=\"{eventType: offerModel.eventType}\" target=\"_blank\">VIEW.SECTIONS.OFFER.LINK_POLICE_REPORT</a>\n" +
     "                        </p>\n" +
     "                    </div>\n" +
     "                </div>\n" +
@@ -251,9 +256,9 @@ angular.module("offer/stp/thanks.yes.tpl.html", []).run(["$templateCache", funct
     "                    </div>\n" +
     "\n" +
     "                    <div class=\"suggestion\" ng-if=\"!offerModel.policeIsReported\">\n" +
-    "                        <h4 translate translate-values=\"{eventType: offerModel.eventType}\">VIEW.SECTIONS.OFFER.STP.INFO_POLICE_REPORT</h4>\n" +
+    "                        <h4 translate translate-values=\"{eventType: offerModel.eventType}\">VIEW.SECTIONS.OFFER.INFO_POLICE_REPORT</h4>\n" +
     "                        <p>\n" +
-    "                          <a class=\"link-external\" href=\"https://polisen.se/Utsatt-for-brott/Gor-en-anmalan/\" translate translate-values=\"{eventType: offerModel.eventType}\" target=\"_blank\">VIEW.SECTIONS.OFFER.STP.LINK_POLICE_REPORT</a>\n" +
+    "                          <a class=\"link-external\" href=\"https://polisen.se/Utsatt-for-brott/Gor-en-anmalan/\" translate translate-values=\"{eventType: offerModel.eventType}\" target=\"_blank\">VIEW.SECTIONS.OFFER.LINK_POLICE_REPORT</a>\n" +
     "                        </p>\n" +
     "                    </div>\n" +
     "                </div>\n" +

@@ -4,12 +4,10 @@ angular.module('stpCommon.offer', [])
         $scope.template = OfferService.getOfferModel().getClaimType() === 'LTP' ? 'offer/ltp/ltp.tpl.html' : 'offer/stp/stp.tpl.html';
         $scope.claimId = OfferService.getOfferModel().getClaimId();
         $scope.event = OfferService.getOfferModel().getEvent();
-        $scope.rightColumnTemplate = OfferService.getRightColumnTemplateUrl();
     }])
     .factory('OfferService', [function(){
         var service = {
-            getOfferModel: getOfferModel,
-            getRightColumnTemplateUrl: getRightColumnTemplateUrl()
+            getOfferModel: getOfferModel
         };
         return service;
 
