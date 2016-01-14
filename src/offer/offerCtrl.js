@@ -42,7 +42,7 @@ angular.module('stpCommon.offer', [])
             }
         }
     }])
-    .controller('STPCtrl', ['$scope', 'OfferService', 'HeaderService', 'ErrorReporter', 'QuestionService', function($scope, OfferService, HeaderService, ErrorReporter, QuestionService){
+    .controller('STPCtrl', ['$scope', '$window', 'OfferService', 'HeaderService', 'ErrorReporter', 'QuestionService', function($scope, $window, OfferService, HeaderService, ErrorReporter, QuestionService){
         $scope.offerModel = OfferService.getOfferModel();
         $scope.customer = {fullName: HeaderService.getCustomerFullName() ? HeaderService.getCustomerFullName() : HeaderService.getCustomerPersonId()};
         $scope.policyHolder = {fullName: HeaderService.getPolicyHolderFullName() ? HeaderService.getPolicyHolderFullName() : HeaderService.getPolicyHolderPersonId() ? HeaderService.getPolicyHolderPersonId() : HeaderService.getCustomerFullName() ? HeaderService.getCustomerFullName() : HeaderService.getCustomerPersonId()};
@@ -57,5 +57,8 @@ angular.module('stpCommon.offer', [])
             if(!ErrorReporter.hasErrors()){
                 $scope.thankYouTemplate = $scope.acceptanceQuestion.answer === 'YES' ? 'offer/stp/thanks.yes.tpl.html' : 'offer/stp/thanks.no.tpl.html';
             }
+        };
+        $scope.print = function(){
+            $window.print();
         };
     }]);
