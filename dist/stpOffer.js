@@ -232,14 +232,10 @@ angular.module("offer/stp/thanks.yes.tpl.html", []).run(["$templateCache", funct
     "            <div class=\"grid grid--wide\">\n" +
     "                <div class=\"grid__item sm--one-half\">\n" +
     "                    <p translate translate-values=\"{compensation: offerModel.compensation, claimId: offerModel.getClaimId()}\">VIEW.SECTIONS.OFFER.STP.THANKS_YES.INFO_PAYMENT_CLAIM_ID</p>\n" +
-    "\n" +
-    "                    <div class=\"u-spacing-above\">\n" +
-    "                        <p translate>VIEW.SECTIONS.OFFER.STP.THANKS_YES.INFO_CONTACT</p>\n" +
-    "                        <p translate>VIEW.SECTIONS.OFFER.STP.THANKS_YES.INFO_SATISFIED</p>\n" +
-    "                        <p translate>VIEW.SECTIONS.OFFER.REGARDS</p>\n" +
-    "                        <p translate>VIEW.SECTIONS.OFFER.FOLKSAM</p>\n" +
-    "                    </div>\n" +
-    "\n" +
+    "                    <p translate>VIEW.SECTIONS.OFFER.STP.THANKS_YES.INFO_CONTACT</p>\n" +
+    "                    <p translate>VIEW.SECTIONS.OFFER.STP.THANKS_YES.INFO_SATISFIED</p>\n" +
+    "                    <p translate>VIEW.SECTIONS.OFFER.REGARDS</p>\n" +
+    "                    <p translate>VIEW.SECTIONS.OFFER.FOLKSAM</p>\n" +
     "                </div>\n" +
     "                <div class=\"grid__item sm--one-half\">\n" +
     "                    <div class=\"suggestion u-bgcolor-white\">\n" +
