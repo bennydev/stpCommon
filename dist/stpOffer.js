@@ -97,7 +97,7 @@ angular.module("offer/ltp/thanks.tpl.html", []).run(["$templateCache", function(
     "                    </div>\n" +
     "                </div>\n" +
     "                <div class=\"grid__item sm--one-half\">\n" +
-    "                    <ng-include src=\"offer/common/policereport.tpl.html\"></ng-include>\n" +
+    "                    <ng-include src=\"'offer/common/policereport.tpl.html'\"></ng-include>\n" +
     "                </div>\n" +
     "            </div>\n" +
     "        </div>\n" +
