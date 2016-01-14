@@ -231,7 +231,7 @@ angular.module("offer/stp/thanks.yes.tpl.html", []).run(["$templateCache", funct
     "\n" +
     "            <div class=\"grid grid--wide\">\n" +
     "                <div class=\"grid__item sm--one-half\">\n" +
-    "                    <p ng-if=\"offerModel.claimId\" translate translate-values=\"{compensation: offerModel.compensation, claimId: offerModel.claimId}\">VIEW.SECTIONS.OFFER.STP.THANKS_YES.INFO_PAYMENT_CLAIM_ID</p>\n" +
+    "                    <p translate translate-values=\"{compensation: offerModel.compensation, claimId: offerModel.getClaimId()}\">VIEW.SECTIONS.OFFER.STP.THANKS_YES.INFO_PAYMENT_CLAIM_ID</p>\n" +
     "\n" +
     "                    <div class=\"u-spacing-above\">\n" +
     "                        <p translate>VIEW.SECTIONS.OFFER.STP.THANKS_YES.INFO_CONTACT</p>\n" +
