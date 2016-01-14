@@ -260,6 +260,6 @@ angular.module("offer/stp/thanks.yes.tpl.html", []).run(["$templateCache", funct
     "</div>\n" +
     "\n" +
     "<div class=\"u-align-center u-bgcolor-blue-4\">\n" +
-    "    <button class=\"button u-spacing-above-narrow u-spacing-under-narrow js-print\" ng-click=\"print();\"><i class=\"icon icon-print\"></i> {{'VIEW.SECTIONS.OFFER.STP.THANKS_YES.PRINT' | fsmTranslate}}</button>\n" +
+    "    <button class=\"button u-spacing-above-narrow u-spacing-under-narrow js-print\" ng-click=\"print();\"><i class=\"icon icon-print\"></i> {{'VIEW.SECTIONS.OFFER.STP.THANKS_YES.PRINT' | translate}}</button>\n" +
     "</div>");
 }]);
