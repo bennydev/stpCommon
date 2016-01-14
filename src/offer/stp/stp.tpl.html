@@ -55,13 +55,13 @@
         </div>
         <div class="u-align-center u-bgcolor-blue-4">
             <button class="button button--primary u-spacing-above-narrow u-spacing-under-narrow u-no-transition"
-                    ng-if="acceptanceQuestion.answer !== 'NO'"
+                    ng-show="acceptanceQuestion.answer !== 'NO'"
                     ng-click="confirmOffer();"
                     name="offerConfirmation"
                     translate>VIEW.SECTIONS.OFFER.STP.CONFIRM_OFFER
             </button>
             <button class="button button--primary u-spacing-above-narrow u-spacing-under-narrow u-no-transition"
-                    ng-if="acceptanceQuestion.answer === 'NO'"
+                    ng-show="acceptanceQuestion.answer === 'NO'"
                     id="offerConfirmation"
                     name="noOfferConfirmation"
                     ng-click="confirmOffer();"

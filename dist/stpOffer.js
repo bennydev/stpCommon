@@ -48,7 +48,7 @@ angular.module('stpCommon.offer', [])
         $scope.policyHolder = {fullName: HeaderService.getPolicyHolderFullName() ? HeaderService.getPolicyHolderFullName() : HeaderService.getPolicyHolderPersonId() ? HeaderService.getPolicyHolderPersonId() : HeaderService.getCustomerFullName() ? HeaderService.getCustomerFullName() : HeaderService.getCustomerPersonId()};
         $scope.acceptanceQuestion = QuestionService.getQuestionBuilder()
             .id('acceptance')
-            .text({root:'VIEW.SECTIONS.OFFER.STP.QUESTIONS.ACCEPTANCE', translateValues: {compensation: '1000'}})
+            .text({root:'VIEW.SECTIONS.OFFER.STP.QUESTIONS.ACCEPTANCE', getTranslateValues: function(){return {compensation: '1000'};}})
             .type('buttongroupbig')
             .values([{label: 'OPTIONS.YES', value: 'YES'}, {label: 'OPTIONS.NO', value: 'NO'}])
             .required(true)
@@ -159,13 +159,13 @@ angular.module("offer/stp/stp.tpl.html", []).run(["$templateCache", function($te
     "        </div>\n" +
     "        <div class=\"u-align-center u-bgcolor-blue-4\">\n" +
     "            <button class=\"button button--primary u-spacing-above-narrow u-spacing-under-narrow u-no-transition\"\n" +
-    "                    ng-if=\"acceptanceQuestion.answer !== 'NO'\"\n" +
+    "                    ng-show=\"acceptanceQuestion.answer !== 'NO'\"\n" +
     "                    ng-click=\"confirmOffer();\"\n" +
     "                    name=\"offerConfirmation\"\n" +
     "                    translate>VIEW.SECTIONS.OFFER.STP.CONFIRM_OFFER\n" +
     "            </button>\n" +
     "            <button class=\"button button--primary u-spacing-above-narrow u-spacing-under-narrow u-no-transition\"\n" +
-    "                    ng-if=\"acceptanceQuestion.answer === 'NO'\"\n" +
+    "                    ng-show=\"acceptanceQuestion.answer === 'NO'\"\n" +
     "                    id=\"offerConfirmation\"\n" +
     "                    name=\"noOfferConfirmation\"\n" +
     "                    ng-click=\"confirmOffer();\"\n" +
