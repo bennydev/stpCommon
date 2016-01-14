@@ -227,30 +227,30 @@ angular.module("offer/stp/thanks.yes.tpl.html", []).run(["$templateCache", funct
     "    <div class=\"grid-wrapper\">\n" +
     "        <div class=\"u-padding-above\">\n" +
     "\n" +
-    "            <h3 class=\"u-typography-2 u-spacing-under-narrow\" translate>VIEW.OFFER.STP.THANKS_YES.HEADER</h3>\n" +
+    "            <h3 class=\"u-typography-2 u-spacing-under-narrow\" translate>VIEW.SECTIONS.OFFER.STP.THANKS_YES.HEADER</h3>\n" +
     "\n" +
     "            <div class=\"grid grid--wide\">\n" +
     "                <div class=\"grid__item sm--one-half\">\n" +
-    "                    <p ng-if=\"offerModel.claimId\" translate translate-values=\"{compensation: offerModel.compensation, claimId: offerModel.claimId}\">VIEW.OFFER.STP.THANKS_YES.INFO_PAYMENT_CLAIM_ID</p>\n" +
+    "                    <p ng-if=\"offerModel.claimId\" translate translate-values=\"{compensation: offerModel.compensation, claimId: offerModel.claimId}\">VIEW.SECTIONS.OFFER.STP.THANKS_YES.INFO_PAYMENT_CLAIM_ID</p>\n" +
     "\n" +
     "                    <div class=\"u-spacing-above\">\n" +
-    "                        <p translate>VIEW.OFFER.STP.THANKS_YES.INFO_CONTACT</p>\n" +
-    "                        <p translate>VIEW.OFFER.STP.THANKS_YES.INFO_SATISFIED</p>\n" +
-    "                        <p translate>VIEW.OFFER.REGARDS</p>\n" +
-    "                        <p translate>VIEW.OFFER.FOLKSAM</p>\n" +
+    "                        <p translate>VIEW.SECTIONS.OFFER.STP.THANKS_YES.INFO_CONTACT</p>\n" +
+    "                        <p translate>VIEW.SECTIONS.OFFER.STP.THANKS_YES.INFO_SATISFIED</p>\n" +
+    "                        <p translate>VIEW.SECTIONS.OFFER.REGARDS</p>\n" +
+    "                        <p translate>VIEW.SECTIONS.OFFER.FOLKSAM</p>\n" +
     "                    </div>\n" +
     "\n" +
     "                </div>\n" +
     "                <div class=\"grid__item sm--one-half\">\n" +
     "                    <div class=\"suggestion u-bgcolor-white\">\n" +
-    "                        <h4 translate>VIEW.OFFER.STP.THANKS_YES.ADVICE_HEADING</h4>\n" +
-    "                        <p translate>VIEW.OFFER.STP.THANKS_YES.ADVICE</p>\n" +
+    "                        <h4 translate>VIEW.SECTIONS.OFFER.STP.THANKS_YES.ADVICE_HEADING</h4>\n" +
+    "                        <p translate>VIEW.SECTIONS.OFFER.STP.THANKS_YES.ADVICE</p>\n" +
     "                    </div>\n" +
     "\n" +
     "                    <div class=\"suggestion\" ng-if=\"!offerModel.policeIsReported\">\n" +
-    "                        <h4 translate translate-values=\"{eventType: offerModel.eventType}\">VIEW.OFFER.STP.THANKS_YES.INFO_POLICE_REPORT</h4>\n" +
+    "                        <h4 translate translate-values=\"{eventType: offerModel.eventType}\">VIEW.SECTIONS.OFFER.STP.THANKS_YES.INFO_POLICE_REPORT</h4>\n" +
     "                        <p>\n" +
-    "                          <a class=\"link-external\" href=\"https://polisen.se/Utsatt-for-brott/Gor-en-anmalan/\" translate translate-values=\"{eventType: offerModel.eventType}\" target=\"_blank\">VIEW.OFFER.STP.THANKS_YES.LINK_POLICE_REPORT</a>\n" +
+    "                          <a class=\"link-external\" href=\"https://polisen.se/Utsatt-for-brott/Gor-en-anmalan/\" translate translate-values=\"{eventType: offerModel.eventType}\" target=\"_blank\">VIEW.SECTIONS.OFFER.STP.THANKS_YES.LINK_POLICE_REPORT</a>\n" +
     "                        </p>\n" +
     "                    </div>\n" +
     "                </div>\n" +
@@ -260,6 +260,6 @@ angular.module("offer/stp/thanks.yes.tpl.html", []).run(["$templateCache", funct
     "</div>\n" +
     "\n" +
     "<div class=\"u-align-center u-bgcolor-blue-4\">\n" +
-    "    <button class=\"button u-spacing-above-narrow u-spacing-under-narrow js-print\" ng-click=\"print();\"><i class=\"icon icon-print\"></i> {{'VIEW.OFFER.STP.THANKS_YES.PRINT' | fsmTranslate}}</button>\n" +
+    "    <button class=\"button u-spacing-above-narrow u-spacing-under-narrow js-print\" ng-click=\"print();\"><i class=\"icon icon-print\"></i> {{'VIEW.SECTIONS.OFFER.STP.THANKS_YES.PRINT' | fsmTranslate}}</button>\n" +
     "</div>");
 }]);
