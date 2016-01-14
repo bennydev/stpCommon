@@ -102,8 +102,6 @@ angular.module("offer/ltp/thanks.tpl.html", []).run(["$templateCache", function(
     "            </div>\n" +
     "        </div>\n" +
     "    </div>\n" +
-    "</div>\n" +
-    "<div class=\"u-align-center u-bgcolor-blue-4\">\n" +
     "</div>");
 }]);
 
