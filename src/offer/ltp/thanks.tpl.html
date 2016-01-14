@@ -18,12 +18,7 @@
                     </div>
                 </div>
                 <div class="grid__item sm--one-half">
-                    <div class="suggestion" ng-if="!offerModel.policeIsReported">
-                        <h4 translate translate-values="{eventType: offerModel.eventType}">VIEW.SECTIONS.OFFER.INFO_POLICE_REPORT</h4>
-                        <p>
-                            <a class="link-external" href="https://polisen.se/Utsatt-for-brott/Gor-en-anmalan/" translate translate-values="{eventType: offerModel.eventType}" target="_blank">VIEW.SECTIONS.OFFER.LINK_POLICE_REPORT</a>
-                        </p>
-                    </div>
+                    <ng-include src="offer/common/policereport.tpl.html"></ng-include>
                 </div>
             </div>
         </div>

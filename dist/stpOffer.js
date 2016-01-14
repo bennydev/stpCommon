@@ -60,7 +60,15 @@ angular.module('stpCommon.offer', [])
             $window.print();
         };
     }]);
-angular.module('stpOfferTemplates', ['offer/ltp/ltp.tpl.html', 'offer/ltp/thanks.tpl.html', 'offer/offer.tpl.html', 'offer/stp/stp.tpl.html', 'offer/stp/thanks.no.tpl.html', 'offer/stp/thanks.yes.tpl.html']);
+angular.module('stpOfferTemplates', ['offer/common/policereport.tpl.html', 'offer/ltp/ltp.tpl.html', 'offer/ltp/thanks.tpl.html', 'offer/offer.tpl.html', 'offer/stp/stp.tpl.html', 'offer/stp/thanks.no.tpl.html', 'offer/stp/thanks.yes.tpl.html']);
+
+angular.module("offer/common/policereport.tpl.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("offer/common/policereport.tpl.html",
+    "<div class=\"suggestion\" ng-if=\"!offerModel.policeIsReported\">\n" +
+    "    <h4 translate translate-values=\"{eventType: offerModel.eventType}\">VIEW.SECTIONS.OFFER.INFO_POLICE_REPORT</h4>\n" +
+    "    <a class=\"link-external\" href=\"https://polisen.se/Utsatt-for-brott/Gor-en-anmalan/\" translate translate-values=\"{eventType: offerModel.eventType}\" target=\"_blank\">VIEW.SECTIONS.OFFER.LINK_POLICE_REPORT</a>\n" +
+    "</div>");
+}]);
 
 angular.module("offer/ltp/ltp.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("offer/ltp/ltp.tpl.html",
@@ -89,12 +97,7 @@ angular.module("offer/ltp/thanks.tpl.html", []).run(["$templateCache", function(
     "                    </div>\n" +
     "                </div>\n" +
     "                <div class=\"grid__item sm--one-half\">\n" +
-    "                    <div class=\"suggestion\" ng-if=\"!offerModel.policeIsReported\">\n" +
-    "                        <h4 translate translate-values=\"{eventType: offerModel.eventType}\">VIEW.SECTIONS.OFFER.INFO_POLICE_REPORT</h4>\n" +
-    "                        <p>\n" +
-    "                            <a class=\"link-external\" href=\"https://polisen.se/Utsatt-for-brott/Gor-en-anmalan/\" translate translate-values=\"{eventType: offerModel.eventType}\" target=\"_blank\">VIEW.SECTIONS.OFFER.LINK_POLICE_REPORT</a>\n" +
-    "                        </p>\n" +
-    "                    </div>\n" +
+    "                    <ng-include src=\"offer/common/policereport.tpl.html\"></ng-include>\n" +
     "                </div>\n" +
     "            </div>\n" +
     "        </div>\n" +
@@ -213,12 +216,7 @@ angular.module("offer/stp/thanks.no.tpl.html", []).run(["$templateCache", functi
     "                        <p translate>VIEW.SECTIONS.OFFER.STP.ADVICE</p>\n" +
     "                    </div>\n" +
     "\n" +
-    "                    <div class=\"suggestion\" ng-if=\"!offerModel.policeIsReported\">\n" +
-    "                        <h4 translate translate-values=\"{eventType: offerModel.eventType}\">VIEW.SECTIONS.OFFER.INFO_POLICE_REPORT</h4>\n" +
-    "                        <p>\n" +
-    "                            <a class=\"link-external\" href=\"https://polisen.se/Utsatt-for-brott/Gor-en-anmalan/\" translate translate-values=\"{eventType: offerModel.eventType}\" target=\"_blank\">VIEW.SECTIONS.OFFER.LINK_POLICE_REPORT</a>\n" +
-    "                        </p>\n" +
-    "                    </div>\n" +
+    "                    <ng-include src=\"offer/common/policereport.tpl.html\"></ng-include>\n" +
     "                </div>\n" +
     "            </div>\n" +
     "        </div>\n" +
@@ -255,12 +253,7 @@ angular.module("offer/stp/thanks.yes.tpl.html", []).run(["$templateCache", funct
     "                        <p translate>VIEW.SECTIONS.OFFER.STP.ADVICE</p>\n" +
     "                    </div>\n" +
     "\n" +
-    "                    <div class=\"suggestion\" ng-if=\"!offerModel.policeIsReported\">\n" +
-    "                        <h4 translate translate-values=\"{eventType: offerModel.eventType}\">VIEW.SECTIONS.OFFER.INFO_POLICE_REPORT</h4>\n" +
-    "                        <p>\n" +
-    "                          <a class=\"link-external\" href=\"https://polisen.se/Utsatt-for-brott/Gor-en-anmalan/\" translate translate-values=\"{eventType: offerModel.eventType}\" target=\"_blank\">VIEW.SECTIONS.OFFER.LINK_POLICE_REPORT</a>\n" +
-    "                        </p>\n" +
-    "                    </div>\n" +
+    "                    <ng-include src=\"offer/common/policereport.tpl.html\"></ng-include>\n" +
     "                </div>\n" +
     "            </div>\n" +
     "        </div>\n" +
