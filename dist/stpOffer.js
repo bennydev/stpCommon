@@ -213,8 +213,7 @@ angular.module("offer/stp/thanks.no.tpl.html", []).run(["$templateCache", functi
     "                        <h4 translate>VIEW.SECTIONS.OFFER.STP.ADVICE_HEADING</h4>\n" +
     "                        <p translate>VIEW.SECTIONS.OFFER.STP.ADVICE</p>\n" +
     "                    </div>\n" +
-    "\n" +
-    "                    <ng-include src=\"offer/common/policereport.tpl.html\"></ng-include>\n" +
+    "                    <ng-include src=\"'offer/common/policereport.tpl.html'\"></ng-include>\n" +
     "                </div>\n" +
     "            </div>\n" +
     "        </div>\n" +
@@ -250,8 +249,7 @@ angular.module("offer/stp/thanks.yes.tpl.html", []).run(["$templateCache", funct
     "                        <h4 translate>VIEW.SECTIONS.OFFER.STP.ADVICE_HEADING</h4>\n" +
     "                        <p translate>VIEW.SECTIONS.OFFER.STP.ADVICE</p>\n" +
     "                    </div>\n" +
-    "\n" +
-    "                    <ng-include src=\"offer/common/policereport.tpl.html\"></ng-include>\n" +
+    "                    <ng-include src=\"'offer/common/policereport.tpl.html'\"></ng-include>\n" +
     "                </div>\n" +
     "            </div>\n" +
     "        </div>\n" +
