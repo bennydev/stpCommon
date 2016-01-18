@@ -49,7 +49,6 @@ describe('Cyclic redundancy check (CRC) tests.', function() {
         var customer = getCustomerObject();
         customer.name = 'Tolvan Eolvansson';
         var crc = utils.transactionIdGenerator.crc32FromObject(customer);
-    console.log(crc);
         var crc2 = utils.transactionIdGenerator.crc32FromObject(getCustomerObject());
         expect(crc).not.toEqual(crc2);
     });
