@@ -55,6 +55,7 @@ module.exports = function (grunt) {
                     'src/navigation/**/*',
                     'src/summary/**/*',
                     'src/offer/**/*',
+                    'src/util/util.js',
                     'src/util/**/*',
                     'karma/helpers/**/*.js',
                     'karma/mocks/**/*.js'
@@ -147,6 +148,7 @@ module.exports = function (grunt) {
             },
            compile_util_js: {
                 src: [
+                    'build/src/util/*.js',
                     'build/src/util/**/*.js',
                     '!build/src/**/*.spec.js'
                 ],
