@@ -55,6 +55,7 @@ module.exports = function (grunt) {
                     'src/navigation/**/*',
                     'src/summary/**/*',
                     'src/offer/**/*',
+                    'src/util/**/*',
                     'karma/helpers/**/*.js',
                     'karma/mocks/**/*.js'
                 ],
@@ -143,6 +144,13 @@ module.exports = function (grunt) {
                     '!build/src/**/*.spec.js'
                 ],
                 dest: 'dist/stpOffer.js'
+            },
+           compile_util_js: {
+                src: [
+                    'build/src/util/**/*.js',
+                    '!build/src/**/*.spec.js'
+                ],
+                dest: 'dist/stpUtil.js'
             }
         },
         /**
@@ -183,6 +191,7 @@ module.exports = function (grunt) {
                     'src/navigation/*.js',
                     'src/offer/*.js',
                     'src/summary/*.js',
+                    'src/util/*.js',
                     '!src/**/*.spec.js',
                     'karma/helpers/**/*.js',
                     'karma/mocks/**/*.js'
