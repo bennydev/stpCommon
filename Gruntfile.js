@@ -70,6 +70,14 @@ module.exports = function (grunt) {
             /**
              * These are the templates from `src/app`.
              */
+            contact: {
+                options: {
+                    base: 'build/src',
+                    module: 'stpContactTemplates'
+                },
+                src: ['build/src/contact/**/*.html'],
+                dest: 'build/src/contact/stpContactTemplates.js'
+            },
             header: {
                 options: {
                     base: 'build/src',
