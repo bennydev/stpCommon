@@ -50,6 +50,7 @@ module.exports = function (grunt) {
                     'vendor/angular-ui-router/release/angular-ui-router.js',
                     'vendor/fsmQuestion/dist/fsmQuestion.js',
                     'vendor/angular-mocks/angular-mocks.js',
+                    'src/contact/**/*',
                     'src/header/**/*',
                     'src/modal/**/*',
                     'src/navigation/**/*',
@@ -111,6 +112,13 @@ module.exports = function (grunt) {
             }
         },
         concat: {
+            compile_contact_js: {
+                src: [
+                    'build/src/contact/*.js',
+                    '!build/src/**/*.spec.js'
+                ],
+                dest: 'dist/stpContact.js'
+            },
             compile_header_js: {
                 src: [
                     'build/src/header/*.js',
@@ -187,6 +195,7 @@ module.exports = function (grunt) {
                     'vendor/angular-ui-router/release/angular-ui-router.js',
                     'vendor/angular-mocks/angular-mocks.js',
                     'vendor/fsmQuestion/dist/fsmQuestion.js',
+                    'src/contact/*.js',
                     'src/header/header.js',
                     'src/header/*.js',
                     'src/modal/*.js',
