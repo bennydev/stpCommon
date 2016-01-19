@@ -1,0 +1,8 @@
+<div ng-controller="ContactInformationCtrl">
+    <h3 class="form-section__subheading" translate>{{title}}</h3>
+    <div class="grid-wrapper">
+        <div class="">
+            <fsm-question-group group="group" ng-repeat="group in groups track by $index" />
+        </div>
+    </div>
+</div>
