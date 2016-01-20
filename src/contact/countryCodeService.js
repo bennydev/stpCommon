@@ -9,7 +9,7 @@ angular.module('stpCommon.contact')
         return {
             getCountryCodes :function(){
                 countryCodes.forEach(function(country){
-                    country.name =   $filter('translate')('COUNTRIES.'+country.code);
+                    country.value =   $filter('translate')('COUNTRIES.'+country.code);
                 });
                 return countryCodes;
             }

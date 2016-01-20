@@ -47,6 +47,7 @@ angular.module('stpCommon.contact', ['fsmQuestion'])
                 .id('contactPhone')
                 .type(QuestionTypes.input)
                 //.text({ root:'VIEW.SECTIONS.CONTACT_INFO.QUESTIONS.CONTACT_PHONE'})
+                .max(30)
                 .required(false)
                 .createQuestion();
         }
@@ -57,6 +58,7 @@ angular.module('stpCommon.contact', ['fsmQuestion'])
                 .type(QuestionTypes.input)
                 .text({ root: 'VIEW.SECTIONS.EVENT.CONTACT_INFO.QUESTIONS.CONTACT_EMAIL' })
                 .placeholder('ditt.namn@exempel.se')
+                .max(254)
                 .required(true)
                 .createQuestion();
         }
