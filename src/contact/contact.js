@@ -1,6 +1,6 @@
 "use strict";
 angular.module('stpCommon.contact', ['fsmQuestion'])
-    .factory('ContactService', ['QuestionService', 'QuestionTypes', 'Validators', function(QuestionService, QuestionTypes, Validators) {
+    .factory('ContactService', ['QuestionService', 'QuestionTypes', 'CountryCodeService', function(QuestionService, QuestionTypes, CountryCodeService) {
         var QBuilder = QuestionService.getQuestionBuilder();
         var questionsCreated = false;
 
@@ -17,6 +17,7 @@ angular.module('stpCommon.contact', ['fsmQuestion'])
             var groups = [];
             groups.push(createGroup([QuestionService.getQuestion('contactCountry'), QuestionService.getQuestion('contactPhone')]));
             groups.push(createGroup([QuestionService.getQuestion('contactEmail')]));
+            QuestionService.getQuestion('contactCountry').options = CountryCodeService.getCountryCodes();
             return groups;
         }
 
