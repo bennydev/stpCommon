@@ -37,7 +37,7 @@ angular.module('stpCommon.contact', ['fsmQuestion'])
             return QBuilder
                 .id('contactCountry')
                 .type(QuestionTypes.select)
-                .text({ rott: 'VIEW.SECTIONS.CONTACT.QUESTIONS.CONTACT_COUNTRY'})
+                .text({ root: 'VIEW.SECTIONS.CONTACT_INFO.QUESTIONS.CONTACT_PHONE'})
                 .required(false)
                 .createQuestion();
         }
@@ -46,7 +46,7 @@ angular.module('stpCommon.contact', ['fsmQuestion'])
             return QBuilder
                 .id('contactPhone')
                 .type(QuestionTypes.input)
-                .text({ root:'VIEW.SECTIONS.CONTACT.QUESTIONS.CONTACT_PHONE'})
+                //.text({ root:'VIEW.SECTIONS.CONTACT_INFO.QUESTIONS.CONTACT_PHONE'})
                 .required(false)
                 .createQuestion();
         }
@@ -55,7 +55,8 @@ angular.module('stpCommon.contact', ['fsmQuestion'])
             return QBuilder
                 .id('contactEmail')
                 .type(QuestionTypes.input)
-                .placeholder('OPTIONS.PLACE_HOLDER_EMAIL')
+                .text({ root: 'VIEW.SECTIONS.CONTACT_INFO.QUESTIONS.CONTACT_EMAIL' })
+                .placeholder('VIEW.SECTIONS.CONTACT_INFO.PLACE_HOLDERS.EMAIL')
                 .required(true)
                 .createQuestion();
         }
