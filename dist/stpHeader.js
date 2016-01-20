@@ -172,7 +172,7 @@ angular.module("header/customerInfo.tpl.html", []).run(["$templateCache", functi
     "                </div>\n" +
     "                <div class=\"u-inline-block\">\n" +
     "                    <b>{{'GENERAL.CUSTOMER_INFO.POLICYHOLDER' | translate}}</b>\n" +
-    "                    <span id=\"policyHolderName\">{{HeaderService.getPolicyHolderFullName() ? (HeaderService.getPolicyHolderFullName() | capitalAndLowerCase) : HeaderService.getPolicyHolderPersonId() ? HeaderService.getPolicyHolderPersonId() : HeaderService.getCustomerFullName() ? (HeaderService.getCustomerFullName() | capitalAndLowerCase) : HeaderService.getCustomerPersonId()}}</span>\n" +
+    "                    <span id=\"policyHolderName\">{{HeaderService.getPolicyHolderFullName() ? (HeaderService.getPolicyHolderFullName() | capitalAndLowerCase) : HeaderService.getPolicyHolderPersonId()}}</span>\n" +
     "                </div>\n" +
     "            </div>\n" +
     "            <div class=\"grid__item md--four-twelfths\">\n" +
