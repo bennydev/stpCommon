@@ -56,7 +56,7 @@ angular.module('stpCommon.contact', ['fsmQuestion'])
                 .id('contactEmail')
                 .type(QuestionTypes.input)
                 .text({ root: 'VIEW.SECTIONS.EVENT.CONTACT_INFO.QUESTIONS.CONTACT_EMAIL' })
-                .placeholder('VIEW.SECTIONS.EVENT.CONTACT_INFO.PLACE_HOLDERS.EMAIL')
+                .placeholder('VIEW.SECTIONS.EVENT.CONTACT_INFO.QUESTIONS.CONTACT_EMAIL')
                 .required(true)
                 .createQuestion();
         }
