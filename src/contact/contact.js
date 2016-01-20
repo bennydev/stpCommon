@@ -37,7 +37,7 @@ angular.module('stpCommon.contact', ['fsmQuestion'])
             return QBuilder
                 .id('contactCountry')
                 .type(QuestionTypes.select)
-                .text({ root: 'VIEW.SECTIONS.CONTACT_INFO.QUESTIONS.CONTACT_PHONE'})
+                .text({ root: 'VIEW.SECTIONS.EVENT.CONTACT_INFO.QUESTIONS.CONTACT_PHONE'})
                 .required(false)
                 .createQuestion();
         }
@@ -55,8 +55,8 @@ angular.module('stpCommon.contact', ['fsmQuestion'])
             return QBuilder
                 .id('contactEmail')
                 .type(QuestionTypes.input)
-                .text({ root: 'VIEW.SECTIONS.CONTACT_INFO.QUESTIONS.CONTACT_EMAIL' })
-                .placeholder('VIEW.SECTIONS.CONTACT_INFO.PLACE_HOLDERS.EMAIL')
+                .text({ root: 'VIEW.SECTIONS.EVENT.CONTACT_INFO.QUESTIONS.CONTACT_EMAIL' })
+                .placeholder('VIEW.SECTIONS.EVENT.CONTACT_INFO.PLACE_HOLDERS.EMAIL')
                 .required(true)
                 .createQuestion();
         }
