@@ -12,9 +12,9 @@ angular.module("summary/summary.tpl.html", []).run(["$templateCache", function($
     "                <div class=\"grid__item sm--one-half\">\n" +
     "                    <dl class=\"info-tile\">\n" +
     "                        <dt translate>GENERAL.CUSTOMER_INFO.NOTIFIER</dt>\n" +
-    "                        <dd id=\"summaryNotifierName\">{{customer.fullName | capitalAndLowerCase}}</dd>\n" +
+    "                        <dd id=\"notifierName\">{{customer.fullName | capitalAndLowerCase}}</dd>\n" +
     "                        <dt translate>GENERAL.CUSTOMER_INFO.POLICYHOLDER</dt>\n" +
-    "                        <dd id=\"summaryPolicyHolderName\">{{policyHolder.fullName | capitalAndLowerCase}}</dd>\n" +
+    "                        <dd id=\"policyHolderName\">{{policyHolder.fullName | capitalAndLowerCase}}</dd>\n" +
     "                    </dl>\n" +
     "                </div>\n" +
     "            </div>\n" +
