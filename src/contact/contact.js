@@ -47,7 +47,7 @@ angular.module('stpCommon.contact', ['fsmQuestion'])
             return QBuilder
                 .id('contactPhone')
                 .type(QuestionTypes.input)
-                //.text({ root:'VIEW.SECTIONS.CONTACT_INFO.QUESTIONS.CONTACT_PHONE'})
+                .text({ root:'VIEW.SECTIONS.CONTACT_INFO.QUESTIONS.CONTACT_PHONE'})
                 .max(30)
                 .required(false)
                 .createQuestion();
