@@ -127,14 +127,12 @@ angular.module("offer/stp/stp.tpl.html", []).run(["$templateCache", function($te
     "                    <p ng-if=\"!offerModel.customerIsPolicyHolder\">{{'VIEW.SECTIONS.OFFER.STP.PAYMENT_RECIEVER' | translate}}</p>\n" +
     "                </div>\n" +
     "                <div class=\"grid__item sm--one-half\">\n" +
-    "\n" +
     "                    <dl class=\"info-tile\">\n" +
     "                        <dt translate>GENERAL.CUSTOMER_INFO.NOTIFIER</dt>\n" +
-    "                        <dd>{{customer.fullName}}</dd>\n" +
+    "                        <dd id=\"notifierName\">{{customer.fullName | capitalAndLowerCase}}</dd>\n" +
     "                        <dt translate>GENERAL.CUSTOMER_INFO.POLICYHOLDER</dt>\n" +
-    "                        <dd>{{policyHolder.fullName}}</dd>\n" +
+    "                        <dd id=\"policyHolderName\">{{policyHolder.fullName | capitalAndLowerCase}}</dd>\n" +
     "                    </dl>\n" +
-    "\n" +
     "                </div>\n" +
     "            </div>\n" +
     "        </div>\n" +

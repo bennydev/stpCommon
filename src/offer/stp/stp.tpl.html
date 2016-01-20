@@ -11,14 +11,12 @@
                     <p ng-if="!offerModel.customerIsPolicyHolder">{{'VIEW.SECTIONS.OFFER.STP.PAYMENT_RECIEVER' | translate}}</p>
                 </div>
                 <div class="grid__item sm--one-half">
-
                     <dl class="info-tile">
                         <dt translate>GENERAL.CUSTOMER_INFO.NOTIFIER</dt>
-                        <dd>{{customer.fullName}}</dd>
+                        <dd id="notifierName">{{customer.fullName | capitalAndLowerCase}}</dd>
                         <dt translate>GENERAL.CUSTOMER_INFO.POLICYHOLDER</dt>
-                        <dd>{{policyHolder.fullName}}</dd>
+                        <dd id="policyHolderName">{{policyHolder.fullName | capitalAndLowerCase}}</dd>
                     </dl>
-
                 </div>
             </div>
         </div>
