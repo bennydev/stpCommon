@@ -53,7 +53,7 @@ angular.module('stpCommon.contact', ['fsmQuestion'])
                 validate: function(question){
                     var result = {valid: true, cause: 'format', message: question.textRoot+'.ERRORS.FORMAT'};
                     if(!isSwedenAndZeroOrOtherAndBlank(question)) {
-                        result.valid = question.answer.phoneNumber.toString().removeChars(['-', ' ', '.']).isNumeric();
+                        result.valid = QuestionUtils.isNumeric(question.answer.phoneNumber.replace(/^[\s\.\-]*$/, ''));
                     }
                     return result;
                 }
