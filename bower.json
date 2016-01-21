@@ -1,6 +1,6 @@
 {
   "name": "stpCommon",
-  "version": "0.4.79",
+  "version": "0.4.80",
   "description": "Generic STP Commons library",
   "directory": "dist",
   "main": ["stpHeader.js", "stpModal.js", "stpNavigation.js", "stpSummary.js", "stpOffer.js", "stpUtil.js"],
@@ -32,6 +32,6 @@
     "angular-ui-router": "~0.2.15",
     "angular-translate": "~2.7.0",
     "angular-translate-loader-static-files": "~2.7.0",
-    "fsmQuestion": "https://github.com/bennydev/fsmQuestion.git#0.2.20"
+    "fsmQuestion": "https://github.com/bennydev/fsmQuestion.git#0.2.21"
   }
 }
