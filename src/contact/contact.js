@@ -17,7 +17,7 @@ angular.module('stpCommon.contact', ['fsmQuestion'])
             var groups = [];
             groups.push(createGroup([QuestionService.getQuestion('contactPhone')]));
             groups.push(createGroup([QuestionService.getQuestion('contactEmail')]));
-            QuestionService.getQuestion('contactCountry').options = CountryCodeService.getCountryCodes();
+            QuestionService.getQuestion('contactPhone').options = CountryCodeService.getCountryCodes();
             return groups;
         }
 
