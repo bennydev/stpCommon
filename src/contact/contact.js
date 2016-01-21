@@ -1,6 +1,6 @@
 "use strict";
 angular.module('stpCommon.contact', ['fsmQuestion'])
-    .factory('ContactService', ['QuestionService', 'QuestionTypes', 'CountryCodeService', function(QuestionService, QuestionTypes, CountryCodeService) {
+    .factory('ContactService', ['QuestionService', 'QuestionTypes', 'CountryCodeService', 'QuestionUtils', function(QuestionService, QuestionTypes, CountryCodeService, QuestionUtils) {
         var QBuilder = QuestionService.getQuestionBuilder();
         var questionsCreated = false;
 
@@ -33,15 +33,6 @@ angular.module('stpCommon.contact', ['fsmQuestion'])
                 questionsCreated = true;
             }
         }
-
-        //function contactCountry() {
-        //    return QBuilder
-        //        .id('contactCountry')
-        //        .type(QuestionTypes.select)
-        //        .text({ root: 'VIEW.SECTIONS.EVENT.CONTACT_INFO.QUESTIONS.CONTACT_PHONE'})
-        //        .required(false)
-        //        .createQuestion();
-        //}
 
         function contactPhone() {
             function isSwedenAndZeroOrOtherAndBlank(question){
