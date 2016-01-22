@@ -17,7 +17,7 @@ angular.module('stpCommon.contact', ['fsmQuestion'])
             var groups = [];
             groups.push(createGroup([QuestionService.getQuestion('contactPhone')]));
             groups.push(createGroup([QuestionService.getQuestion('contactEmail')]));
-            QuestionService.getQuestion('contactPhone').options = CountryCodeService.getCountryCodes();
+            //QuestionService.getQuestion('contactPhone').options = CountryCodeService.getCountryCodes();
             return groups;
         }
 
@@ -56,6 +56,7 @@ angular.module('stpCommon.contact', ['fsmQuestion'])
                 .text({ root:'VIEW.SECTIONS.EVENT.CONTACT_INFO.QUESTIONS.CONTACT_PHONE'})
                 .max(30)
                 .required(false)
+                .values(CountryCodeService.getCountryCodes())
                 .validator(phoneValidator)
                 .createQuestion();
         }
