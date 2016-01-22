@@ -52,6 +52,7 @@ angular.module('stpCommon.offer', [])
             .required(true)
             .createQuestion();
         $scope.confirmOffer = function(){
+            $scope.acceptanceQuestion.validate();
             if(!ErrorReporter.hasErrors()){
                 $scope.thankYouTemplate = $scope.acceptanceQuestion.answer === 'YES' ? 'offer/stp/thanks.yes.tpl.html' : 'offer/stp/thanks.no.tpl.html';
             }
