@@ -56,6 +56,7 @@ angular.module('stpCommon.contact', ['fsmQuestion'])
                 .text({ root:'VIEW.SECTIONS.EVENT.CONTACT_INFO.QUESTIONS.CONTACT_PHONE'})
                 .max(30)
                 .required(false)
+                .defaultAnswer({phoneNumber: '0', countryCode: CountryCodeService.getCountryCodes()[209]})
                 .values(CountryCodeService.getCountryCodes())
                 .validator(phoneValidator)
                 .createQuestion();
