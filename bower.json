@@ -32,6 +32,6 @@
     "angular-ui-router": "~0.2.15",
     "angular-translate": "~2.7.0",
     "angular-translate-loader-static-files": "~2.7.0",
-    "fsmQuestion": "https://github.com/bennydev/fsmQuestion.git#0.2.23"
+    "fsmQuestion": "https://github.com/bennydev/fsmQuestion.git#0.2.24"
   }
 }
