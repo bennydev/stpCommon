@@ -14,7 +14,7 @@ angular.module('stpCommon.contact')
                 return countryCodes;
             }
         };
-    }]).filter('phonecodeFilter', phonecodeFilter);;
+    }]).filter('phonecodeFilter', phonecodeFilter);
 
 function phonecodeFilter(){
 

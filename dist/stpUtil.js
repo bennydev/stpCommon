@@ -30,9 +30,9 @@ angular.module('stpCommon.util').factory('TransactionIdGenerator', function () {
 
         crc = crc32Initial();
 
-        for (i = 0; i < str.length; i++)
+        for (i = 0; i < str.length; i++) {
             crc = (crc >>> 8) ^ table[str.charCodeAt(i) ^ (crc & 0x000000FF)];
-
+        }
         crc = crc32Final(crc);
         return crc;
     }
@@ -78,15 +78,16 @@ angular.module('stpCommon.util').factory('TransactionIdGenerator', function () {
 
         crc = crc32Initial();
 
-        for (i = 0; i < dataView.byteLength; i++)
+        for (i = 0; i < dataView.byteLength; i++) {
             crc = (crc >>> 8) ^ table[dataView.getUint8(i) ^ (crc & 0x000000FF)];
-
+        }
         crc = crc32Final(crc);
         return crc;
     }
 
     function crc32_reversed(polynomial) {
         var reversed = 0;
+        var i;
         for (i = 0; i < 32; i++) {
             reversed = reversed << 1;
             reversed = reversed | ((polynomial >>> i) & 1);

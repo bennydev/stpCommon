@@ -216,9 +216,60 @@ module.exports = function (grunt) {
                     'karma/mocks/**/*.js'
                 ]
             }
+        },
+        /**
+         * `jshint` defines the rules of our linter as well as which files we
+         * should check. This file, all javascript sources, and all our unit tests
+         * are linted based on the policies listed in `options`. But we can also
+         * specify exclusionary patterns by prefixing them with an exclamation
+         * point (!); this is useful when code comes from a third party but is
+         * nonetheless inside `src/`.
+         */
+        jshint: {
+            src: [
+                'src/'
+            ],
+            test: [
+                'src/'
+            ],
+            gruntfile: [
+                'Gruntfile.js'
+            ],
+            options: {
+                curly: true,
+                immed: true,
+                newcap: true,
+                noarg: true,
+                sub: true,
+                boss: false,
+                eqnull: false,
+                globalstrict: true,
+                jquery: true,
+                browser: true,
+                devel: true,
+                debug: true,
+                laxcomma: true,
+                globals: {
+                    module: true,
+                    require: true,
+                    Modernizr: true,
+                    angular: true,
+                    _: true,
+                    jQuery: true,
+                    jasmine: true,
+                    describe: true,
+                    ddescribe: true,
+                    xdescribe: true,
+                    it: true,
+                    xit: true,
+                    expect: true,
+                    beforeEach: true,
+                    afterEach: true,
+                    inject: true,
+                    spyOn: true
+                }
+            }
         }
-
-
     };
 
     grunt.initConfig(taskConfig);

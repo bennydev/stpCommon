@@ -91,7 +91,7 @@ angular.module('stpCommon.contact', ['fsmQuestion'])
 
     }]);
 "use strict";
-angular.module('stpCommon.contact').factory('ContactSummaryMapper', ['QuestionService', function(QuestionService) {
+angular.module('stpCommon.contact').factory('ContactSummaryMapper', ['$translate', 'QuestionService', function($translate, QuestionService) {
 
     function mapToSummaryModel(){
         var summaryModel = {header: $translate.instant('VIEW.SECTIONS.EVENT.CONTACT_INFO.TITLE'), questions: []};
@@ -144,7 +144,7 @@ angular.module('stpCommon.contact')
                 return countryCodes;
             }
         };
-    }]).filter('phonecodeFilter', phonecodeFilter);;
+    }]).filter('phonecodeFilter', phonecodeFilter);
 
 function phonecodeFilter(){
 

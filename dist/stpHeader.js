@@ -119,14 +119,14 @@ angular.module('stpCommon.header').factory('HeaderService', [function(){
     }
 
     function fullName(firstName, lastName){
-        var fullName = '';
+        var wholeName = '';
         if(firstName){
-            fullName = firstName + ' ';
+            wholeName = firstName + ' ';
         }
         if(lastName){
-            fullName += lastName;
+            wholeName += lastName;
         }
-        return fullName;
+        return wholeName;
     }
 
     function setCustomerPersonId(id){
