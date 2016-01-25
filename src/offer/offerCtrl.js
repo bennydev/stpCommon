@@ -1,9 +1,10 @@
 "use strict";
 angular.module('stpCommon.offer', [])
     .controller('OfferCtrl', ['$scope', 'OfferService', function($scope, OfferService){
-        $scope.template = OfferService.getOfferModel().getClaimType() === 'LTP' ? 'offer/ltp/ltp.tpl.html' : 'offer/stp/stp.tpl.html';
-        $scope.claimId = OfferService.getOfferModel().getClaimId();
-        $scope.event = OfferService.getOfferModel().getEvent();
+        $scope.offerModel = OfferService.getOfferModel();
+        $scope.template = $scope.offerModel.getClaimType() === 'LTP' ? 'offer/ltp/ltp.tpl.html' : 'offer/stp/stp.tpl.html';
+        $scope.claimId = $scope.offerModel.getClaimId();
+        $scope.event = $scope.offerModel.getEvent();
     }])
     .factory('OfferService', [function(){
         var service = {
