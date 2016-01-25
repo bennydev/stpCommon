@@ -47,11 +47,14 @@ angular.module('stpCommon.offer', [])
         $scope.policyHolder = {fullName: HeaderService.getPolicyHolderFullName() ? HeaderService.getPolicyHolderFullName() : HeaderService.getPolicyHolderPersonId()};
         STPService.setCompensation($scope.offerModel.compensation);
         $scope.questionGroups = STPService.getQuestionGroups();
+        if(STPService.isOfferConfirmed()){
+            $scope.thankYouTemplate = STPService.getThankYouTemplate();
+        }
 
         $scope.confirmOffer = function(){
             STPService.validate();
             if(!ErrorReporter.hasErrors()){
-                $scope.thankYouTemplate = QuestionService.getQuestion('acceptance').answer === 'YES' ? 'offer/stp/thanks.yes.tpl.html' : 'offer/stp/thanks.no.tpl.html';
+                STPService.confirmOffer();
             }
         };
         $scope.print = function(){
@@ -60,14 +63,37 @@ angular.module('stpCommon.offer', [])
     }])
     .factory('STPService', ['QuestionService', function(QuestionService){
         var compensation;
+        var offerConfirmed = false;
         var QBuilder = QuestionService.getQuestionBuilder();
         var questionsCreated = false;
         var service = {
             setCompensation: setCompensation,
             getQuestionGroups: getQuestionGroups,
-            validate: validate
+            validate: validate,
+            getThankYouTemplate: getThankYouTemplate,
+            confirmOffer: confirmOffer,
+            next: next,
+            isOfferConfirmed: isOfferConfirmed
+
         };
         return service;
+
+        function isOfferConfirmed(){
+            return offerConfirmed;
+        }
+
+        function next(){
+            /* Interface-function */
+        }
+
+        function getThankYouTemplate(){
+            return QuestionService.getQuestion('acceptance').answer === 'YES' ? 'offer/stp/thanks.yes.tpl.html' : 'offer/stp/thanks.no.tpl.html';
+        }
+
+        function confirmOffer(){
+            offerConfirmed = true;
+            service.next();
+        }
 
         function validate(){
             getQuestionGroups().forEach(function(group){
