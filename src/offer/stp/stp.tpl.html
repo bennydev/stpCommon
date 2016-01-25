@@ -49,7 +49,7 @@
 
     <div ng-if="!thankYouTemplate">
         <div class="u-align-center u-bgcolor-blue-5">
-            <fsm-question question="acceptanceQuestion" translate-values="{compensation: offerModel.compensation}"></fsm-question>
+            <fsm-question-group questions="group.questions" ng-repeat="group in questionGroups"></fsm-question-group>
         </div>
         <div class="u-align-center u-bgcolor-blue-4">
             <button class="button button--primary u-spacing-above-narrow u-spacing-under-narrow u-no-transition"

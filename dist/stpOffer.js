@@ -41,26 +41,73 @@ angular.module('stpCommon.offer', [])
             }
         }
     }])
-    .controller('STPCtrl', ['$scope', '$window', 'OfferService', 'HeaderService', 'ErrorReporter', 'QuestionService', function($scope, $window, OfferService, HeaderService, ErrorReporter, QuestionService){
+    .controller('STPCtrl', ['$scope', '$window', 'OfferService', 'HeaderService', 'ErrorReporter', 'QuestionService', 'STPService', function($scope, $window, OfferService, HeaderService, ErrorReporter, QuestionService, STPService){
         $scope.offerModel = OfferService.getOfferModel();
         $scope.customer = {fullName: HeaderService.getCustomerFullName() ? HeaderService.getCustomerFullName() : HeaderService.getCustomerPersonId()};
         $scope.policyHolder = {fullName: HeaderService.getPolicyHolderFullName() ? HeaderService.getPolicyHolderFullName() : HeaderService.getPolicyHolderPersonId()};
-        $scope.acceptanceQuestion = QuestionService.getQuestionBuilder()
-            .id('acceptance')
-            .text({root:'VIEW.SECTIONS.OFFER.STP.QUESTIONS.ACCEPTANCE', getTranslateValues: function(){return {compensation: $scope.offerModel.compensation};}})
-            .type('buttongroupbig')
-            .values([{label: 'OPTIONS.YES', value: 'YES'}, {label: 'OPTIONS.NO', value: 'NO'}])
-            .required(true)
-            .createQuestion();
+        STPService.setCompensation($scope.offerModel.compensation);
+        $scope.questionGroups = STPService.getQuestionGroups();
+
         $scope.confirmOffer = function(){
-            $scope.acceptanceQuestion.validate();
+            STPService.validate();
             if(!ErrorReporter.hasErrors()){
-                $scope.thankYouTemplate = $scope.acceptanceQuestion.answer === 'YES' ? 'offer/stp/thanks.yes.tpl.html' : 'offer/stp/thanks.no.tpl.html';
+                $scope.thankYouTemplate = QuestionService.getQuestion('acceptance').answer === 'YES' ? 'offer/stp/thanks.yes.tpl.html' : 'offer/stp/thanks.no.tpl.html';
             }
         };
         $scope.print = function(){
             $window.print();
         };
+    }])
+    .factory('STPService', ['QuestionService', function(QuestionService){
+        var compensation;
+        var QBuilder = QuestionService.getQuestionBuilder();
+        var questionsCreated = false;
+        var service = {
+            setCompensation: setCompensation,
+            getQuestionGroups: getQuestionGroups,
+            validate: validate
+        };
+        return service;
+
+        function validate(){
+            getQuestionGroups().forEach(function(group){
+                group.questions.forEach(function(question){
+                    question.validate();
+                });
+            });
+        }
+
+        function getQuestionGroups(){
+            createQuestions();
+            var groups = [];
+            groups.push(createGroup([QuestionService.getQuestion('acceptance')]));
+            return groups;
+        }
+
+        function createGroup(questions){
+            return {questions: questions};
+        }
+
+        function createQuestions(){
+            if(!questionsCreated){
+                acceptance();
+                questionsCreated = true;
+            }
+        }
+
+        function setCompensation(value){
+            compensation = value;
+        }
+
+        function acceptance(){
+            return QBuilder
+                .id('acceptance')
+                .text({root:'VIEW.SECTIONS.OFFER.STP.QUESTIONS.ACCEPTANCE', getTranslateValues: function(){return {compensation: $scope.offerModel.compensation};}})
+                .type('buttongroupbig')
+                .values([{label: 'OPTIONS.YES', value: 'YES'}, {label: 'OPTIONS.NO', value: 'NO'}])
+                .required(true)
+                .createQuestion();
+        }
     }]);
 angular.module('stpOfferTemplates', ['offer/common/policereport.tpl.html', 'offer/ltp/ltp.tpl.html', 'offer/ltp/thanks.tpl.html', 'offer/offer.tpl.html', 'offer/stp/stp.tpl.html', 'offer/stp/thanks.no.tpl.html', 'offer/stp/thanks.yes.tpl.html']);
 
@@ -167,7 +214,7 @@ angular.module("offer/stp/stp.tpl.html", []).run(["$templateCache", function($te
     "\n" +
     "    <div ng-if=\"!thankYouTemplate\">\n" +
     "        <div class=\"u-align-center u-bgcolor-blue-5\">\n" +
-    "            <fsm-question question=\"acceptanceQuestion\" translate-values=\"{compensation: offerModel.compensation}\"></fsm-question>\n" +
+    "            <fsm-question-group questions=\"group.questions\" ng-repeat=\"group in questionGroups\"></fsm-question-group>\n" +
     "        </div>\n" +
     "        <div class=\"u-align-center u-bgcolor-blue-4\">\n" +
     "            <button class=\"button button--primary u-spacing-above-narrow u-spacing-under-narrow u-no-transition\"\n" +
