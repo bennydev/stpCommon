@@ -102,7 +102,7 @@ angular.module('stpCommon.offer', [])
         function acceptance(){
             return QBuilder
                 .id('acceptance')
-                .text({root:'VIEW.SECTIONS.OFFER.STP.QUESTIONS.ACCEPTANCE', getTranslateValues: function(){return {compensation: $scope.offerModel.compensation};}})
+                .text({root:'VIEW.SECTIONS.OFFER.STP.QUESTIONS.ACCEPTANCE', getTranslateValues: function(){return {compensation: compensation};}})
                 .type('buttongroupbig')
                 .values([{label: 'OPTIONS.YES', value: 'YES'}, {label: 'OPTIONS.NO', value: 'NO'}])
                 .required(true)
