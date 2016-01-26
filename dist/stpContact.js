@@ -42,7 +42,7 @@ angular.module('stpCommon.contact', ['fsmQuestion'])
             }
             var phoneValidator = {
                 validate: function(question){
-                    var result = {valid: true, cause: 'format', message: question.textRoot+'.ERRORS.FORMAT'};
+                    var result = {valid: true, cause: 'format', message: question.text.root+'.ERRORS.INVALID'};
                     if(!isSwedenAndZeroOrOtherAndBlank(question)) {
                         result.valid = QuestionUtils.isNumeric(question.answer.phoneNumber.replace(/^[\s\.\-]*$/, ''));
                     }
@@ -54,7 +54,7 @@ angular.module('stpCommon.contact', ['fsmQuestion'])
                 .id('contactPhone')
                 .type(QuestionTypes.phone)
                 .text({ root:'VIEW.SECTIONS.EVENT.CONTACT_INFO.QUESTIONS.CONTACT_PHONE'})
-                .max(30)
+                .max(35)
                 .required(false)
                 .defaultAnswer({phoneNumber: '0', countryCode: CountryCodeService.getCountryCodes()[209]})
                 .values(CountryCodeService.getCountryCodes())
