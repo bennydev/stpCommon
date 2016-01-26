@@ -137,4 +137,10 @@ angular.module('stpCommon.header').factory('HeaderService', [function(){
         return policyHolderPersonId;
     }
 
+    function clearPolicyHolderInfo() {
+        setPolicyHolderFirstName('');
+        setPolicyHolderLastName('');
+        setPolicyHolderPersonId('');
+    }
+
 }]);
