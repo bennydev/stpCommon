@@ -19,6 +19,7 @@ describe('Contact Service tests.', function () {
         phone.answer.phoneNumber = '73123456789';
         expect(phone.answer.phoneNumber).toBe('73123456789');
     }));
+
     it('Should able able to validate country code and phone number.', inject(function(ContactService) {
         var contactGroups = ContactService.getQuestionGroups();
         var phone = contactGroups[0].questions[0];

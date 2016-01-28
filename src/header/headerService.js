@@ -32,7 +32,10 @@ angular.module('stpCommon.header').factory('HeaderService', [function(){
         setObjectName: setObjectName,
         getObjectName: getObjectName,
         setEventName: setEventName,
-        getEventName: getEventName
+        getEventName: getEventName,
+        clearPolicyHolderInfo: clearPolicyHolderInfo,
+        hasCustomerPersonId: hasCustomerPersonId,
+        hasPolicyHolderPersonId: hasPolicyHolderPersonId
 
     };
     return service;
@@ -141,6 +144,14 @@ angular.module('stpCommon.header').factory('HeaderService', [function(){
         setPolicyHolderFirstName('');
         setPolicyHolderLastName('');
         setPolicyHolderPersonId('');
+    }
+
+    function hasCustomerPersonId(personId) {
+        return personId === customerPersonId;
+    }
+
+    function hasPolicyHolderPersonId(personId) {
+        return personId === policyHolderPersonId;
     }
 
 }]);
