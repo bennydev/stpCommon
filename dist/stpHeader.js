@@ -177,11 +177,20 @@ angular.module("header/header.tpl.html", []).run(["$templateCache", function($te
 
 angular.module("header/siteHeader.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("header/siteHeader.tpl.html",
+    "<div class=\"content-wrapper\">\n" +
+    "    <div class=\"grid-wrapper\">\n" +
+    "        <nav class=\"breadcrumb\" role=\"navigation\">\n" +
+    "            <div><a href=\"html/pages/start-private.html\">Start</a></div>\n" +
+    "            <div><a href=\"javascript:;\">Skadeanmälan</a></div>\n" +
+    "            <span>Cykel</span>\n" +
+    "        </nav>\n" +
+    "    </div>\n" +
+    "</div>\n" +
+    "\n" +
     "<section class=\"masthead u-bgcolor-blue-2\" ng-show=\"HeaderService.showIdentificationHeader()\">\n" +
     "    <div class=\"content-wrapper\">\n" +
     "        <div class=\"masthead__content\">\n" +
     "            <p id=\"headerMessage\" class=\"masthead__intro\">{{'GENERAL.HEADER.MESSAGE' | translate}}</p>\n" +
-    "            <p id=\"headerContact\" class=\"masthead__contact\">{{'GENERAL.HEADER.CONTACT_US' | translate}} <a id=\"headerPhone\" href=\"tel://{{'GENERAL.HEADER.PHONE_NOFORMAT' | translate}}\" class=\"tel\" tabindex=\"-1\">{{'GENERAL.HEADER.PHONE' | translate}}</a></p>\n" +
     "        </div>\n" +
     "        <div class=\"masthead__img-container\">\n" +
     "            <!--[if IE 8]><img src=\"assets/svg/bg-masthead-claims.svg\" alt=\"\"><![endif]-->\n" +
@@ -195,7 +204,6 @@ angular.module("header/siteHeader.tpl.html", []).run(["$templateCache", function
     "        <div class=\"masthead__content\">\n" +
     "            <p id=\"headerGreeting\" translate translate-values=\"{firstName: HeaderService.getCustomer().firstName}\" class=\"masthead__intro\">GENERAL.HEADER.GREETING</p>\n" +
     "            <p id=\"headerMessage\" translate translate-values=\"{objectName: HeaderService.getObjectName(), eventName: HeaderService.getEventName()}\" class=\"masthead__largetype\">GENERAL.HEADER.MESSAGE</p>\n" +
-    "            <p id=\"headerContact\" class=\"masthead__contact\">{{'GENERAL.HEADER.CONTACT_US' | translate}} <a id=\"headerPhone\" href=\"tel://{{'VIEW.MOBILE.QUESTIONS.OBJECT.HEADER.PHONE_NOFORMAT' | translate}}\" class=\"tel\" tabindex=\"-1\">{{'GENERAL.HEADER.PHONE' | translate}}</a></p>\n" +
     "        </div>\n" +
     "        <div class=\"masthead__img-container\">\n" +
     "            <!--[if IE 8]><img src=\"assets/svg/bg-masthead-claims.svg\" alt=\"\"><![endif]-->\n" +
@@ -203,7 +211,8 @@ angular.module("header/siteHeader.tpl.html", []).run(["$templateCache", function
     "        </div>\n" +
     "    </div>\n" +
     "</section>\n" +
-    "");
+    "\n" +
+    "<div class=\"u-remove-spacing\"></div>");
 }]);
 
 angular.module("header/siteTop.tpl.html", []).run(["$templateCache", function($templateCache) {
