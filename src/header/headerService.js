@@ -1,11 +1,9 @@
 "use strict";
 angular.module('stpCommon.header').factory('HeaderService', [function(){
-    var customerFirstName;
-    var customerLastName;
-    var customerPersonId;
-    var policyHolderFirstName;
-    var policyHolderLastName;
-    var policyHolderPersonId;
+    var self = this;
+    self.customer = {firstName: '', lastName: '', personId: ''};
+    self.policyHolder = {firstName: '',lastName: '', personId: ''};
+
     var objectName;
     var eventName;
 
@@ -14,18 +12,10 @@ angular.module('stpCommon.header').factory('HeaderService', [function(){
         showIdentificationHeader: showIdentificationHeader,
         showSectionsHeader: showSectionsHeader,
         restart: restart,
-        setCustomerFirstName: setCustomerFirstName,
-        getCustomerFirstName: getCustomerFirstName,
-        setCustomerLastName: setCustomerLastName,
-        getCustomerLastName: getCustomerLastName,
-        setCustomerPersonId: setCustomerPersonId,
-        getCustomerPersonId: getCustomerPersonId,
-        setPolicyHolderFirstName: setPolicyHolderFirstName,
-        getPolicyHolderFirstName: getPolicyHolderFirstName,
-        setPolicyHolderLastName: setPolicyHolderLastName,
-        getPolicyHolderLastName: getPolicyHolderLastName,
-        setPolicyHolderPersonId: setPolicyHolderPersonId,
-        getPolicyHolderPersonId: getPolicyHolderPersonId,
+        setCustomer: setCustomer,
+        getCustomer: getCustomer,
+        setPolicyHolder: setPolicyHolder,
+        getPolicyHolder: getPolicyHolder,
         hasName: hasName,
         getCustomerFullName: getCustomerFullName,
         getPolicyHolderFullName: getPolicyHolderFullName,
@@ -35,7 +25,8 @@ angular.module('stpCommon.header').factory('HeaderService', [function(){
         getEventName: getEventName,
         clearPolicyHolderInfo: clearPolicyHolderInfo,
         hasCustomerPersonId: hasCustomerPersonId,
-        hasPolicyHolderPersonId: hasPolicyHolderPersonId
+        hasPolicyHolderPersonId: hasPolicyHolderPersonId,
+        setCustomerAsPolicyHolder: setCustomerAsPolicyHolder
 
     };
     return service;
@@ -58,6 +49,22 @@ angular.module('stpCommon.header').factory('HeaderService', [function(){
         return eventName;
     }
 
+    function setCustomer(customer) {
+        self.customer = customer;
+    }
+
+    function getCustomer() {
+        return self.customer;
+    }
+
+    function setPolicyHolder(policyHolder) {
+        self.policyHolder = policyHolder;
+    }
+
+    function getPolicyHolder() {
+        return self.policyHolder;
+    }
+
     function showCustomerInfo(){
         return true;
     }
@@ -70,47 +77,17 @@ angular.module('stpCommon.header').factory('HeaderService', [function(){
         return true;
     }
 
-    function setCustomerFirstName(name){
-        customerFirstName = name;
-    }
-
-    function getCustomerFirstName(){
-        return customerFirstName;
-    }
-
-    function setCustomerLastName(name){
-        customerLastName = name;
-    }
-
-    function getCustomerLastName(){
-        return customerLastName;
-    }
-
-    function setPolicyHolderFirstName(name){
-        policyHolderFirstName = name;
-    }
-
-    function getPolicyHolderFirstName(){
-        return policyHolderFirstName;
-    }
-
-    function setPolicyHolderLastName(name){
-        policyHolderLastName = name;
-    }
-    function getPolicyHolderLastName(){
-        return policyHolderLastName;
-    }
 
     function hasName(){
-        return !! customerFirstName || policyHolderFirstName;
+        return !! self.customer.firstName ||self.policyHolder.firstName;
     }
 
     function getCustomerFullName(){
-        return fullName(customerFirstName, customerLastName);
+        return fullName(self.customer.firstName, self.customer.lastName);
     }
 
     function getPolicyHolderFullName(){
-        return fullName(policyHolderFirstName, policyHolderLastName);
+        return fullName(self.policyHolder.firstName, self.policyHolder.lastName);
     }
 
     function fullName(firstName, lastName){
@@ -124,34 +101,21 @@ angular.module('stpCommon.header').factory('HeaderService', [function(){
         return wholeName;
     }
 
-    function setCustomerPersonId(id){
-        customerPersonId = id;
-    }
-
-    function getCustomerPersonId(){
-        return customerPersonId;
-    }
-
-    function setPolicyHolderPersonId(id){
-        policyHolderPersonId = id;
-    }
-
-    function getPolicyHolderPersonId(){
-        return policyHolderPersonId;
-    }
 
     function clearPolicyHolderInfo() {
-        setPolicyHolderFirstName('');
-        setPolicyHolderLastName('');
-        setPolicyHolderPersonId('');
+        self.policyHolder = {};
     }
 
     function hasCustomerPersonId(personId) {
-        return personId === customerPersonId;
+        return personId === self.customer.personId;
     }
 
     function hasPolicyHolderPersonId(personId) {
-        return personId === policyHolderPersonId;
+        return personId === self.policyHolder.personId;
+    }
+
+    function setCustomerAsPolicyHolder() {
+        self.policyHolder = self.customer;
     }
 
 }]);

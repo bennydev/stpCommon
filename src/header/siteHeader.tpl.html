@@ -14,7 +14,7 @@
 <section class="masthead u-bgcolor-blue-2" ng-show="HeaderService.showSectionsHeader()">
     <div class="content-wrapper">
         <div class="masthead__content">
-            <p id="headerGreeting" translate translate-values="{firstName: HeaderService.getCustomerFirstName()}" class="masthead__intro">GENERAL.HEADER.GREETING</p>
+            <p id="headerGreeting" translate translate-values="{firstName: HeaderService.getCustomer().firstName}" class="masthead__intro">GENERAL.HEADER.GREETING</p>
             <p id="headerMessage" translate translate-values="{objectName: HeaderService.getObjectName(), eventName: HeaderService.getEventName()}" class="masthead__largetype">GENERAL.HEADER.MESSAGE</p>
             <p id="headerContact" class="masthead__contact">{{'GENERAL.HEADER.CONTACT_US' | translate}} <a id="headerPhone" href="tel://{{'VIEW.MOBILE.QUESTIONS.OBJECT.HEADER.PHONE_NOFORMAT' | translate}}" class="tel" tabindex="-1">{{'GENERAL.HEADER.PHONE' | translate}}</a></p>
         </div>

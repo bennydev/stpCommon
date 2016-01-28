@@ -8,12 +8,10 @@ angular.module('stpCommon.header')
 }]);
 "use strict";
 angular.module('stpCommon.header').factory('HeaderService', [function(){
-    var customerFirstName;
-    var customerLastName;
-    var customerPersonId;
-    var policyHolderFirstName;
-    var policyHolderLastName;
-    var policyHolderPersonId;
+    var self = this;
+    self.customer = {firstName: '', lastName: '', personId: ''};
+    self.policyHolder = {firstName: '',lastName: '', personId: ''};
+
     var objectName;
     var eventName;
 
@@ -22,18 +20,10 @@ angular.module('stpCommon.header').factory('HeaderService', [function(){
         showIdentificationHeader: showIdentificationHeader,
         showSectionsHeader: showSectionsHeader,
         restart: restart,
-        setCustomerFirstName: setCustomerFirstName,
-        getCustomerFirstName: getCustomerFirstName,
-        setCustomerLastName: setCustomerLastName,
-        getCustomerLastName: getCustomerLastName,
-        setCustomerPersonId: setCustomerPersonId,
-        getCustomerPersonId: getCustomerPersonId,
-        setPolicyHolderFirstName: setPolicyHolderFirstName,
-        getPolicyHolderFirstName: getPolicyHolderFirstName,
-        setPolicyHolderLastName: setPolicyHolderLastName,
-        getPolicyHolderLastName: getPolicyHolderLastName,
-        setPolicyHolderPersonId: setPolicyHolderPersonId,
-        getPolicyHolderPersonId: getPolicyHolderPersonId,
+        setCustomer: setCustomer,
+        getCustomer: getCustomer,
+        setPolicyHolder: setPolicyHolder,
+        getPolicyHolder: getPolicyHolder,
         hasName: hasName,
         getCustomerFullName: getCustomerFullName,
         getPolicyHolderFullName: getPolicyHolderFullName,
@@ -43,7 +33,8 @@ angular.module('stpCommon.header').factory('HeaderService', [function(){
         getEventName: getEventName,
         clearPolicyHolderInfo: clearPolicyHolderInfo,
         hasCustomerPersonId: hasCustomerPersonId,
-        hasPolicyHolderPersonId: hasPolicyHolderPersonId
+        hasPolicyHolderPersonId: hasPolicyHolderPersonId,
+        setCustomerAsPolicyHolder: setCustomerAsPolicyHolder
 
     };
     return service;
@@ -66,6 +57,22 @@ angular.module('stpCommon.header').factory('HeaderService', [function(){
         return eventName;
     }
 
+    function setCustomer(customer) {
+        self.customer = customer;
+    }
+
+    function getCustomer() {
+        return self.customer;
+    }
+
+    function setPolicyHolder(policyHolder) {
+        self.policyHolder = policyHolder;
+    }
+
+    function getPolicyHolder() {
+        return self.policyHolder;
+    }
+
     function showCustomerInfo(){
         return true;
     }
@@ -78,47 +85,17 @@ angular.module('stpCommon.header').factory('HeaderService', [function(){
         return true;
     }
 
-    function setCustomerFirstName(name){
-        customerFirstName = name;
-    }
-
-    function getCustomerFirstName(){
-        return customerFirstName;
-    }
-
-    function setCustomerLastName(name){
-        customerLastName = name;
-    }
-
-    function getCustomerLastName(){
-        return customerLastName;
-    }
-
-    function setPolicyHolderFirstName(name){
-        policyHolderFirstName = name;
-    }
-
-    function getPolicyHolderFirstName(){
-        return policyHolderFirstName;
-    }
-
-    function setPolicyHolderLastName(name){
-        policyHolderLastName = name;
-    }
-    function getPolicyHolderLastName(){
-        return policyHolderLastName;
-    }
 
     function hasName(){
-        return !! customerFirstName || policyHolderFirstName;
+        return !! self.customer.firstName ||self.policyHolder.firstName;
     }
 
     function getCustomerFullName(){
-        return fullName(customerFirstName, customerLastName);
+        return fullName(self.customer.firstName, self.customer.lastName);
     }
 
     function getPolicyHolderFullName(){
-        return fullName(policyHolderFirstName, policyHolderLastName);
+        return fullName(self.policyHolder.firstName, self.policyHolder.lastName);
     }
 
     function fullName(firstName, lastName){
@@ -132,34 +109,21 @@ angular.module('stpCommon.header').factory('HeaderService', [function(){
         return wholeName;
     }
 
-    function setCustomerPersonId(id){
-        customerPersonId = id;
-    }
-
-    function getCustomerPersonId(){
-        return customerPersonId;
-    }
-
-    function setPolicyHolderPersonId(id){
-        policyHolderPersonId = id;
-    }
-
-    function getPolicyHolderPersonId(){
-        return policyHolderPersonId;
-    }
 
     function clearPolicyHolderInfo() {
-        setPolicyHolderFirstName('');
-        setPolicyHolderLastName('');
-        setPolicyHolderPersonId('');
+        self.policyHolder = {};
     }
 
     function hasCustomerPersonId(personId) {
-        return personId === customerPersonId;
+        return personId === self.customer.personId;
     }
 
     function hasPolicyHolderPersonId(personId) {
-        return personId === policyHolderPersonId;
+        return personId === self.policyHolder.personId;
+    }
+
+    function setCustomerAsPolicyHolder() {
+        self.policyHolder = self.customer;
     }
 
 }]);
@@ -185,11 +149,11 @@ angular.module("header/customerInfo.tpl.html", []).run(["$templateCache", functi
     "            <div class=\"grid__item md--eight-twelfths u-space-words\">\n" +
     "                <div class=\"u-inline-block\">\n" +
     "                    <b>{{'GENERAL.CUSTOMER_INFO.NOTIFIER' | translate}}</b>\n" +
-    "                    <span id=\"notifierName\">{{HeaderService.getCustomerFullName() ? (HeaderService.getCustomerFullName() | capitalAndLowerCase) : HeaderService.getCustomerPersonId()}}</span>\n" +
+    "                    <span id=\"notifierName\">{{HeaderService.getCustomerFullName() ? (HeaderService.getCustomerFullName() | capitalAndLowerCase) : HeaderService.getCustomer().personId}}</span>\n" +
     "                </div>\n" +
     "                <div class=\"u-inline-block\">\n" +
     "                    <b>{{'GENERAL.CUSTOMER_INFO.POLICYHOLDER' | translate}}</b>\n" +
-    "                    <span id=\"policyHolderName\">{{HeaderService.getPolicyHolderFullName() ? (HeaderService.getPolicyHolderFullName() | capitalAndLowerCase) : HeaderService.getPolicyHolderPersonId()}}</span>\n" +
+    "                    <span id=\"policyHolderName\">{{HeaderService.getPolicyHolderFullName() ? (HeaderService.getPolicyHolderFullName() | capitalAndLowerCase) : HeaderService.getPolicyHolder().personId}}</span>\n" +
     "                </div>\n" +
     "            </div>\n" +
     "            <div class=\"grid__item md--four-twelfths\">\n" +
@@ -229,7 +193,7 @@ angular.module("header/siteHeader.tpl.html", []).run(["$templateCache", function
     "<section class=\"masthead u-bgcolor-blue-2\" ng-show=\"HeaderService.showSectionsHeader()\">\n" +
     "    <div class=\"content-wrapper\">\n" +
     "        <div class=\"masthead__content\">\n" +
-    "            <p id=\"headerGreeting\" translate translate-values=\"{firstName: HeaderService.getCustomerFirstName()}\" class=\"masthead__intro\">GENERAL.HEADER.GREETING</p>\n" +
+    "            <p id=\"headerGreeting\" translate translate-values=\"{firstName: HeaderService.getCustomer().firstName}\" class=\"masthead__intro\">GENERAL.HEADER.GREETING</p>\n" +
     "            <p id=\"headerMessage\" translate translate-values=\"{objectName: HeaderService.getObjectName(), eventName: HeaderService.getEventName()}\" class=\"masthead__largetype\">GENERAL.HEADER.MESSAGE</p>\n" +
     "            <p id=\"headerContact\" class=\"masthead__contact\">{{'GENERAL.HEADER.CONTACT_US' | translate}} <a id=\"headerPhone\" href=\"tel://{{'VIEW.MOBILE.QUESTIONS.OBJECT.HEADER.PHONE_NOFORMAT' | translate}}\" class=\"tel\" tabindex=\"-1\">{{'GENERAL.HEADER.PHONE' | translate}}</a></p>\n" +
     "        </div>\n" +
