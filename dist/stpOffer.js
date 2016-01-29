@@ -43,8 +43,8 @@ angular.module('stpCommon.offer', [])
     }])
     .controller('STPCtrl', ['$scope', '$window', 'OfferService', 'HeaderService', 'ErrorReporter', 'QuestionService', 'STPService', function($scope, $window, OfferService, HeaderService, ErrorReporter, QuestionService, STPService){
         $scope.offerModel = OfferService.getOfferModel();
-        $scope.customer = {fullName: HeaderService.getCustomerFullName() ? HeaderService.getCustomerFullName() : HeaderService.getCustomerPersonId()};
-        $scope.policyHolder = {fullName: HeaderService.getPolicyHolderFullName() ? HeaderService.getPolicyHolderFullName() : HeaderService.getPolicyHolderPersonId()};
+        $scope.customer = {fullName: HeaderService.getCustomerFullName() ? HeaderService.getCustomerFullName() : HeaderService.getCustomer().personId};
+        $scope.policyHolder = {fullName: HeaderService.getPolicyHolderFullName() ? HeaderService.getPolicyHolderFullName() : HeaderService.getPolicyHolder().personId};
         STPService.setCompensation($scope.offerModel.compensation);
         $scope.questionGroups = STPService.getQuestionGroups();
         if(STPService.isOfferConfirmed()){
