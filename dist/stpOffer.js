@@ -244,14 +244,14 @@ angular.module("offer/stp/stp.tpl.html", []).run(["$templateCache", function($te
     "        </div>\n" +
     "        <div class=\"u-align-center u-bgcolor-blue-4\">\n" +
     "            <button class=\"button button--primary u-spacing-above-narrow u-spacing-under-narrow u-no-transition\"\n" +
+    "                    id=\"offerConfirmationYes\"\n" +
     "                    ng-show=\"acceptanceQuestion.answer !== 'NO'\"\n" +
     "                    ng-click=\"confirmOffer();\"\n" +
-    "                    name=\"offerConfirmation\"\n" +
     "                    translate>VIEW.SECTIONS.OFFER.STP.CONFIRM_OFFER\n" +
     "            </button>\n" +
     "            <button class=\"button button--primary u-spacing-above-narrow u-spacing-under-narrow u-no-transition\"\n" +
     "                    ng-show=\"acceptanceQuestion.answer === 'NO'\"\n" +
-    "                    id=\"offerConfirmation\"\n" +
+    "                    id=\"offerConfirmationNo\"\n" +
     "                    name=\"noOfferConfirmation\"\n" +
     "                    ng-click=\"confirmOffer();\"\n" +
     "                    ng-cloak translate>VIEW.SECTIONS.OFFER.STP.CONTACT_ME\n" +
