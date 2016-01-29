@@ -177,16 +177,6 @@ angular.module("header/header.tpl.html", []).run(["$templateCache", function($te
 
 angular.module("header/siteHeader.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("header/siteHeader.tpl.html",
-    "<div class=\"content-wrapper\">\n" +
-    "    <div class=\"grid-wrapper\">\n" +
-    "        <nav class=\"breadcrumb\" role=\"navigation\">\n" +
-    "            <div><a href=\"html/pages/start-private.html\">Start</a></div>\n" +
-    "            <div><a href=\"javascript:;\">Skadeanmälan</a></div>\n" +
-    "            <span>Cykel</span>\n" +
-    "        </nav>\n" +
-    "    </div>\n" +
-    "</div>\n" +
-    "\n" +
     "<section class=\"masthead u-bgcolor-blue-2\" ng-show=\"HeaderService.showIdentificationHeader()\">\n" +
     "    <div class=\"content-wrapper\">\n" +
     "        <div class=\"masthead__content\">\n" +
