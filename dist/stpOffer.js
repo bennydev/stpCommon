@@ -47,6 +47,7 @@ angular.module('stpCommon.offer', [])
         $scope.policyHolder = {fullName: HeaderService.getPolicyHolderFullName() ? HeaderService.getPolicyHolderFullName() : HeaderService.getPolicyHolder().personId};
         STPService.setCompensation($scope.offerModel.compensation);
         $scope.questionGroups = STPService.getQuestionGroups();
+        $scope.acceptanceQuestion = QuestionService.getQuestion('acceptance');
         if(STPService.isOfferConfirmed()){
             $scope.thankYouTemplate = STPService.getThankYouTemplate();
         }
