@@ -1,5 +1,5 @@
 "use strict";
-angular.module('stpCommon.header').factory('HeaderService', [function(){
+angular.module('stpCommon.header').factory('HeaderService', ['$filter', function($filter){
     var self = this;
     self.customer = {firstName: '', lastName: '', personId: ''};
     self.policyHolder = {firstName: '',lastName: '', personId: ''};
@@ -51,6 +51,7 @@ angular.module('stpCommon.header').factory('HeaderService', [function(){
 
     function setCustomer(customer) {
         self.customer = customer;
+        toCapitalAndLowerCase(self.customer);
     }
 
     function getCustomer() {
@@ -59,6 +60,7 @@ angular.module('stpCommon.header').factory('HeaderService', [function(){
 
     function setPolicyHolder(policyHolder) {
         self.policyHolder = policyHolder;
+        toCapitalAndLowerCase(self.policyHolder);
     }
 
     function getPolicyHolder() {
@@ -116,6 +118,15 @@ angular.module('stpCommon.header').factory('HeaderService', [function(){
 
     function setCustomerAsPolicyHolder() {
         self.policyHolder = self.customer;
+    }
+
+    function toCapitalAndLowerCase(customerObject) {
+        if (customerObject.firstName) {
+            customerObject.firstName = $filter('capitalAndLowerCase')(customerObject.firstName);
+        }
+        if (customerObject.lastName) {
+            customerObject.lastName = $filter('capitalAndLowerCase')(customerObject.lastName);
+        }
     }
 
 }]);
