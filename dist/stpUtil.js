@@ -12,7 +12,8 @@ angular.module('stpCommon.util')
     .factory('FsmScroll', ['$timeout', function ($timeout) {
 
         var fsmScroll = {
-            scrollToFirstError:scrollToFirstError
+            scrollToFirstError : scrollToFirstError,
+            scrollTo : scrollTo
         };
 
         function scrollToFirstError() {
@@ -29,6 +30,13 @@ angular.module('stpCommon.util')
                         $el.focus();
                     });
                 }
+            }, 250);
+        }
+        function scrollTo(element){
+            $timeout(function () {
+                $('html, body').animate({
+                    scrollTop: element.length > 0 ? element.offset().top : 0
+                }, 250);
             }, 250);
         }
 
