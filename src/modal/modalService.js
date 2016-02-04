@@ -2,20 +2,14 @@
 angular.module('stpCommon.modal', [])
     .factory('ModalService', ['$window', function($window){
         var error = {};
-        var modalTemplate;
         var service = {
             error: error,
             openError: openError,
             open: open,
-            close: close,
-            getModalTemplate: getModalTemplate
+            close: close
         };
 
         return service;
-
-        function getModalTemplate(){
-            return modalTemplate;
-        }
 
         function openError(textRoot){
             error.title = textRoot +".TITLE";
@@ -25,7 +19,7 @@ angular.module('stpCommon.modal', [])
         }
 
         function open(template){
-            modalTemplate = template;
+            service.modalTemplate = template;
             $window.fdr.modal.open('#modal');
         }
 
@@ -34,8 +28,5 @@ angular.module('stpCommon.modal', [])
         }
     }])
     .controller('ModalCtrl', ['$scope', 'ModalService', function($scope, ModalService){
-        $scope.modalTemplate = ModalService.getModalTemplate();
-    }])
-    .controller('ModalErrorCtrl', ['$scope', 'ModalService', function($scope, ModalService){
         $scope.ModalService = ModalService;
     }]);
