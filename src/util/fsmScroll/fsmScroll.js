@@ -1,8 +1,8 @@
 "use strict";
 angular.module('stpCommon.util')
-    .factory('fsmScroll', ['$timeout', function ($timeout) {
+    .factory('FsmScroll', ['$timeout', function ($timeout) {
 
-        var fsmScroll ={
+        var fsmScroll = {
             scrollToFirstError:scrollToFirstError
         };
 

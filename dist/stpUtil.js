@@ -1,17 +1,17 @@
 "use strict";
-angular.module('stpCommon.util', []).factory('StpUtils', ['TransactionIdGenerator','fsmScroll', function(TransactionIdGenerator, fsmScroll) {
+angular.module('stpCommon.util', []).factory('StpUtils', ['TransactionIdGenerator','FsmScroll', function(TransactionIdGenerator, FsmScroll) {
    var utils = {};
 
     utils.transactionIdGenerator = TransactionIdGenerator;
-    utils.fsmScroll = fsmScroll;
+    utils.fsmScroll = FsmScroll;
 
     return utils;
 }]);
 "use strict";
 angular.module('stpCommon.util')
-    .factory('fsmScroll', ['$timeout', function ($timeout) {
+    .factory('FsmScroll', ['$timeout', function ($timeout) {
 
-        var fsmScroll ={
+        var fsmScroll = {
             scrollToFirstError:scrollToFirstError
         };
 
