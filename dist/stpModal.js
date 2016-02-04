@@ -36,7 +36,7 @@ angular.module("modal/modal.tpl.html", []).run(["$templateCache", function($temp
   $templateCache.put("modal/modal.tpl.html",
     "<div class=\"modal-backdrop\"></div>\n" +
     "<div class=\"modal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"modal\" id=\"modal\" ng-controller=\"ModalCtrl\">\n" +
-    "    <div class=\"modal__dialog\" role=\"document\">\n" +
+    "    <div class=\"modal__content modal__content--dialog\" role=\"document\">\n" +
     "        <ng-include src=\"ModalService.modalTemplate\"></ng-include>\n" +
     "    </div>\n" +
     "</div>");
