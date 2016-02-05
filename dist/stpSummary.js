@@ -22,7 +22,7 @@ angular.module("summary/summary.tpl.html", []).run(["$templateCache", function($
     "\n" +
     "        <div ng-repeat=\"summaryContainer in summaryModel track by $index\">\n" +
     "            <h3>{{summaryContainer.header | translate}}</h3>\n" +
-    "            <a href=\"#questions-about-your-phone\"\n" +
+    "            <a href=\"#{{summaryContainer.section}}\"\n" +
     "               ng-click=\"goTo(summaryContainer.section)\"\n" +
     "               class=\"form-section__change u-font-bold slidedown-anchor\" translate>VIEW.SECTIONS.SUMMARY.CHANGE</a>\n" +
     "            <table class=\"standard-table standard-table--summary standard-table--fixed\">\n" +
