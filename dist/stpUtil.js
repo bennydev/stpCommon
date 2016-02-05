@@ -32,16 +32,16 @@ angular.module('stpCommon.util')
                 }
             }, 250);
         }
+
         function scrollTo(element){
             $timeout(function () {
                 $('html, body').animate({
-                    scrollTop: element.length > 0 ? element.offset().top : 0
+                    scrollTop: typeof element === "number" ? element : element.offset().top
+                    //scrollTop: element.length > 0 ? element.offset().top : 0
                 }, 250);
             }, 250);
         }
-
         return fsmScroll;
-
     }]);
 
 
