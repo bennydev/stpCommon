@@ -57,6 +57,7 @@ module.exports = function (grunt) {
                     'src/navigation/**/*',
                     'src/summary/**/*',
                     'src/offer/**/*',
+                    'src/productSearch/**/*',
                     'src/util/util.js',
                     'src/util/**/*',
                     'karma/helpers/**/*.js',
@@ -163,6 +164,13 @@ module.exports = function (grunt) {
                 ],
                 dest: 'dist/stpOffer.js'
             },
+            compile_productSearch_js: {
+                src: [
+                    'build/src/productSearch/*.js',
+                    '!build/src/**/*.spec.js'
+                ],
+                dest: 'dist/stpProductSearch.js'
+            },
            compile_util_js: {
                 src: [
                     'build/src/util/*.js',
@@ -211,6 +219,7 @@ module.exports = function (grunt) {
                     'src/modal/*.js',
                     'src/navigation/*.js',
                     'src/offer/*.js',
+                    'src/productSearch/*.js',
                     'src/summary/*.js',
                     'src/util/*.js',
                     '!src/**/*.spec.js',
