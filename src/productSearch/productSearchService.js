@@ -202,6 +202,7 @@ angular.module('stpCommon.productSearch', []).factory('SearchService', ['$http',
     }
     return {
         getContext: getContext,
+        getBaseUrl: getBaseUrl,
         getInitValues: getInitValues,
         getValuesForParam: getValuesForParam,
         getMatchingProducts: filterProducts,
