@@ -3,12 +3,11 @@ angular.module('stpCommon.productSearch', []).factory('SearchService', ['$http',
     var currentContext;
     var baseUrl;
     var requestConfig = {timeout: 7000};
-    var defaultProductFilter = {
-        filterProduct: defaultFilterProducts
-    };
+    var defaultFilterProducts = defaultFilterProducts;
     var defaultInitialDataLoader = {
         getInitValues: defaultGetInitValues
     };
+
 
     function getContext() {
         return currentContext;
@@ -155,7 +154,7 @@ angular.module('stpCommon.productSearch', []).factory('SearchService', ['$http',
             params: '',
             uri: '',
             objectSearchUri: '',
-            productsFilter: defaultProductFilter,
+            filterProducts: defaultFilterProducts,
             initialDataLoader: defaultInitialDataLoader,
             getRelevantData: function (data) {
                 return data;
@@ -178,8 +177,8 @@ angular.module('stpCommon.productSearch', []).factory('SearchService', ['$http',
                 context.objectSearchUri = objectSearchUrl;
                 return this;
             },
-            productsFilter: function (productsFilter) {
-                context.productsFilter = productsFilter;
+            filterProducts: function (filterProducts) {
+                context.filterProducts = filterProducts;
                 return this;
             },
             initialDataLoader: function (initialDataloader) {
@@ -192,7 +191,7 @@ angular.module('stpCommon.productSearch', []).factory('SearchService', ['$http',
             },
             createContext: function () {
                 if (!(context.initParam && context.params && context.uri && context.objectSearchUri &&
-                    context.productsFilter && context.initialDataLoader && context.getRelevantData)) {
+                    context.filterProducts && context.initialDataLoader && context.getRelevantData)) {
                     throw new Error('ContextBuilder: Context was not initialized correctly.' +
                         ' Make sure you have set all mandatory fields.')
                 }
