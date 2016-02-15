@@ -74,6 +74,7 @@ angular.module('stpCommon.productSearch', []).factory('SearchService', ['$http',
 
     function getProducts() {
         if (currentContext.products.length === 0) {
+            console.log('No products, new REST call.');
             var value = currentContext.searchValues[currentContext.initParam];
             var productsUri = currentContext.productUriMap[value];
 
@@ -89,6 +90,7 @@ angular.module('stpCommon.productSearch', []).factory('SearchService', ['$http',
     function filterProducts() {
         return currentContext.filterProducts();
     }
+
     function defaultFilterProducts() {
         return getProducts().then(
             getMatchingProducts,
@@ -132,11 +134,15 @@ angular.module('stpCommon.productSearch', []).factory('SearchService', ['$http',
         return Object.keys(values);
     }
 
-    function getValuesForParam(param){
+    function defaultGetValuesForParam(param){
         return filterProducts().then(
             function(products){return getValuesSuccess(products, param);},
             promiseError
         );
+    }
+
+    function getValuesForParam(param) {
+        return currentContext.getValuesForParam(param);
     }
 
     function resetSearch(){
@@ -155,6 +161,7 @@ angular.module('stpCommon.productSearch', []).factory('SearchService', ['$http',
             uri: '',
             objectSearchUri: '',
             filterProducts: defaultFilterProducts,
+            getValuesForParam: defaultGetValuesForParam,
             initialDataLoader: defaultInitialDataLoader,
             getRelevantData: function (data) {
                 return data;
@@ -183,6 +190,10 @@ angular.module('stpCommon.productSearch', []).factory('SearchService', ['$http',
             },
             initialDataLoader: function (initialDataloader) {
                 context.initialDataLoader = initialDataloader;
+                return this;
+            },
+            getValuesForParam: function (getValuesForParam) {
+                context.getValuesForParam = getValuesForParam;
                 return this;
             },
             getRelevantData: function (getRelevantData) {
