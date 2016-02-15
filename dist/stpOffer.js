@@ -62,11 +62,12 @@ angular.module('stpCommon.offer', [])
             $window.print();
         };
     }])
-    .factory('STPService', ['QuestionService', function(QuestionService){
+    .factory('STPService', ['QuestionService', '$filter', function(QuestionService, $filter){
         var compensation;
         var offerConfirmed = false;
         var QBuilder = QuestionService.getQuestionBuilder();
         var questionsCreated = false;
+        var currency = $filter('currency');
         var service = {
             setCompensation: setCompensation,
             getQuestionGroups: getQuestionGroups,
@@ -77,6 +78,9 @@ angular.module('stpCommon.offer', [])
             isOfferConfirmed: isOfferConfirmed
 
         };
+        function asCurrency(value){
+            return currency(value, undefined, 0);
+        }
         return service;
 
         function isOfferConfirmed(){
@@ -129,7 +133,7 @@ angular.module('stpCommon.offer', [])
         function acceptance(){
             return QBuilder
                 .id('acceptance')
-                .text({root:'VIEW.SECTIONS.OFFER.STP.QUESTIONS.ACCEPTANCE', getTranslateValues: function(){return {compensation: compensation};}})
+                .text({root:'VIEW.SECTIONS.OFFER.STP.QUESTIONS.ACCEPTANCE', getTranslateValues: function(){return {compensation: asCurrency(compensation)};}})
                 .type('buttongroupbig')
                 .values([{label: 'OPTIONS.YES', value: 'YES'}, {label: 'OPTIONS.NO', value: 'NO'}])
                 .required(true)
@@ -222,14 +226,14 @@ angular.module("offer/stp/stp.tpl.html", []).run(["$templateCache", function($te
     "                    <td>\n" +
     "                        <span ng-if=\"row.type === '-'\"> -</span>\n" +
     "                        <span ng-if=\"row.type === '+'\"> </span>\n" +
-    "                        {{row.value}}\n" +
+    "                        {{row.value | currency : undefined : 0}}\n" +
     "                    </td>\n" +
     "                </tr>\n" +
     "            </tbody>\n" +
     "            <tfoot>\n" +
     "                <tr>\n" +
     "                    <th translate>VIEW.SECTIONS.OFFER.STP.PAYMENT_HEADING</th>\n" +
-    "                    <td>{{offerModel.compensation}}</td>\n" +
+    "                    <td>{{offerModel.compensation | currency : undefined : 0}}</td>\n" +
     "                </tr>\n" +
     "            </tfoot>\n" +
     "\n" +

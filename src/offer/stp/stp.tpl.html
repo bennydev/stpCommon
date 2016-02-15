@@ -30,14 +30,14 @@
                     <td>
                         <span ng-if="row.type === '-'"> -</span>
                         <span ng-if="row.type === '+'"> </span>
-                        {{row.value}}
+                        {{row.value | currency : undefined : 0}}
                     </td>
                 </tr>
             </tbody>
             <tfoot>
                 <tr>
                     <th translate>VIEW.SECTIONS.OFFER.STP.PAYMENT_HEADING</th>
-                    <td>{{offerModel.compensation}}</td>
+                    <td>{{offerModel.compensation | currency : undefined : 0}}</td>
                 </tr>
             </tfoot>
 
