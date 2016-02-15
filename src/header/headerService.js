@@ -2,7 +2,7 @@
 angular.module('stpCommon.header').factory('HeaderService', ['$filter', function($filter){
     var self = this;
     self.customer = {firstName: '', lastName: '', personId: ''};
-    self.policyHolder = {};//{firstName: '',lastName: '', personId: ''};
+    self.policyHolder = {firstName: '',lastName: '', personId: ''};
 
     var objectName;
     var eventName;
