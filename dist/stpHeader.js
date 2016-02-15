@@ -222,7 +222,7 @@ angular.module("header/siteTop.tpl.html", []).run(["$templateCache", function($t
     "    <div class=\"site-top site-top--non-sticky\">\n" +
     "        <header class=\"site-header\" role=\"banner\">\n" +
     "            <div class=\"content-wrapper\">\n" +
-    "                    <a class=\"site-header__logo icon icon-folksam\" tabindex=\"-1\" href=\"http://www.folksam.se\" target=\"_top\">\n" +
+    "                    <a class=\"site-header__logo icon icon-folksam\" tabindex=\"-1\" href=\"https://www.folksam.se\" target=\"_top\">\n" +
     "                        <span>Folksam</span>\n" +
     "                    </a>\n" +
     "            </div>\n" +
