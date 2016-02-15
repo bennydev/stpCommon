@@ -266,7 +266,7 @@ angular.module("offer/stp/stp.tpl.html", []).run(["$templateCache", function($te
 
 angular.module("offer/stp/thanks.no.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("offer/stp/thanks.no.tpl.html",
-    "<div class=\"u-bgcolor-blue-5 u-small-type\">\n" +
+    "<div class=\"u-bgcolor-blue-5 u-small-type\"  id=\"slidedown-wrapper-offerRejected\">\n" +
     "    <div class=\"grid-wrapper\">\n" +
     "        <div class=\"u-padding-above\">\n" +
     "\n" +
@@ -296,12 +296,13 @@ angular.module("offer/stp/thanks.no.tpl.html", []).run(["$templateCache", functi
     "\n" +
     "<div class=\"u-align-center u-bgcolor-blue-4\">\n" +
     "    <button class=\"button u-spacing-above-narrow u-spacing-under-narrow js-print\" ng-click=\"print();\"><i class=\"icon icon-print\"></i> {{'VIEW.SECTIONS.OFFER.STP.PRINT' | translate}}</button>\n" +
-    "</div>");
+    "</div>\n" +
+    "");
 }]);
 
 angular.module("offer/stp/thanks.yes.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("offer/stp/thanks.yes.tpl.html",
-    "<div class=\"u-bgcolor-blue-5 u-small-type\">\n" +
+    "<div class=\"u-bgcolor-blue-5 u-small-type\"  id=\"slidedown-wrapper-offerAccepted\">\n" +
     "    <div class=\"grid-wrapper\">\n" +
     "        <div class=\"u-padding-above\">\n" +
     "\n" +
