@@ -6,7 +6,7 @@
                 <div class="grid__item sm--one-half">
                     <h3 class="u-typography-2" translate>VIEW.SECTIONS.OFFER.STP.HEADER</h3>
 
-                    <p translate translate-values="{compensation: offerModel.compensation | currency : undefined : 0}">VIEW.SECTIONS.OFFER.STP.INFO_COMPENSATION</p>
+                    <p translate translate-values="{compensation: (offerModel.compensation | currency : undefined : 0)}">VIEW.SECTIONS.OFFER.STP.INFO_COMPENSATION</p>
 
                     <p ng-if="!offerModel.customerIsPolicyHolder">{{'VIEW.SECTIONS.OFFER.STP.PAYMENT_RECIEVER' | translate}}</p>
                 </div>

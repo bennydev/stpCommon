@@ -202,7 +202,7 @@ angular.module("offer/stp/stp.tpl.html", []).run(["$templateCache", function($te
     "                <div class=\"grid__item sm--one-half\">\n" +
     "                    <h3 class=\"u-typography-2\" translate>VIEW.SECTIONS.OFFER.STP.HEADER</h3>\n" +
     "\n" +
-    "                    <p translate translate-values=\"{compensation: offerModel.compensation | currency : undefined : 0}\">VIEW.SECTIONS.OFFER.STP.INFO_COMPENSATION</p>\n" +
+    "                    <p translate translate-values=\"{compensation: (offerModel.compensation | currency : undefined : 0)}\">VIEW.SECTIONS.OFFER.STP.INFO_COMPENSATION</p>\n" +
     "\n" +
     "                    <p ng-if=\"!offerModel.customerIsPolicyHolder\">{{'VIEW.SECTIONS.OFFER.STP.PAYMENT_RECIEVER' | translate}}</p>\n" +
     "                </div>\n" +
