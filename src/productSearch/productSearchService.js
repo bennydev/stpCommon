@@ -74,7 +74,6 @@ angular.module('stpCommon.productSearch', []).factory('SearchService', ['$http',
 
     function getProducts() {
         if (currentContext.products.length === 0) {
-            console.log('No products, new REST call.');
             var value = currentContext.searchValues[currentContext.initParam];
             var productsUri = currentContext.productUriMap[value];
 
