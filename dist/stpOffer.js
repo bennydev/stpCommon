@@ -278,7 +278,7 @@ angular.module("offer/stp/thanks.no.tpl.html", []).run(["$templateCache", functi
     "\n" +
     "            <div class=\"grid grid--wide\">\n" +
     "                <div class=\"grid__item sm--one-half\">\n" +
-    "                    <p translate translate-values=\"{compensation: offerModel.compensation, claimId: offerModel.getClaimId()}\">VIEW.SECTIONS.OFFER.STP.THANKS_NO.INFO_REJECTED_CONTACT_CLAIM_ID</p>\n" +
+    "                    <p translate translate-values=\"{compensation: (offerModel.compensation | currency : undefined : 0), claimId: offerModel.getClaimId()}\">VIEW.SECTIONS.OFFER.STP.THANKS_NO.INFO_REJECTED_CONTACT_CLAIM_ID</p>\n" +
     "                    <p translate>VIEW.SECTIONS.OFFER.STP.INFO_CONTACT_US</p>\n" +
     "                    <p>\n" +
     "                        {{'VIEW.SECTIONS.OFFER.REGARDS' | translate}}\n" +
@@ -314,7 +314,7 @@ angular.module("offer/stp/thanks.yes.tpl.html", []).run(["$templateCache", funct
     "\n" +
     "            <div class=\"grid grid--wide\">\n" +
     "                <div class=\"grid__item sm--one-half\">\n" +
-    "                    <p translate translate-values=\"{compensation: offerModel.compensation, claimId: offerModel.getClaimId()}\">VIEW.SECTIONS.OFFER.STP.THANKS_YES.INFO_PAYMENT_CLAIM_ID</p>\n" +
+    "                    <p translate translate-values=\"{compensation: (offerModel.compensation | currency : undefined : 0), claimId: offerModel.getClaimId()}\">VIEW.SECTIONS.OFFER.STP.THANKS_YES.INFO_PAYMENT_CLAIM_ID</p>\n" +
     "                    <p translate>VIEW.SECTIONS.OFFER.STP.INFO_CONTACT_US</p>\n" +
     "                    <p translate>VIEW.SECTIONS.OFFER.STP.THANKS_YES.INFO_SATISFIED</p>\n" +
     "                    <p>\n" +

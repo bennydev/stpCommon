@@ -6,7 +6,7 @@
 
             <div class="grid grid--wide">
                 <div class="grid__item sm--one-half">
-                    <p translate translate-values="{compensation: offerModel.compensation, claimId: offerModel.getClaimId()}">VIEW.SECTIONS.OFFER.STP.THANKS_NO.INFO_REJECTED_CONTACT_CLAIM_ID</p>
+                    <p translate translate-values="{compensation: (offerModel.compensation | currency : undefined : 0), claimId: offerModel.getClaimId()}">VIEW.SECTIONS.OFFER.STP.THANKS_NO.INFO_REJECTED_CONTACT_CLAIM_ID</p>
                     <p translate>VIEW.SECTIONS.OFFER.STP.INFO_CONTACT_US</p>
                     <p>
                         {{'VIEW.SECTIONS.OFFER.REGARDS' | translate}}
