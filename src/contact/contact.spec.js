@@ -35,6 +35,15 @@ describe('Contact Service tests.', function () {
         result = phone.restrictions.getValidator().validate(phone);
         expect(result.valid).toBe(true);
     }));
+    it('Should able able to validate phone number.', inject(function(ContactService) {
+        var contactGroups = ContactService.getQuestionGroups();
+        var phone = contactGroups[0].questions[0];
+        phone.answer.phoneNumber = '073-123456789';
+        phone.answer.countryCode = '0046';
+        expect(phone.answer.phoneNumber).toBe('073-123456789');
+        var result = phone.restrictions.getValidator().validate(phone);
+        expect(result.valid).toBe(true);
+    }));
 
     it ('Should be able to set email address.', inject(function(ContactService) {
         var contactGroups = ContactService.getQuestionGroups();

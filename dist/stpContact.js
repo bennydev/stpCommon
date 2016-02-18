@@ -44,7 +44,8 @@ angular.module('stpCommon.contact', ['fsmQuestion', 'LocalStorageModule', 'pasca
                 validate: function(question){
                     var result = {valid: true, cause: 'format', message: question.text.root+'.ERRORS.INVALID'};
                     if(!isSwedenAndZeroOrOtherAndBlank(question)) {
-                        result.valid = QuestionUtils.isNumeric(question.answer.phoneNumber.replace(/^[\s\.\-]*$/, ''));
+                        console.log('Is it numeric? ' + question.answer.phoneNumber.replace(/[\s\.\-]+/g, ''));
+                        result.valid = QuestionUtils.isNumeric(question.answer.phoneNumber.replace(/[\s\.\-]+/g, ''));
                     }
                     return result;
                 }
