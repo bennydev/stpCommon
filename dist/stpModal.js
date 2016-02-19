@@ -1,6 +1,6 @@
 "use strict";
 angular.module('stpCommon.modal', [])
-    .factory('ModalService', ['$window', function($window){
+    .factory('ModalService', ['$window', '$scope', 'BroadcastService', function($window, $scope, BroadcastService){
         var error = {};
         var service = {
             error: error,
@@ -16,6 +16,8 @@ angular.module('stpCommon.modal', [])
             error.message = textRoot + ".MESSAGE";
             error.close = textRoot + ".CLOSE";
             open('modal/modalError.tpl.html');
+
+           BroadcastService.send('openError', error);
         }
 
         function open(template){

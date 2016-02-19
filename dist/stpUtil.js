@@ -1,12 +1,22 @@
 "use strict";
-angular.module('stpCommon.util', []).factory('StpUtils', ['TransactionIdGenerator','FsmScroll','EnvironmentService', function(TransactionIdGenerator, FsmScroll, EnvironmentService) {
+angular.module('stpCommon.util', []).factory('StpUtils', ['TransactionIdGenerator','FsmScroll','EnvironmentService', 'BroadcastService', function(TransactionIdGenerator, FsmScroll, EnvironmentService, BroadcastService) {
    var utils = {};
 
     utils.transactionIdGenerator = TransactionIdGenerator;
     utils.fsmScroll = FsmScroll;
     utils.environmentService = EnvironmentService;
+    utils.broadcastService = BroadcastService;
 
     return utils;
+}]);
+'use strict';
+angular.module('stpCommon.util')
+.factory('BroadcastService', ['$rootScope', function($rootScope) {
+    return {
+        send: function(msg, data) {
+            $rootScope.$broadcast(msg, data);
+        }
+    }
 }]);
 'use strict';
 angular.module('stpCommon.util')
