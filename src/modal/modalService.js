@@ -1,6 +1,6 @@
 "use strict";
-angular.module('stpCommon.modal', [])
-    .factory('ModalService', ['$window', function($window){
+angular.module('stpCommon.modal', ['stpCommon.util'])
+    .factory('ModalService', ['$window', 'StpUtils', function($window, StpUtils){
         var error = {};
         var service = {
             error: error,
@@ -16,6 +16,7 @@ angular.module('stpCommon.modal', [])
             error.message = textRoot + ".MESSAGE";
             error.close = textRoot + ".CLOSE";
             open('modal/modalError.tpl.html');
+            StpUtils.broadcastService.send('openError', error);
         }
 
         function open(template){
