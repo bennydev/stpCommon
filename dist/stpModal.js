@@ -1,6 +1,6 @@
 "use strict";
 angular.module('stpCommon.modal', [])
-    .factory('ModalService', ['$window', '$scope', function($window, $scope){
+    .factory('ModalService', ['$window', function($window){
         var error = {};
         var service = {
             error: error,
