@@ -1,11 +1,13 @@
 "use strict";
-angular.module('stpCommon.util', []).factory('StpUtils', ['TransactionIdGenerator','FsmScroll','EnvironmentService', 'BroadcastService', function(TransactionIdGenerator, FsmScroll, EnvironmentService, BroadcastService) {
+angular.module('stpCommon.util', ['fsmQuestion', 'pascalprecht.translate'])
+    .factory('StpUtils', ['TransactionIdGenerator','FsmScroll','EnvironmentService', 'BroadcastService', 'ErrorTrackService', function(TransactionIdGenerator, FsmScroll, EnvironmentService, BroadcastService, ErrorTrackService) {
    var utils = {};
 
     utils.transactionIdGenerator = TransactionIdGenerator;
     utils.fsmScroll = FsmScroll;
     utils.environmentService = EnvironmentService;
     utils.broadcastService = BroadcastService;
+    utils.errorTrackService = ErrorTrackService;
 
     return utils;
 }]);
@@ -92,6 +94,37 @@ angular.module('stpCommon.util')
     }]);
 
 
+'use strict';
+angular.module('stpCommon.util')
+    .factory('ErrorTrackService', ['$window', '$log', '$translate', 'ErrorReporter', function($window, $log, $translate, ErrorReporter){
+        var service = {
+            trackErrors : function(){
+                var errorObj = ErrorReporter.getErrors();
+                var errorData = [];
+                for(var key in errorObj){
+                    errorData.push(key+':'+$translate.instant(errorObj[key]).replace(/,/g, ''));
+                }
+                $window.datalayer.error_messages = errorData.join(',');
+                if($window._satellite) {
+                    $window._satellite.track('error_message');
+                } else {
+                    $log.log($window.datalayer);
+                }
+            },
+            trackModalError : function(errorObj){
+                $window.datalayer.error_messages = $translate.instant(errorObj.title) + ":" + $translate.instant(errorObj.message);
+                if($window._satellite) {
+                    $window._satellite.track('error_message');
+                } else {
+                    $log.log($window.datalayer);
+                }
+            },
+            deleteErrors : function(){
+                delete $window.datalayer.error_messages;
+            }
+        };
+        return service;
+    }])
 "use strict";
 angular.module('stpCommon.util').factory('TransactionIdGenerator', function () {
 
