@@ -35,17 +35,21 @@ angular.module('stpCommon.contact', ['fsmQuestion', 'LocalStorageModule', 'pasca
         }
 
         function contactPhone() {
-            function isSwedenAndNotEmpty(question){
+            function isSweden(question) {
+                return question.answer.countryCode.code === 'SWE'
+            }
+            function isEmpty(question){
                 var answer = question.answer;
-                return !((answer.countryCode.code === 'SWE' && answer.phoneNumber === '0') ||
-                    (answer.countryCode.code !== 'SWE' && answer.phoneNumber === ''));
+                return answer.phoneNumber === '0' || answer.phoneNumber === '';
             }
 
             var phoneValidator = {
                 validate: function(question){
                     var result = {valid: true, cause: 'format', message: question.text.root+'.ERRORS.INVALID'};
-                    if(isSwedenAndNotEmpty(question)) {
-                        result.valid = question.answer.phoneNumber.length <= 15 && QuestionUtils.isNumeric(question.answer.phoneNumber.replace(/[\s\.\-]+/g, ''));
+                    if(isSweden(question)) {
+                        if (!isEmpty(question)) {
+                            result.valid = question.answer.phoneNumber.length <= 15 && QuestionUtils.isNumeric(question.answer.phoneNumber.replace(/[\s\.\-]+/g, ''));
+                        }
                     }
                     return result;
                 }

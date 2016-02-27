@@ -1,6 +1,6 @@
 {
   "name": "stpCommon",
-  "version": "0.5.31",
+  "version": "0.5.32",
   "description": "Generic STP Commons library",
   "directory": "dist",
   "main": ["stpHeader.js", "stpModal.js", "stpNavigation.js", "stpSummary.js", "stpOffer.js", "stpUtil.js"],
@@ -33,6 +33,6 @@
     "angular-local-storage": "~0.2.1",
     "angular-translate": "~2.7.0",
     "angular-translate-loader-static-files": "~2.7.0",
-    "fsmQuestion": "https://github.com/bennydev/fsmQuestion.git#0.2.82"
+    "fsmQuestion": "https://github.com/bennydev/fsmQuestion.git#0.2.97"
   }
 }
