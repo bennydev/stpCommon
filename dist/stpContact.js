@@ -42,6 +42,13 @@ angular.module('stpCommon.contact', ['fsmQuestion', 'LocalStorageModule', 'pasca
                 var answer = question.answer;
                 return answer.phoneNumber === '0' || answer.phoneNumber === '';
             }
+            function phoneNumberChange(question){
+                var answer = question.answer;
+                if(answer.countryCode.code === 'SWE' && answer.phoneNumber === ''){
+                    QuestionService.getQuestion(question.id+'PhoneNumber').setAnswer('0');
+                }
+
+            }
 
             var phoneValidator = {
                 validate: function(question){
@@ -64,6 +71,7 @@ angular.module('stpCommon.contact', ['fsmQuestion', 'LocalStorageModule', 'pasca
                 .defaultAnswer({phoneNumber: '0', countryCode: CountryCodeService.getCountryCodes()[209]})
                 .values(CountryCodeService.getCountryCodes())
                 .validator(phoneValidator)
+                .onChange(phoneNumberChange)
                 .createQuestion();
         }
 
