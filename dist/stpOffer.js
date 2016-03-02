@@ -237,6 +237,7 @@ angular.module("offer/stp/stp.tpl.html", []).run(["$templateCache", function($te
     "                </tr>\n" +
     "\n" +
     "\n" +
+    "\n" +
     "            </tbody>\n" +
     "            <tfoot>\n" +
     "                <tr>\n" +
