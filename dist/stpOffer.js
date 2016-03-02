@@ -228,10 +228,15 @@ angular.module("offer/stp/stp.tpl.html", []).run(["$templateCache", function($te
     "                        <span ng-if=\"row.type === '+'\"> </span>\n" +
     "                        {{row.value | currency : undefined : 0}}\n" +
     "                    </td>\n" +
-    "                    <td ng-if=\"row.type !== '+' && row.type !== '-'\">\n" +
+    "                    <td ng-if=\"row.type === 'text'\" translate>\n" +
     "                        {{row.value}}\n" +
     "                    </td>\n" +
+    "                    <td ng-if=\"row.type === 'st'\" translate>\n" +
+    "                        {{row.value}} st\n" +
+    "                    </td>\n" +
     "                </tr>\n" +
+    "\n" +
+    "\n" +
     "            </tbody>\n" +
     "            <tfoot>\n" +
     "                <tr>\n" +
