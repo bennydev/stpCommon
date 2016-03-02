@@ -32,8 +32,11 @@
                         <span ng-if="row.type === '+'"> </span>
                         {{row.value | currency : undefined : 0}}
                     </td>
-                    <td ng-if="row.type !== '+' && row.type !== '-'">
+                    <td ng-if="row.type === 'text'" translate>
                         {{row.value}}
+                    </td>
+                    <td ng-if="row.type === 'st'" translate>
+                        {{row.value}} st
                     </td>
                 </tr>
             </tbody>
