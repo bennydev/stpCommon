@@ -7,8 +7,8 @@
     FooterController.$inject = ['$scope', '$log', 'StpUtils'];
 
     function FooterController($scope, $log, StpUtils) {
-        $scope.environments = StpUtils.environment.getEnvironments();
-        $scope.currentEnvironment = StpUtils.environment.getCurrentEnvironment();
+        $scope.environments = StpUtils.environmentService.getEnvironments();
+        $scope.currentEnvironment = StpUtils.environmentService.getCurrentEnvironment();
         function getApplicationVersion() {
             StpUtils.versionRestService.applicationVersion(function (data) {
                 $scope.name = data.name;
