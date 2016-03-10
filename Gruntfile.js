@@ -54,6 +54,7 @@ module.exports = function (grunt) {
                     'vendor/angular-mocks/angular-mocks.js',
                     'src/contact/**/*',
                     'src/header/**/*',
+                    'src/footer/**/*',
                     'src/modal/**/*',
                     'src/navigation/**/*',
                     'src/summary/**/*',
@@ -88,6 +89,14 @@ module.exports = function (grunt) {
                 },
                 src: ['build/src/header/**/*.html'],
                 dest: 'build/src/header/stpHeaderTemplates.js'
+            },
+            footer: {
+                options: {
+                    base: 'build/src',
+                    module: 'stpFooterTemplates'
+                },
+                src: ['build/src/footer/**/*.html'],
+                dest: 'build/src/footer/stpFooterTemplates.js'
             },
             modal: {
                 options: {
@@ -136,6 +145,13 @@ module.exports = function (grunt) {
                     '!build/src/**/*.spec.js'
                 ],
                 dest: 'dist/stpHeader.js'
+            },
+            compile_footer_js: {
+                src: [
+                    'build/src/footer/*.js',
+                    '!build/src/**/*.spec.js'
+                ],
+                dest: 'dist/stpFooter.js'
             },
             compile_modal_js: {
                 src: [
@@ -218,6 +234,7 @@ module.exports = function (grunt) {
                     'src/contact/*.js',
                     'src/header/header.js',
                     'src/header/*.js',
+                    'src/footer/*.js',
                     'src/modal/*.js',
                     'src/navigation/*.js',
                     'src/offer/*.js',
