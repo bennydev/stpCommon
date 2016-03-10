@@ -44,6 +44,7 @@ module.exports = function (grunt) {
             build: {
                 src: [
                     'vendor/angular/angular.js',
+                    'vendor/angular-resource/angular-resource.js',
                     'vendor/angular-sanitize/angular-sanitize.js',
                     'vendor/angular-local-storage/dist/angular-local-storage.js',
                     'vendor/angular-translate/angular-translate.js',
@@ -206,6 +207,7 @@ module.exports = function (grunt) {
                 dir: 'build',
                 src: [
                     'vendor/angular/angular.js',
+                    'vendor/angular-resource/angular-resource.js',
                     'vendor/angular-sanitize/angular-sanitize.js',
                     'vendor/angular-translate/angular-translate.js',
                     'vendor/angular-local-storage/dist/angular-local-storage.js',

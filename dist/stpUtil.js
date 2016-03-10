@@ -1,17 +1,24 @@
-"use strict";
-angular.module('stpCommon.util', ['fsmQuestion', 'pascalprecht.translate'])
-    .factory('StpUtils', ['TransactionIdGenerator','FsmScroll','EnvironmentService', 'BroadcastService', 'ErrorTrackService', 'AirportList', function(TransactionIdGenerator, FsmScroll, EnvironmentService, BroadcastService, ErrorTrackService, AirportList) {
-   var utils = {};
+(function () {
+    "use strict";
 
-    utils.transactionIdGenerator = TransactionIdGenerator;
-    utils.fsmScroll = FsmScroll;
-    utils.environmentService = EnvironmentService;
-    utils.broadcastService = BroadcastService;
-    utils.errorTrackService = ErrorTrackService;
-    utils.airportList = AirportList;
+    angular.module('stpCommon.util', ['fsmQuestion', 'pascalprecht.translate', 'ngResource'])
+        .factory('StpUtils', StpUtils);
 
-    return utils;
-}]);
+    StpUtils.$inject = ['TransactionIdGenerator', 'FsmScroll', 'EnvironmentService', 'BroadcastService', 'ErrorTrackService', 'AirportList', 'VersionRestService'];
+    function StpUtils(TransactionIdGenerator, FsmScroll, EnvironmentService, BroadcastService, ErrorTrackService, AirportList, VersionRestService) {
+        var utils = {};
+
+        utils.transactionIdGenerator = TransactionIdGenerator;
+        utils.fsmScroll = FsmScroll;
+        utils.environmentService = EnvironmentService;
+        utils.broadcastService = BroadcastService;
+        utils.errorTrackService = ErrorTrackService;
+        utils.airportList = AirportList;
+        utils.versionRestService = VersionRestService;
+
+        return utils;
+    }
+})();
 "use strict";
 angular.module('stpCommon.util')
 .factory('AirportList',['$translate', function($translate){
@@ -157,6 +164,23 @@ angular.module('stpCommon.util')
     }]);
 
 
+(function () {
+    'use strict';
+
+    angular.module('stpCommon.util').factory('VersionRestService', VersionRestService);
+
+    VersionRestService.$inject = ['$resource'];
+
+    function VersionRestService($resource) {
+        return $resource('resources', null, {
+            'applicationVersion': {
+                method: 'get',
+                url: 'resources/system/applicationVersion',
+                isArray: false
+            }
+        });
+    }
+})();
 'use strict';
 angular.module('stpCommon.util')
     .factory('ErrorTrackService', ['$window', '$log', '$translate', 'ErrorReporter', function($window, $log, $translate, ErrorReporter){
