@@ -4,8 +4,8 @@
     angular.module('stpCommon.util', ['fsmQuestion', 'pascalprecht.translate', 'ngResource'])
         .factory('StpUtils', StpUtils);
 
-    StpUtils.$inject = ['TransactionIdGenerator', 'FsmScroll', 'EnvironmentService', 'BroadcastService', 'ErrorTrackService', 'AirportList', 'VersionRestService'];
-    function StpUtils(TransactionIdGenerator, FsmScroll, EnvironmentService, BroadcastService, ErrorTrackService, AirportList, VersionRestService) {
+    StpUtils.$inject = ['TransactionIdGenerator', 'FsmScroll', 'EnvironmentService', 'BroadcastService', 'ErrorTrackService', 'AirportList'];
+    function StpUtils(TransactionIdGenerator, FsmScroll, EnvironmentService, BroadcastService, ErrorTrackService, AirportList) {
         var utils = {};
 
         utils.transactionIdGenerator = TransactionIdGenerator;
@@ -14,7 +14,6 @@
         utils.broadcastService = BroadcastService;
         utils.errorTrackService = ErrorTrackService;
         utils.airportList = AirportList;
-        utils.versionRestService = VersionRestService;
 
         return utils;
     }
@@ -164,24 +163,6 @@ angular.module('stpCommon.util')
     }]);
 
 
-(function () {
-    'use strict';
-
-    angular.module('stpCommon.util').factory('VersionRestService', VersionRestService);
-    var httpConfig = {timeout: 10000};
-    VersionRestService.$inject = ['$resource'];
-
-    function VersionRestService($resource) {
-
-        return $resource('resources', httpConfig, {
-            'applicationVersion': {
-                method: 'get',
-                url: 'resources/system/applicationVersion',
-                isArray: false
-            }
-        });
-    }
-})();
 'use strict';
 angular.module('stpCommon.util')
     .factory('ErrorTrackService', ['$window', '$log', '$translate', 'ErrorReporter', function($window, $log, $translate, ErrorReporter){
