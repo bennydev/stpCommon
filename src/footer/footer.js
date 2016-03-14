@@ -11,7 +11,8 @@
         $scope.environments = StpUtils.environmentService.getEnvironments();
         $scope.currentEnvironment = StpUtils.environmentService.getCurrentEnvironment();
         function getApplicationVersion() {
-            $http.get('resources/system/applicationVersion', httpConfig).then(function (data) {
+            $http.get('resources/system/applicationVersion', httpConfig).then(function (response) {
+                var data = response.data;
                 $scope.name = data.name;
                 $scope.version = data.version;
                 $scope.environment = data.environment;
