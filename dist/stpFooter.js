@@ -4,10 +4,10 @@
     angular.module('stpCommon.footer', ['stpCommon.util'])
         .controller('FooterCtrl', FooterController);
 
-    FooterController.$inject = ['$scope', '$log', '$http'];
+    FooterController.$inject = ['$scope', '$log', '$http', 'StpUtils'];
 
-    function FooterController($scope, $log, StpUtils) {
-        var httpConfig = {timeout: 10000};
+    function FooterController($scope, $log, $http, StpUtils) {
+        var httpConfig = {timeout: 5000};
         $scope.environments = StpUtils.environmentService.getEnvironments();
         $scope.currentEnvironment = StpUtils.environmentService.getCurrentEnvironment();
         function getApplicationVersion() {
