@@ -221,17 +221,17 @@ angular.module("offer/stp/stp.tpl.html", []).run(["$templateCache", function($te
     "\n" +
     "        <table class=\"standard-table standard-table--fixed standard-table--summary standard-table--calculation\">\n" +
     "            <tbody>\n" +
-    "                <tr ng-repeat=\"row in offerModel.calculation\">\n" +
+    "                <tr ng-repeat=\"row in offerModel.calculation track by $index\">\n" +
     "                    <th>{{row.description}}</th>\n" +
-    "                    <td ng-if=\"row.type === '+' || row.type === '-'\">\n" +
-    "                        <span ng-if=\"row.type === '-'\"> -</span>\n" +
-    "                        <span ng-if=\"row.type === '+'\"> </span>\n" +
+    "                    <td  ng-if=\"row.type === '+' || row.type === '-'\">\n" +
+    "                        <span id=\"info{{$index}}\" ng-if=\"row.type === '-'\"> -</span>\n" +
+    "                        <span id=\"info{{$index}}\" ng-if=\"row.type === '+'\"> </span>\n" +
     "                        {{row.value | currency : undefined : 0}}\n" +
     "                    </td>\n" +
-    "                    <td ng-if=\"row.type === 'text'\" translate>\n" +
+    "                    <td id=\"info{{$index}}\" ng-if=\"row.type === 'text'\" translate>\n" +
     "                        {{row.value}}\n" +
     "                    </td>\n" +
-    "                    <td ng-if=\"row.type === 'st'\" translate>\n" +
+    "                    <td id=\"info{{$index}}\" ng-if=\"row.type === 'st'\" translate>\n" +
     "                        {{row.value}} st\n" +
     "                    </td>\n" +
     "                </tr>\n" +
