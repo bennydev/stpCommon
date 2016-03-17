@@ -199,10 +199,21 @@ angular.module('stpCommon.util').factory('TransactionIdGenerator', function () {
 
     var transIdGenerator = {
         crc32FromObject: CRC32FromObject,
-        crc32FromString: CRC32
+        crc32FromString: CRC32,
+        setTransactionId: setTransactionId
     };
 
     return transIdGenerator;
+
+    function setTransactionId(){
+        var current = new Date().getTime();
+        var random = Math.floor((Math.random() * 1000) + 1);
+        if (EnvironmentService.getCurrentEnvironment() === "PROD") {
+            return current+random;
+        } else {
+            return EnvironmentService.getCurrentEnvironment()+current+random;
+        }
+    }
 
     function CRC32FromObject(object) {
         return CRC32(JSON.stringify(object));
