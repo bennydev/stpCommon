@@ -195,7 +195,8 @@ angular.module('stpCommon.util')
         return service;
     }])
 "use strict";
-angular.module('stpCommon.util').factory('TransactionIdGenerator', function () {
+angular.module('stpCommon.util')
+    .factory('TransactionIdGenerator', ['EnvironmentService', function (EnvironmentService) {
 
     var transIdGenerator = {
         crc32FromObject: CRC32FromObject,
@@ -294,4 +295,4 @@ angular.module('stpCommon.util').factory('TransactionIdGenerator', function () {
         return reversed;
     }
 
-});
+}]);
