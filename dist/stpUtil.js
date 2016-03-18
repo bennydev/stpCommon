@@ -173,7 +173,7 @@ angular.module('stpCommon.util')
                 for(var key in errorObj){
                     errorData.push(key+':'+$translate.instant(errorObj[key]).replace(/,/g, ''));
                 }
-                $window.datalayer.error_messages = errorData.join(',');
+                $window.datalayer.error_messages = errorData.join(';');
                 if($window._satellite) {
                     $window._satellite.track('error_message');
                 } else {
@@ -184,6 +184,14 @@ angular.module('stpCommon.util')
                 $window.datalayer.error_messages = $translate.instant(errorObj.title) + ":" + $translate.instant(errorObj.message);
                 if($window._satellite) {
                     $window._satellite.track('error_message');
+                } else {
+                    $log.log($window.datalayer);
+                }
+            },
+            trackResume : function(val){
+                $window.datalayer.claim_resume = val;
+                if($window._satellite) {
+                    $window._satellite.track('claim_resume');
                 } else {
                     $log.log($window.datalayer);
                 }
