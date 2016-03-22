@@ -77,6 +77,10 @@ angular.module('stpCommon.productSearch', []).factory('SearchService', ['$http',
             var value = currentContext.searchValues[currentContext.initParam];
             var productsUri = currentContext.productUriMap[value];
 
+            console.log('productsUriMap: ' + currentContext.productUriMap);
+            if (!productsUri) {
+                productsUri = currentContext.uri;
+            }
             return $http.get(baseUrl + productsUri, requestConfig).then(
                 getProductsSuccess,
                 promiseError
