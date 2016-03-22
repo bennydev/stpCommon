@@ -77,7 +77,7 @@ angular.module('stpCommon.productSearch', []).factory('SearchService', ['$http',
             var value = currentContext.searchValues[currentContext.initParam];
             var productsUri = currentContext.productUriMap[value];
 
-            console.log('productsUriMap: ' + currentContext.productUriMap);
+            console.log('productsUriMap: ' + JSON.stringify(currentContext.productUriMap));
             if (!productsUri) {
                 console.log('no productsUri, replacing with start uri');
                 productsUri = currentContext.uri;
