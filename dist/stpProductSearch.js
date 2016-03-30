@@ -8,6 +8,16 @@ angular.module('stpCommon.productSearch', []).factory('SearchService', ['$http',
         getInitValues: defaultGetInitValues
     };
 
+    var searchService = {
+        getContext: getContext,
+        getBaseUrl: getBaseUrl,
+        getInitValues: getInitValues,
+        getValuesForParam: getValuesForParam,
+        getMatchingProducts: filterProducts,
+        search: search,
+        resetSearch: resetSearch,
+        getContextBuilder: getContextBuilder
+    };
 
     function getContext() {
         return currentContext;
@@ -51,13 +61,16 @@ angular.module('stpCommon.productSearch', []).factory('SearchService', ['$http',
 
     function getMatchingProducts(products) {
         function getMatches(param, value, products) {
+            console.log('search value: ' + value);
             return products.filter(function (product) {
+                console.log(' product[param]: ' +  product[param]);
                 return ('' + product[param]).toString() === ('' + value).toString();
             });
         }
 
         var searchValues = currentContext.searchValues;
         Object.keys(searchValues).forEach(function (param) {
+            console.log('searchParam: ' + param);
             products = getMatches(param, searchValues[param], products);
         });
         return products;
@@ -215,15 +228,6 @@ angular.module('stpCommon.productSearch', []).factory('SearchService', ['$http',
             }
         }
     }
-    return {
-        getContext: getContext,
-        getBaseUrl: getBaseUrl,
-        getInitValues: getInitValues,
-        getValuesForParam: getValuesForParam,
-        getMatchingProducts: filterProducts,
-        search: search,
-        resetSearch: resetSearch,
-        getContextBuilder: getContextBuilder
-    };
+    return searchService;
 
 }]);
