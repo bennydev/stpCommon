@@ -61,16 +61,16 @@ angular.module('stpCommon.productSearch', []).factory('SearchService', ['$http',
 
     function getMatchingProducts(products) {
         function getMatches(param, value, products) {
-            console.log('search value: ' + value);
+            //console.log('search value: ' + value);
             return products.filter(function (product) {
-                console.log(' product[param]: ' +  product[param]);
+                //console.log(' product[param]: ' +  product[param]);
                 return ('' + product[param]).toString() === ('' + value).toString();
             });
         }
 
         var searchValues = currentContext.searchValues;
         Object.keys(searchValues).forEach(function (param) {
-            console.log('searchParam: ' + param);
+            //console.log('searchParam: ' + param);
             products = getMatches(param, searchValues[param], products);
         });
         return products;
@@ -90,9 +90,9 @@ angular.module('stpCommon.productSearch', []).factory('SearchService', ['$http',
             var value = currentContext.searchValues[currentContext.initParam];
             var productsUri = currentContext.productUriMap[value];
 
-            console.log('productsUriMap: ' + JSON.stringify(currentContext.productUriMap));
+            //console.log('productsUriMap: ' + JSON.stringify(currentContext.productUriMap));
             if (!productsUri) {
-                console.log('no productsUri, replacing with start uri');
+                //console.log('no productsUri, replacing with start uri');
                 productsUri = currentContext.uri;
             }
             return $http.get(baseUrl + productsUri, requestConfig).then(
