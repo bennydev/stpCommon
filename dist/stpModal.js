@@ -33,6 +33,7 @@ angular.module('stpCommon.modal', ['stpCommon.util'])
         $scope.ModalService = ModalService;
         $scope.templateLoaded = function(){
             var $el = $('.modal__content--dialog .button').eq(0);
+            $el.focus();
         };
     }]);
 angular.module('stpModalTemplates', ['modal/modal.tpl.html', 'modal/modalError.tpl.html']);
