@@ -33,6 +33,10 @@ angular.module('stpCommon.modal', ['stpCommon.util'])
         $scope.ModalService = ModalService;
         $scope.templateLoaded = function(){
             var $el = $('.modal__content--dialog .button').eq(0);
+            var $lastEl = $('.modal__content--dialog .button').last();
+            $lastEl.addEventListener("focusout", function(){
+                $el.focus();
+            });
             $el.focus();
         };
     }]);
