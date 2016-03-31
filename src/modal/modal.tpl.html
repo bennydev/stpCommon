@@ -1,6 +1,6 @@
 <div class="modal-backdrop"></div>
 <div class="modal" tabindex="-1" role="dialog" aria-labelledby="modal" id="modal" ng-controller="ModalCtrl">
     <div class="modal__content modal__content--dialog" role="document">
-        <ng-include src="ModalService.modalTemplate"></ng-include>
+        <ng-include src="ModalService.modalTemplate" onload="templateLoaded();"></ng-include>
     </div>
 </div>

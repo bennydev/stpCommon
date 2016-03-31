@@ -113,9 +113,9 @@ angular.module('stpCommon.util')
                 hostname.indexOf('bcl') >= 0 ||
                 hostname.indexOf('bcd') >= 0) {
                 currentEnvironment = environments.LOCAL;
-            } else if(hostname.indexOf('.stst.')) {
+            } else if(hostname.indexOf('.stst.') >= 0) {
                 currentEnvironment = environments.STST;
-            } else if(hostname.indexOf('.atst.')) {
+            } else if(hostname.indexOf('.atst.') >= 0) {
                 currentEnvironment = environments.ATST;
             } else if(hostname === 'www.folksam.se' || hostname === 'folksam.se'){
                 currentEnvironment = environments.PROD;

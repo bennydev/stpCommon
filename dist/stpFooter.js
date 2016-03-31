@@ -34,7 +34,7 @@ angular.module("footer/footer.tpl.html", []).run(["$templateCache", function($te
     " * Responsive styling.\n" +
     "-->\n" +
     "<div class=\"page-footer\" ng-controller=\"FooterCtrl\">\n" +
-    "    <label class=\"h6 text-muted bottom-right\" ng-hide=\"currentEnvironment !== environments.PROD\">\n" +
+    "    <label class=\"h6 text-muted bottom-right\" ng-hide=\"currentEnvironment === environments.PROD\">\n" +
     "        {{name}} v.{{version}} build.no:{{buildNumber}} miljö:{{environment}}\n" +
     "        <span ng-repeat=\"integration in integrationInfoList\"> | {{integration.name}} v.{{integration.version}}</span>\n" +
     "    </label>\n" +

@@ -27,7 +27,11 @@ angular.module('stpCommon.modal', ['stpCommon.util'])
         function close(){
             $window.fdr.modal.close();
         }
+
     }])
     .controller('ModalCtrl', ['$scope', 'ModalService', function($scope, ModalService){
         $scope.ModalService = ModalService;
+        $scope.templateLoaded = function(){
+            var $el = $('.modal__content--dialog .button').eq(0);
+        };
     }]);

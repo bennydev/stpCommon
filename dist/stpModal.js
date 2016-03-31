@@ -27,9 +27,13 @@ angular.module('stpCommon.modal', ['stpCommon.util'])
         function close(){
             $window.fdr.modal.close();
         }
+
     }])
     .controller('ModalCtrl', ['$scope', 'ModalService', function($scope, ModalService){
         $scope.ModalService = ModalService;
+        $scope.templateLoaded = function(){
+            var $el = $('.modal__content--dialog .button').eq(0);
+        };
     }]);
 angular.module('stpModalTemplates', ['modal/modal.tpl.html', 'modal/modalError.tpl.html']);
 
@@ -38,7 +42,7 @@ angular.module("modal/modal.tpl.html", []).run(["$templateCache", function($temp
     "<div class=\"modal-backdrop\"></div>\n" +
     "<div class=\"modal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"modal\" id=\"modal\" ng-controller=\"ModalCtrl\">\n" +
     "    <div class=\"modal__content modal__content--dialog\" role=\"document\">\n" +
-    "        <ng-include src=\"ModalService.modalTemplate\"></ng-include>\n" +
+    "        <ng-include src=\"ModalService.modalTemplate\" onload=\"templateLoaded();\"></ng-include>\n" +
     "    </div>\n" +
     "</div>");
 }]);
