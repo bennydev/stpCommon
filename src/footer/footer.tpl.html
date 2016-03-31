@@ -4,7 +4,7 @@
  * Responsive styling.
 -->
 <div class="page-footer" ng-controller="FooterCtrl">
-    <label class="h6 text-muted bottom-right" ng-hide="currentEnvironment === environments.PROD">
+    <label class="h6 text-muted bottom-right" ng-hide="currentEnvironment !== environments.PROD">
         {{name}} v.{{version}} build.no:{{buildNumber}} miljö:{{environment}}
         <span ng-repeat="integration in integrationInfoList"> | {{integration.name}} v.{{integration.version}}</span>
     </label>
