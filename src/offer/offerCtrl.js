@@ -4,7 +4,7 @@ angular.module('stpCommon.offer', [])
         $scope.offerModel = AbstractOfferService.getOfferModel();
         $scope.template = $scope.offerModel.getTemplate();
         $scope.claimId = $scope.offerModel.getClaimId();
-        $scope.event = $scope.offerModel.getEvent();
+        $scope.eventType = $scope.offerModel.getEventType();
     }])
     .factory('AbstractOfferService', [function(){
         var service = {
@@ -22,7 +22,7 @@ angular.module('stpCommon.offer', [])
             var model = {
                 getClaimType: getClaimType,
                 getClaimId: getClaimId,
-                getEvent: getEvent,
+                getEventType: getEventType,
                 getTemplate: getTemplate,
                 // replace the values below.
                 calculation: [{description: 'REPLACE_THIS', value: 999, type: '-'}],
@@ -41,7 +41,7 @@ angular.module('stpCommon.offer', [])
                 return 'REPLACE_THIS';
             }
 
-            function getEvent(){
+            function getEventType(){
                 return 'REPLACE_THIS';
             }
         }

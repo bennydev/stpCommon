@@ -4,7 +4,7 @@ angular.module('stpCommon.offer', [])
         $scope.offerModel = AbstractOfferService.getOfferModel();
         $scope.template = $scope.offerModel.getTemplate();
         $scope.claimId = $scope.offerModel.getClaimId();
-        $scope.event = $scope.offerModel.getEvent();
+        $scope.eventType = $scope.offerModel.getEventType();
     }])
     .factory('AbstractOfferService', [function(){
         var service = {
@@ -22,7 +22,7 @@ angular.module('stpCommon.offer', [])
             var model = {
                 getClaimType: getClaimType,
                 getClaimId: getClaimId,
-                getEvent: getEvent,
+                getEventType: getEventType,
                 getTemplate: getTemplate,
                 // replace the values below.
                 calculation: [{description: 'REPLACE_THIS', value: 999, type: '-'}],
@@ -41,7 +41,7 @@ angular.module('stpCommon.offer', [])
                 return 'REPLACE_THIS';
             }
 
-            function getEvent(){
+            function getEventType(){
                 return 'REPLACE_THIS';
             }
         }
@@ -170,10 +170,11 @@ angular.module("offer/ltp/thanks.tpl.html", []).run(["$templateCache", function(
     "\n" +
     "            <div class=\"grid grid--wide\">\n" +
     "                <div class=\"grid__item sm--one-half\">\n" +
-    "                    <p translate translate-values=\"{event: event}\">VIEW.SECTIONS.OFFER.LTP.THANKS.INFO_RECEIVED</p>\n" +
+    "                    <p translate translate-values=\"{event: eventType}\">VIEW.SECTIONS.OFFER.LTP.THANKS.INFO_RECEIVED</p>\n" +
     "                    <p translate translate-values=\"{claimId: claimId}\">VIEW.SECTIONS.OFFER.LTP.THANKS.INFO_CLAIM_ID</p>\n" +
     "                    <div class=\"u-spacing-above\">\n" +
-    "                        <p translate translate-values=\"{eventType: offerModel.eventType}\">VIEW.SECTIONS.OFFER.LTP.THANKS.INFO_CONTACT</p>\n" +
+    "                        <p translate>VIEW.SECTIONS.OFFER.LTP.THANKS.INFO_CONTACT</p>\n" +
+    "                        <!--<p translate translate-values=\"{eventType: eventType}\">VIEW.SECTIONS.OFFER.LTP.THANKS.INFO_CONTACT</p>-->\n" +
     "                        <p>\n" +
     "                            {{'VIEW.SECTIONS.OFFER.REGARDS' | translate}}\n" +
     "                            <br>\n" +
