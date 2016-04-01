@@ -1,19 +1,21 @@
 "use strict";
 angular.module('stpCommon.offer', [])
-    .controller('OfferCtrl', ['$scope', 'OfferService', function($scope, OfferService){
-        $scope.offerModel = OfferService.getOfferModel();
-        $scope.template = $scope.offerModel.getClaimType() === 'LTP' ? 'offer/ltp/ltp.tpl.html' : 'offer/stp/stp.tpl.html';
+    .controller('OfferCtrl', ['$scope', 'AbstractOfferService', function($scope, AbstractOfferService){
+        $scope.offerModel = AbstractOfferService.getOfferModel();
+        $scope.template = $scope.offerModel.getTemplate();
         $scope.claimId = $scope.offerModel.getClaimId();
         $scope.event = $scope.offerModel.getEvent();
     }])
-    .factory('OfferService', [function(){
+    .factory('AbstractOfferService', [function(){
         var service = {
             getOfferModel: getOfferModel
         };
         return service;
 
-        function getRightColumnTemplateUrl(){
-            return 'REPLACE_THIS_URL';
+
+        function getTemplate() {
+            // replace this if you need another implementation
+            return getOfferModel().getClaimType() === 'LTP' ? 'offer/ltp/ltp.tpl.html' : 'offer/stp/stp.tpl.html'
         }
 
         function getOfferModel(){
@@ -21,15 +23,18 @@ angular.module('stpCommon.offer', [])
                 getClaimType: getClaimType,
                 getClaimId: getClaimId,
                 getEvent: getEvent,
+                getTemplate: getTemplate,
+                // replace the values below.
                 calculation: [{description: 'REPLACE_THIS', value: 999, type: '-'}],
                 compensation: 1000,
                 customerIsPolicyHolder: true,
-                deductionExplanation: 'REPLACE_THIS_EXPLANATION'
+                deductionExplanation: 'REPLACE_THIS_EXPLANATION',
+                policeIsReported: false
             };
             return model;
 
             function getClaimType(){
-                return 'LTP';
+                return 'REPLACE_THIS';
             }
 
             function getClaimId(){
@@ -41,8 +46,8 @@ angular.module('stpCommon.offer', [])
             }
         }
     }])
-    .controller('STPCtrl', ['$scope', '$window', 'OfferService', 'HeaderService', 'ErrorReporter', 'QuestionService', 'STPService', function($scope, $window, OfferService, HeaderService, ErrorReporter, QuestionService, STPService){
-        $scope.offerModel = OfferService.getOfferModel();
+    .controller('STPCtrl', ['$scope', '$window', 'AbstractOfferService', 'HeaderService', 'ErrorReporter', 'QuestionService', 'AbstractSTPService', function($scope, $window, AbstractOfferService, HeaderService, ErrorReporter, QuestionService, AbstractSTPService){
+        $scope.offerModel = AbstractOfferService.getOfferModel();
         $scope.customer = {fullName: HeaderService.getCustomerFullName() ? HeaderService.getCustomerFullName() : HeaderService.getCustomer().personId};
         $scope.policyHolder = {fullName: HeaderService.getPolicyHolderFullName() ? HeaderService.getPolicyHolderFullName() : HeaderService.getPolicyHolder().personId};
         STPService.setCompensation($scope.offerModel.compensation);
@@ -62,7 +67,7 @@ angular.module('stpCommon.offer', [])
             $window.print();
         };
     }])
-    .factory('STPService', ['QuestionService', '$filter', function(QuestionService, $filter){
+    .factory('AbstractSTPService', ['QuestionService', '$filter', function(QuestionService, $filter){
         var compensation;
         var offerConfirmed = false;
         var QBuilder = QuestionService.getQuestionBuilder();
