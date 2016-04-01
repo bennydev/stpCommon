@@ -50,7 +50,7 @@ angular.module('stpCommon.offer', [])
         $scope.offerModel = AbstractOfferService.getOfferModel();
         $scope.customer = {fullName: HeaderService.getCustomerFullName() ? HeaderService.getCustomerFullName() : HeaderService.getCustomer().personId};
         $scope.policyHolder = {fullName: HeaderService.getPolicyHolderFullName() ? HeaderService.getPolicyHolderFullName() : HeaderService.getPolicyHolder().personId};
-        STPService.setCompensation($scope.offerModel.compensation);
+        AbstractSTPService.setCompensation($scope.offerModel.compensation);
         $scope.questionGroups = STPService.getQuestionGroups();
         $scope.acceptanceQuestion = QuestionService.getQuestion('acceptance');
         if(STPService.isOfferConfirmed()){
@@ -58,9 +58,9 @@ angular.module('stpCommon.offer', [])
         }
 
         $scope.confirmOffer = function(){
-            STPService.validate();
+            AbstractSTPService.validate();
             if(!ErrorReporter.hasErrors()){
-                STPService.confirmOffer();
+                AbstractSTPService.confirmOffer();
             }
         };
         $scope.print = function(){
