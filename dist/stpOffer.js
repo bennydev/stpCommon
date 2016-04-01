@@ -15,7 +15,7 @@ angular.module('stpCommon.offer', [])
 
         function getTemplate() {
             // replace this if you need another implementation
-            return getOfferModel().getClaimType() === 'LTP' ? 'offer/ltp/ltp.tpl.html' : 'offer/stp/stp.tpl.html'
+            return getOfferModel().getClaimType() === 'LTP' ? 'offer/ltp/ltp.tpl.html' : 'offer/stp/stp.tpl.html';
         }
 
         function getOfferModel(){
@@ -51,10 +51,10 @@ angular.module('stpCommon.offer', [])
         $scope.customer = {fullName: HeaderService.getCustomerFullName() ? HeaderService.getCustomerFullName() : HeaderService.getCustomer().personId};
         $scope.policyHolder = {fullName: HeaderService.getPolicyHolderFullName() ? HeaderService.getPolicyHolderFullName() : HeaderService.getPolicyHolder().personId};
         AbstractSTPService.setCompensation($scope.offerModel.compensation);
-        $scope.questionGroups = STPService.getQuestionGroups();
+        $scope.questionGroups = AbstractSTPService.getQuestionGroups();
         $scope.acceptanceQuestion = QuestionService.getQuestion('acceptance');
-        if(STPService.isOfferConfirmed()){
-            $scope.thankYouTemplate = STPService.getThankYouTemplate();
+        if(AbstractSTPService.isOfferConfirmed()){
+            $scope.thankYouTemplate = AbstractSTPService.getThankYouTemplate();
         }
 
         $scope.confirmOffer = function(){

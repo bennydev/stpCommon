@@ -87,7 +87,7 @@ angular.module('stpCommon.util')
         send: function(msg, data) {
             $rootScope.$broadcast(msg, data);
         }
-    }
+    };
 }]);
 'use strict';
 angular.module('stpCommon.util')
@@ -131,7 +131,7 @@ angular.module('stpCommon.util')
 
         var fsmScroll = {
             scrollToFirstError : scrollToFirstError,
-            scrollTo : scrollTo
+            scrollTo : scrollToFn
         };
 
         function scrollToFirstError() {
@@ -151,7 +151,7 @@ angular.module('stpCommon.util')
             }, 250);
         }
 
-        function scrollTo(element){
+        function scrollToFn(element){
             $timeout(function () {
                 $('html, body').animate({
                     scrollTop: typeof element === "number" ? element : element.offset().top
@@ -201,7 +201,7 @@ angular.module('stpCommon.util')
             }
         };
         return service;
-    }])
+    }]);
 "use strict";
 angular.module('stpCommon.util')
     .factory('TransactionIdGenerator', ['EnvironmentService', function (EnvironmentService) {

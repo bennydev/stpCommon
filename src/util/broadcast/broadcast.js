@@ -5,5 +5,5 @@ angular.module('stpCommon.util')
         send: function(msg, data) {
             $rootScope.$broadcast(msg, data);
         }
-    }
+    };
 }]);

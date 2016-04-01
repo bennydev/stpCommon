@@ -37,7 +37,7 @@ angular.module('stpCommon.contact', ['fsmQuestion', 'LocalStorageModule', 'pasca
 
         function contactPhone() {
             function isSweden(question) {
-                return question.answer.countryCode.code === 'SWE'
+                return question.answer.countryCode.code === 'SWE';
             }
             function isEmpty(question){
                 var answer = question.answer;

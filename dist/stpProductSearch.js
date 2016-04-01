@@ -3,7 +3,6 @@ angular.module('stpCommon.productSearch', []).factory('SearchService', ['$http',
     var currentContext;
     var baseUrl;
     var requestConfig = {timeout: 7000};
-    var defaultFilterProducts = defaultFilterProducts;
     var defaultInitialDataLoader = {
         getInitValues: defaultGetInitValues
     };
@@ -221,12 +220,12 @@ angular.module('stpCommon.productSearch', []).factory('SearchService', ['$http',
                 if (!(context.initParam && context.params && context.uri && context.objectSearchUri &&
                     context.filterProducts && context.initialDataLoader && context.getRelevantData)) {
                     throw new Error('ContextBuilder: Context was not initialized correctly.' +
-                        ' Make sure you have set all mandatory fields.')
+                        ' Make sure you have set all mandatory fields.');
                 }
                 currentContext = context;
                 return currentContext;
             }
-        }
+        };
     }
     return searchService;
 

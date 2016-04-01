@@ -36,4 +36,4 @@ angular.module('stpCommon.util')
             }
         };
         return service;
-    }])
+    }]);

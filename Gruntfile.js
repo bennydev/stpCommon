@@ -307,7 +307,7 @@ module.exports = function (grunt) {
     /**
      * The default task is to copy files to the dist folder.
      */
-    grunt.registerTask( 'default', [ 'clean', 'copy', 'html2js', 'concat', 'karmaconfig',  'karma:continuous', 'karma:unit'] );
+    grunt.registerTask( 'default', [ 'clean', 'jshint', 'copy', 'html2js', 'concat', 'karmaconfig',  'karma:continuous', 'karma:unit'] );
 
     //grunt.registerTask( 'default', [ 'build', 'compile', 'configureProxies:server', 'connect:dist:keepalive' ] );
 

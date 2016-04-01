@@ -4,7 +4,7 @@ angular.module('stpCommon.util')
 
         var fsmScroll = {
             scrollToFirstError : scrollToFirstError,
-            scrollTo : scrollTo
+            scrollTo : scrollToFn
         };
 
         function scrollToFirstError() {
@@ -24,7 +24,7 @@ angular.module('stpCommon.util')
             }, 250);
         }
 
-        function scrollTo(element){
+        function scrollToFn(element){
             $timeout(function () {
                 $('html, body').animate({
                     scrollTop: typeof element === "number" ? element : element.offset().top

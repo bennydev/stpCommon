@@ -5,8 +5,8 @@ angular.module('stpCommon.modal', ['stpCommon.util'])
         var service = {
             error: error,
             openError: openError,
-            open: open,
-            close: close
+            open: openFn,
+            close: closeFn
         };
 
         return service;
@@ -15,16 +15,16 @@ angular.module('stpCommon.modal', ['stpCommon.util'])
             error.title = textRoot +".TITLE";
             error.message = textRoot + ".MESSAGE";
             error.close = textRoot + ".CLOSE";
-            open('modal/modalError.tpl.html');
+            openFn('modal/modalError.tpl.html');
             StpUtils.broadcastService.send('openError', error);
         }
 
-        function open(template){
+        function openFn(template){
             service.modalTemplate = template;
             $window.fdr.modal.open('#modal');
         }
 
-        function close(){
+        function closeFn(){
             $window.fdr.modal.close();
         }
 
