@@ -32,11 +32,15 @@ angular.module('stpCommon.modal', ['stpCommon.util'])
     .controller('ModalCtrl', ['$scope', 'ModalService', function($scope, ModalService){
         $scope.ModalService = ModalService;
         $scope.templateLoaded = function(){
-            var $el = $('.modal__content--dialog .button').eq(0);
-            var $lastEl = $('.modal__content--dialog .button').last()[0];
-            $lastEl.addEventListener("focusout", function(){
-                $el.focus();
-            });
-            $el.focus();
+            var elements = $('.modal__content--dialog .button');
+            var elementsLength = elements.length;
+            for(var i=0; i<elementsLength; i++){elements[i].tabIndex=i;}
+            elements[elementsLength-1].addEventListener('focusout', function(event){
+                    var k = event.which || event.keyCode;
+                    if(k===9) {
+                        elements[0].focus();
+                    }
+                });
+              elements[0].focus();
         };
     }]);
