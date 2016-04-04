@@ -37,9 +37,10 @@ angular.module('stpCommon.modal', ['stpCommon.util'])
             for(var i=0; i<elementsLength; i++){elements[i].tabIndex=i+1;}
 
             elements[elementsLength-1].addEventListener('keydown', function(event){
+                    var firstElement = $('.modal__content--dialog .button').eq(0);
                     var k = event.which || event.keyCode;
                     if(k===9) {
-                        elements[0].focus();
+                        firstElement.focus();
                     }
                 });
               elements[0].focus();
