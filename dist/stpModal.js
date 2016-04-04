@@ -40,7 +40,7 @@ angular.module('stpCommon.modal', ['stpCommon.util'])
                     var firstElement = $('.modal__content--dialog .button').eq(0);
                     var k = event.which || event.keyCode;
                     if(k===9) {
-                        firstElement.focus();
+                        firstElement[0].focus();
                     }
                 });
               elements[0].focus();
