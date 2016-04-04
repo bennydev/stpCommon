@@ -34,8 +34,9 @@ angular.module('stpCommon.modal', ['stpCommon.util'])
         $scope.templateLoaded = function(){
             var elements = $('.modal__content--dialog .button');
             var elementsLength = elements.length;
-            for(var i=0; i<elementsLength; i++){elements[i].tabIndex=i;}
-            elements[elementsLength-1].addEventListener('focusout', function(event){
+            for(var i=0; i<elementsLength; i++){elements[i].tabIndex=i+1;}
+
+            elements[elementsLength-1].addEventListener('keydown', function(event){
                     var k = event.which || event.keyCode;
                     if(k===9) {
                         elements[0].focus();
