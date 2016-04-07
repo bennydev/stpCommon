@@ -19,6 +19,7 @@
         <div ng-repeat="summaryContainer in summaryModel track by $index">
             <h3>{{summaryContainer.header | translate}}</h3>
             <a href="#{{summaryContainer.section}}"
+               id="change-{{summaryContainer.section}}"
                ng-click="goTo(summaryContainer.section)"
                class="form-section__change u-font-bold slidedown-anchor" translate>VIEW.SECTIONS.SUMMARY.CHANGE</a>
             <table class="standard-table standard-table--summary standard-table--fixed">
