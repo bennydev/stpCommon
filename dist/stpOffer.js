@@ -8,7 +8,8 @@ angular.module('stpCommon.offer', [])
     }])
     .factory('AbstractOfferService', [function(){
         var service = {
-            getOfferModel: getOfferModel
+            getOfferModel: getOfferModel,
+            getStandardTemplate: getTemplate
         };
         return service;
 
