@@ -14,9 +14,11 @@ angular.module('stpCommon.offer', [])
         return service;
 
 
-        function getTemplate() {
+        function getTemplate(currentOfferModel) {
             // replace this if you need another implementation
-            return getOfferModel().getClaimType() === 'LTP' ? 'offer/ltp/ltp.tpl.html' : 'offer/stp/stp.tpl.html';
+            return function() {
+                return currentOfferModel.getClaimType() === 'LTP' ? 'offer/ltp/ltp.tpl.html' : 'offer/stp/stp.tpl.html';
+            };
         }
 
         function getOfferModel(){
