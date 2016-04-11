@@ -9,14 +9,14 @@ angular.module('stpCommon.offer', [])
     .factory('AbstractOfferService', [function(){
         var service = {
             getOfferModel: getOfferModel,
-            getStandardTemplate: getTemplate
+            setStandardTemplate: setStandardTemplate
         };
         return service;
 
 
-        function getTemplate(currentOfferModel) {
+        function setStandardTemplate(currentOfferModel) {
             // replace this if you need another implementation
-            return function() {
+            currentOfferModel.getTemplate = function() {
                 return currentOfferModel.getClaimType() === 'LTP' ? 'offer/ltp/ltp.tpl.html' : 'offer/stp/stp.tpl.html';
             };
         }
@@ -36,6 +36,9 @@ angular.module('stpCommon.offer', [])
             };
             return model;
 
+            function getTemplate(){
+                return 'REPLACE_THIS';
+            }
             function getClaimType(){
                 return 'REPLACE_THIS';
             }
