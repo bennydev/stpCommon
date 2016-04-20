@@ -14,7 +14,7 @@ angular.module('stpCommon.header')
         self.customer = {firstName: '', lastName: '', personId: ''};
         self.policyHolder = {firstName: '',lastName: '', personId: ''};
         self.headerMessageRoot = 'GENERAL.HEADER.MESSAGE';
-        self.siteTopTemplateUrl = 'header/siteTop.tpl.html';
+        self.siteHeaderTemplateUrl = 'header/siteTop.tpl.html';
 
         var objectName;
         var eventName;
@@ -41,7 +41,7 @@ angular.module('stpCommon.header')
             setCustomerAsPolicyHolder: setCustomerAsPolicyHolder,
             getHeaderMessageRoot : getHeaderMessageRoot,
             setHeaderMessageRoot : setHeaderMessageRoot,
-            setSiteTopTemplateUrl : setSiteTopTemplateUrl
+            setSiteHeaderTemplateUrl : setSiteHeaderTemplateUrl
         };
         return service;
 
@@ -140,8 +140,8 @@ angular.module('stpCommon.header')
         function setHeaderMessageRoot(root){
             self.headerMessageRoot = root;
         }
-        function setSiteTopTemplateUrl(url){
-            self.siteTopTemplateUrl = url;
+        function setSiteHeaderTemplateUrl(url){
+            self.siteHeaderTemplateUrl = url;
         }
 
 
@@ -195,9 +195,9 @@ angular.module("header/customerInfo.tpl.html", []).run(["$templateCache", functi
 angular.module("header/header.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("header/header.tpl.html",
     "<div ng-controller=\"HeaderCtrl\">\n" +
-    "    <!--<ng-include src=\"'header/siteTop.tpl.html'\"></ng-include>-->\n" +
-    "    <ng-include src=\"HeaderService.siteTopTemplateUrl\"></ng-include>\n" +
-    "    <ng-include src=\"'header/siteHeader.tpl.html'\"></ng-include>\n" +
+    "    <ng-include src=\"'header/siteTop.tpl.html'\"></ng-include>\n" +
+    "    <ng-include src=\"HeaderService.siteHeaderTemplateUrl\"></ng-include>\n" +
+    "    <!--<ng-include src=\"'header/siteHeader.tpl.html'\"></ng-include>-->\n" +
     "    <div class=\"content-wrapper\">\n" +
     "        <ng-include src=\"'header/customerInfo.tpl.html'\" ng-show=\"HeaderService.showCustomerInfo()\"></ng-include>\n" +
     "    </div>\n" +
