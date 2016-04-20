@@ -49,7 +49,7 @@ angular.module('stpCommon.contact', ['fsmQuestion', 'LocalStorageModule', 'pasca
                     var result = {valid: true, cause: 'format', message: question.text.root+'.ERRORS.INVALID'};
                     if(isSweden(question)) {
                         if (!isEmpty(question)) {
-                            result.valid = question.answer.phoneNumber.length <= 15 && QuestionUtils.isNumeric(question.answer.phoneNumber.replace(/[\s\.\-]+/g, ''));
+                            result.valid = question.answer.phoneNumber.length < 15 && QuestionUtils.isNumeric(question.answer.phoneNumber.replace(/[\s\.\-]+/g, ''));
                         }
                     }
                     return result;
