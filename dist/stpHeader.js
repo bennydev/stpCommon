@@ -243,7 +243,7 @@ angular.module("header/siteHeaderGeneral.tpl.html", []).run(["$templateCache", f
     "<section class=\"masthead u-bgcolor-blue-2\" ng-show=\"HeaderService.showIdentificationHeader()\">\n" +
     "    <div class=\"content-wrapper\">\n" +
     "        <div class=\"masthead__content\">\n" +
-    "            <p id=\"headerMessage\" class=\"masthead__intro\">{{HeaderService.setHeaderMessageRoot()+'.MESSAGE' | translate}}</p>\n" +
+    "            <p id=\"headerMessage\" class=\"masthead__intro\">{{HeaderService.setHeaderMessageRoot()+'.DEFAULT' | translate}}</p>\n" +
     "        </div>\n" +
     "        <div class=\"masthead__img-container\">\n" +
     "            <!--[if IE 8]><img src=\"assets/svg/bg-masthead-claims.svg\" alt=\"\"><![endif]-->\n" +
