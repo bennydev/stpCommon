@@ -14,7 +14,7 @@ angular.module('stpCommon.header')
         self.customer = {firstName: '', lastName: '', personId: ''};
         self.policyHolder = {firstName: '',lastName: '', personId: ''};
         self.headerMessageRoot = 'GENERAL.HEADER.MESSAGE';
-        self.siteHeaderTemplateUrl = 'header/siteTop.tpl.html';
+        self.siteHeaderTemplateUrl = 'header/siteHeader.tpl.html';
 
         var objectName;
         var eventName;
