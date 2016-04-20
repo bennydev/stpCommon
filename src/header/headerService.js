@@ -32,6 +32,7 @@ angular.module('stpCommon.header')
             setCustomerAsPolicyHolder: setCustomerAsPolicyHolder,
             getHeaderMessageRoot : getHeaderMessageRoot,
             setHeaderMessageRoot : setHeaderMessageRoot,
+            getSiteHeaderTemplateUrl : getSiteHeaderTemplateUrl,
             setSiteHeaderTemplateUrl : setSiteHeaderTemplateUrl
         };
         return service;
@@ -133,6 +134,9 @@ angular.module('stpCommon.header')
         }
         function setSiteHeaderTemplateUrl(url){
             self.siteHeaderTemplateUrl = url;
+        }
+        function getSiteHeaderTemplateUrl(){
+            return self.siteHeaderTemplateUrl;
         }
 
 
