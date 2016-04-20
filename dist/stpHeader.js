@@ -214,8 +214,8 @@ angular.module("header/siteHeader.tpl.html", []).run(["$templateCache", function
     "<section class=\"masthead u-bgcolor-blue-2\" ng-show=\"HeaderService.showSectionsHeader()\">\n" +
     "    <div class=\"content-wrapper\">\n" +
     "        <div class=\"masthead__content\">\n" +
-    "            <p id=\"headerGreeting\" translate translate-values=\"{firstName: HeaderService.getCustomer().firstName}\" class=\"masthead__intro\">HeaderService.getHeaderMessageRoot()</p>\n" +
-    "            <p id=\"headerMessage\" translate translate-values=\"{objectName: HeaderService.getObjectName(), eventName: HeaderService.getEventName()}\" class=\"masthead__largetype\">HeaderService.getHeaderMessageRoot()</p>\n" +
+    "            <p id=\"headerGreeting\" translate translate-values=\"{firstName: HeaderService.getCustomer().firstName}\" class=\"masthead__intro\">{{HeaderService.getHeaderMessageRoot()}}</p>\n" +
+    "            <p id=\"headerMessage\" translate translate-values=\"{objectName: HeaderService.getObjectName(), eventName: HeaderService.getEventName()}\" class=\"masthead__largetype\">{{HeaderService.getHeaderMessageRoot()}}</p>\n" +
     "        </div>\n" +
     "        <div class=\"masthead__img-container\">\n" +
     "            <!--[if IE 8]><img src=\"assets/svg/bg-masthead-claims.svg\" alt=\"\"><![endif]-->\n" +
