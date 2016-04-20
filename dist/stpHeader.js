@@ -5,6 +5,7 @@ angular.module('stpCommon.header', ['ui.router']);
 angular.module('stpCommon.header')
     .controller('HeaderCtrl', ['$scope', '$state', '$window', 'HeaderService', function($scope, $state, $window, HeaderService){
     $scope.HeaderService = HeaderService;
+        $scope.tplUrl = 'header/siteHeader.tpl.html';
 
 }]);
 "use strict";
@@ -196,7 +197,8 @@ angular.module("header/header.tpl.html", []).run(["$templateCache", function($te
   $templateCache.put("header/header.tpl.html",
     "<div ng-controller=\"HeaderCtrl\">\n" +
     "    <ng-include src=\"'header/siteTop.tpl.html'\"></ng-include>\n" +
-    "    <ng-include src=\"HeaderService.siteHeaderTemplateUrl\"></ng-include>\n" +
+    "    <ng-include src=\"tplUrl\"></ng-include>\n" +
+    "    <!--<ng-include src=\"HeaderService.siteHeaderTemplateUrl\"></ng-include>-->\n" +
     "    <!--<ng-include src=\"'header/siteHeader.tpl.html'\"></ng-include>-->\n" +
     "    <div class=\"content-wrapper\">\n" +
     "        <ng-include src=\"'header/customerInfo.tpl.html'\" ng-show=\"HeaderService.showCustomerInfo()\"></ng-include>\n" +
