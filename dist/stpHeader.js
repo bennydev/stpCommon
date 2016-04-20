@@ -5,139 +5,150 @@ angular.module('stpCommon.header', ['ui.router']);
 angular.module('stpCommon.header')
     .controller('HeaderCtrl', ['$scope', '$state', '$window', 'HeaderService', function($scope, $state, $window, HeaderService){
     $scope.HeaderService = HeaderService;
+
 }]);
 "use strict";
-angular.module('stpCommon.header').factory('HeaderService', ['$filter', function($filter){
-    var self = this;
-    self.customer = {firstName: '', lastName: '', personId: ''};
-    self.policyHolder = {firstName: '',lastName: '', personId: ''};
+angular.module('stpCommon.header')
+    .factory('HeaderService', ['$filter', function($filter){
+        var self = this;
+        self.customer = {firstName: '', lastName: '', personId: ''};
+        self.policyHolder = {firstName: '',lastName: '', personId: ''};
+        self.headerMessageRoot = 'GENERAL.HEADER.MESSAGE';
 
-    var objectName;
-    var eventName;
+        var objectName;
+        var eventName;
 
-    var service = {
-        showCustomerInfo: showCustomerInfo,
-        showIdentificationHeader: showIdentificationHeader,
-        showSectionsHeader: showSectionsHeader,
-        restart: restart,
-        setCustomer: setCustomer,
-        getCustomer: getCustomer,
-        setPolicyHolder: setPolicyHolder,
-        getPolicyHolder: getPolicyHolder,
-        hasName: hasName,
-        getCustomerFullName: getCustomerFullName,
-        getPolicyHolderFullName: getPolicyHolderFullName,
-        setObjectName: setObjectName,
-        getObjectName: getObjectName,
-        setEventName: setEventName,
-        getEventName: getEventName,
-        clearPolicyHolderInfo: clearPolicyHolderInfo,
-        hasCustomerPersonId: hasCustomerPersonId,
-        hasPolicyHolderPersonId: hasPolicyHolderPersonId,
-        setCustomerAsPolicyHolder: setCustomerAsPolicyHolder
+        var service = {
+            showCustomerInfo: showCustomerInfo,
+            showIdentificationHeader: showIdentificationHeader,
+            showSectionsHeader: showSectionsHeader,
+            restart: restart,
+            setCustomer: setCustomer,
+            getCustomer: getCustomer,
+            setPolicyHolder: setPolicyHolder,
+            getPolicyHolder: getPolicyHolder,
+            hasName: hasName,
+            getCustomerFullName: getCustomerFullName,
+            getPolicyHolderFullName: getPolicyHolderFullName,
+            setObjectName: setObjectName,
+            getObjectName: getObjectName,
+            setEventName: setEventName,
+            getEventName: getEventName,
+            clearPolicyHolderInfo: clearPolicyHolderInfo,
+            hasCustomerPersonId: hasCustomerPersonId,
+            hasPolicyHolderPersonId: hasPolicyHolderPersonId,
+            setCustomerAsPolicyHolder: setCustomerAsPolicyHolder,
+            getHeaderMessageRoot : getHeaderMessageRoot,
+            setHeaderMessageRoot : setHeaderMessageRoot
+        };
+        return service;
 
-    };
-    return service;
+        function restart(){}
 
-    function restart(){}
-
-    function setObjectName(name){
-        objectName = name;
-    }
-
-    function getObjectName(){
-        return objectName;
-    }
-
-    function setEventName(name){
-        eventName = name;
-    }
-
-    function getEventName(){
-        return eventName;
-    }
-
-    function setCustomer(customer) {
-        self.customer = customer;
-        toCapitalAndLowerCase(self.customer);
-    }
-
-    function getCustomer() {
-        return self.customer;
-    }
-
-    function setPolicyHolder(policyHolder) {
-        self.policyHolder = policyHolder;
-        toCapitalAndLowerCase(self.policyHolder);
-    }
-
-    function getPolicyHolder() {
-        return self.policyHolder;
-    }
-
-    function showCustomerInfo(){
-        return true;
-    }
-
-    function showIdentificationHeader(){
-        return true;
-    }
-
-    function showSectionsHeader(){
-        return true;
-    }
-
-
-    function hasName(){
-        return !! self.customer.firstName ||self.policyHolder.firstName;
-    }
-
-    function getCustomerFullName(){
-        return fullName(self.customer.firstName, self.customer.lastName);
-    }
-
-    function getPolicyHolderFullName(){
-        return fullName(self.policyHolder.firstName, self.policyHolder.lastName);
-    }
-
-    function fullName(firstName, lastName){
-        var wholeName = '';
-        if(firstName){
-            wholeName = firstName + ' ';
+        function setObjectName(name){
+            objectName = name;
         }
-        if(lastName){
-            wholeName += lastName;
+
+        function getObjectName(){
+            return objectName;
         }
-        return wholeName;
-    }
 
-
-    function clearPolicyHolderInfo() {
-        self.policyHolder = {};
-    }
-
-    function hasCustomerPersonId(personId) {
-        return personId === self.customer.personId;
-    }
-
-    function hasPolicyHolderPersonId(personId) {
-        return personId === self.policyHolder.personId;
-    }
-
-    function setCustomerAsPolicyHolder() {
-        self.policyHolder = self.customer;
-    }
-
-    function toCapitalAndLowerCase(customerObject) {
-        if (customerObject.firstName) {
-            customerObject.firstName = $filter('capitalAndLowerCase')(customerObject.firstName);
+        function setEventName(name){
+            eventName = name;
         }
-        if (customerObject.lastName) {
-            customerObject.lastName = $filter('capitalAndLowerCase')(customerObject.lastName);
-        }
-    }
 
-}]);
+        function getEventName(){
+            return eventName;
+        }
+
+        function setCustomer(customer) {
+            self.customer = customer;
+            toCapitalAndLowerCase(self.customer);
+        }
+
+        function getCustomer() {
+            return self.customer;
+        }
+
+        function setPolicyHolder(policyHolder) {
+            self.policyHolder = policyHolder;
+            toCapitalAndLowerCase(self.policyHolder);
+        }
+
+        function getPolicyHolder() {
+            return self.policyHolder;
+        }
+
+        function showCustomerInfo(){
+            return true;
+        }
+
+        function showIdentificationHeader(){
+            return true;
+        }
+
+        function showSectionsHeader(){
+            return true;
+        }
+
+
+        function hasName(){
+            return !! self.customer.firstName ||self.policyHolder.firstName;
+        }
+
+        function getCustomerFullName(){
+            return fullName(self.customer.firstName, self.customer.lastName);
+        }
+
+        function getPolicyHolderFullName(){
+            return fullName(self.policyHolder.firstName, self.policyHolder.lastName);
+        }
+
+        function fullName(firstName, lastName){
+            var wholeName = '';
+            if(firstName){
+                wholeName = firstName + ' ';
+            }
+            if(lastName){
+                wholeName += lastName;
+            }
+            return wholeName;
+        }
+
+
+        function clearPolicyHolderInfo() {
+            self.policyHolder = {};
+        }
+
+        function hasCustomerPersonId(personId) {
+            return personId === self.customer.personId;
+        }
+
+        function hasPolicyHolderPersonId(personId) {
+            return personId === self.policyHolder.personId;
+        }
+
+        function setCustomerAsPolicyHolder() {
+            self.policyHolder = self.customer;
+        }
+
+        function getHeaderMessageRoot(){
+            return self.headerMessageRoot;
+        }
+        function setHeaderMessageRoot(root){
+            self.headerMessageRoot = root;
+        }
+
+        function toCapitalAndLowerCase(customerObject) {
+            if (customerObject.firstName) {
+                customerObject.firstName = $filter('capitalAndLowerCase')(customerObject.firstName);
+            }
+            if (customerObject.lastName) {
+                customerObject.lastName = $filter('capitalAndLowerCase')(customerObject.lastName);
+            }
+        }
+
+    }]);
 "use strict";
 angular.module('stpCommon.header').filter('capitalAndLowerCase', function() {
 
@@ -191,7 +202,7 @@ angular.module("header/siteHeader.tpl.html", []).run(["$templateCache", function
     "<section class=\"masthead u-bgcolor-blue-2\" ng-show=\"HeaderService.showIdentificationHeader()\">\n" +
     "    <div class=\"content-wrapper\">\n" +
     "        <div class=\"masthead__content\">\n" +
-    "            <p id=\"headerMessage\" class=\"masthead__intro\">{{'GENERAL.HEADER.MESSAGE' | translate}}</p>\n" +
+    "            <p id=\"headerMessage\" class=\"masthead__intro\">{{HeaderService.getHeaderMessageRoot() | translate}}</p>\n" +
     "        </div>\n" +
     "        <div class=\"masthead__img-container\">\n" +
     "            <!--[if IE 8]><img src=\"assets/svg/bg-masthead-claims.svg\" alt=\"\"><![endif]-->\n" +
@@ -203,8 +214,8 @@ angular.module("header/siteHeader.tpl.html", []).run(["$templateCache", function
     "<section class=\"masthead u-bgcolor-blue-2\" ng-show=\"HeaderService.showSectionsHeader()\">\n" +
     "    <div class=\"content-wrapper\">\n" +
     "        <div class=\"masthead__content\">\n" +
-    "            <p id=\"headerGreeting\" translate translate-values=\"{firstName: HeaderService.getCustomer().firstName}\" class=\"masthead__intro\">GENERAL.HEADER.GREETING</p>\n" +
-    "            <p id=\"headerMessage\" translate translate-values=\"{objectName: HeaderService.getObjectName(), eventName: HeaderService.getEventName()}\" class=\"masthead__largetype\">GENERAL.HEADER.MESSAGE</p>\n" +
+    "            <p id=\"headerGreeting\" translate translate-values=\"{firstName: HeaderService.getCustomer().firstName}\" class=\"masthead__intro\">HeaderService.getHeaderMessageRoot()</p>\n" +
+    "            <p id=\"headerMessage\" translate translate-values=\"{objectName: HeaderService.getObjectName(), eventName: HeaderService.getEventName()}\" class=\"masthead__largetype\">HeaderService.getHeaderMessageRoot()</p>\n" +
     "        </div>\n" +
     "        <div class=\"masthead__img-container\">\n" +
     "            <!--[if IE 8]><img src=\"assets/svg/bg-masthead-claims.svg\" alt=\"\"><![endif]-->\n" +
