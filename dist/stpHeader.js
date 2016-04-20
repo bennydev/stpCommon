@@ -14,6 +14,7 @@ angular.module('stpCommon.header')
         self.customer = {firstName: '', lastName: '', personId: ''};
         self.policyHolder = {firstName: '',lastName: '', personId: ''};
         self.headerMessageRoot = 'GENERAL.HEADER.MESSAGE';
+        self.siteTopTemplateUrl = 'header/siteTop.tpl.html';
 
         var objectName;
         var eventName;
@@ -39,7 +40,8 @@ angular.module('stpCommon.header')
             hasPolicyHolderPersonId: hasPolicyHolderPersonId,
             setCustomerAsPolicyHolder: setCustomerAsPolicyHolder,
             getHeaderMessageRoot : getHeaderMessageRoot,
-            setHeaderMessageRoot : setHeaderMessageRoot
+            setHeaderMessageRoot : setHeaderMessageRoot,
+            setSiteTopTemplateUrl : setSiteTopTemplateUrl
         };
         return service;
 
@@ -138,6 +140,10 @@ angular.module('stpCommon.header')
         function setHeaderMessageRoot(root){
             self.headerMessageRoot = root;
         }
+        function setSiteTopTemplateUrl(url){
+            self.siteTopTemplateUrl = url;
+        }
+
 
         function toCapitalAndLowerCase(customerObject) {
             if (customerObject.firstName) {
@@ -161,7 +167,7 @@ angular.module('stpCommon.header').filter('capitalAndLowerCase', function() {
 
     };
 });
-angular.module('stpHeaderTemplates', ['header/customerInfo.tpl.html', 'header/header.tpl.html', 'header/siteHeader.tpl.html', 'header/siteTop.tpl.html']);
+angular.module('stpHeaderTemplates', ['header/customerInfo.tpl.html', 'header/header.tpl.html', 'header/siteHeader.tpl.html', 'header/siteHeaderGeneral.tpl.html', 'header/siteTop.tpl.html']);
 
 angular.module("header/customerInfo.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("header/customerInfo.tpl.html",
@@ -189,7 +195,8 @@ angular.module("header/customerInfo.tpl.html", []).run(["$templateCache", functi
 angular.module("header/header.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("header/header.tpl.html",
     "<div ng-controller=\"HeaderCtrl\">\n" +
-    "    <ng-include src=\"'header/siteTop.tpl.html'\"></ng-include>\n" +
+    "    <!--<ng-include src=\"'header/siteTop.tpl.html'\"></ng-include>-->\n" +
+    "    <ng-include src=\"HeaderService.siteTopTemplateUrl\"></ng-include>\n" +
     "    <ng-include src=\"'header/siteHeader.tpl.html'\"></ng-include>\n" +
     "    <div class=\"content-wrapper\">\n" +
     "        <ng-include src=\"'header/customerInfo.tpl.html'\" ng-show=\"HeaderService.showCustomerInfo()\"></ng-include>\n" +
@@ -202,7 +209,7 @@ angular.module("header/siteHeader.tpl.html", []).run(["$templateCache", function
     "<section class=\"masthead u-bgcolor-blue-2\" ng-show=\"HeaderService.showIdentificationHeader()\">\n" +
     "    <div class=\"content-wrapper\">\n" +
     "        <div class=\"masthead__content\">\n" +
-    "            <p id=\"headerMessage\" class=\"masthead__intro\">{{HeaderService.getHeaderMessageRoot() | translate}}</p>\n" +
+    "            <p id=\"headerMessage\" class=\"masthead__intro\">{{'GENERAL.HEADER.MESSAGE' | translate}}</p>\n" +
     "        </div>\n" +
     "        <div class=\"masthead__img-container\">\n" +
     "            <!--[if IE 8]><img src=\"assets/svg/bg-masthead-claims.svg\" alt=\"\"><![endif]-->\n" +
@@ -214,8 +221,38 @@ angular.module("header/siteHeader.tpl.html", []).run(["$templateCache", function
     "<section class=\"masthead u-bgcolor-blue-2\" ng-show=\"HeaderService.showSectionsHeader()\">\n" +
     "    <div class=\"content-wrapper\">\n" +
     "        <div class=\"masthead__content\">\n" +
-    "            <p id=\"headerGreeting\" translate translate-values=\"{firstName: HeaderService.getCustomer().firstName}\" class=\"masthead__intro\">{{HeaderService.getHeaderMessageRoot()}}</p>\n" +
-    "            <p id=\"headerMessage\" translate translate-values=\"{objectName: HeaderService.getObjectName(), eventName: HeaderService.getEventName()}\" class=\"masthead__largetype\">{{HeaderService.getHeaderMessageRoot()}}</p>\n" +
+    "            <p id=\"headerGreeting\" translate translate-values=\"{firstName: HeaderService.getCustomer().firstName}\" class=\"masthead__intro\">GENERAL.HEADER.GREETING</p>\n" +
+    "            <p id=\"headerMessage\" translate translate-values=\"{objectName: HeaderService.getObjectName(), eventName: HeaderService.getEventName()}\" class=\"masthead__largetype\">GENERAL.HEADER.MESSAGE</p>\n" +
+    "        </div>\n" +
+    "        <div class=\"masthead__img-container\">\n" +
+    "            <!--[if IE 8]><img src=\"assets/svg/bg-masthead-claims.svg\" alt=\"\"><![endif]-->\n" +
+    "            <!--[if gt IE 8]><!--><img src=\"assets/svg/bg-masthead-claims.svg\" alt=\"\"><!--<![endif]-->\n" +
+    "        </div>\n" +
+    "    </div>\n" +
+    "</section>\n" +
+    "\n" +
+    "<div class=\"u-remove-spacing\"></div>");
+}]);
+
+angular.module("header/siteHeaderGeneral.tpl.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("header/siteHeaderGeneral.tpl.html",
+    "<section class=\"masthead u-bgcolor-blue-2\" ng-show=\"HeaderService.showIdentificationHeader()\">\n" +
+    "    <div class=\"content-wrapper\">\n" +
+    "        <div class=\"masthead__content\">\n" +
+    "            <p id=\"headerMessage\" class=\"masthead__intro\">{{HeaderService.setHeaderMessageRoot()+'.MESSAGE' | translate}}</p>\n" +
+    "        </div>\n" +
+    "        <div class=\"masthead__img-container\">\n" +
+    "            <!--[if IE 8]><img src=\"assets/svg/bg-masthead-claims.svg\" alt=\"\"><![endif]-->\n" +
+    "            <!--[if gt IE 8]><!--><img src=\"assets/svg/bg-masthead-claims.svg\" alt=\"\"><!--<![endif]-->\n" +
+    "        </div>\n" +
+    "    </div>\n" +
+    "</section>\n" +
+    "\n" +
+    "<section class=\"masthead u-bgcolor-blue-2\" ng-show=\"HeaderService.showSectionsHeader()\">\n" +
+    "    <div class=\"content-wrapper\">\n" +
+    "        <div class=\"masthead__content\">\n" +
+    "            <p id=\"headerGreeting\" translate translate-values=\"{firstName: HeaderService.getCustomer().firstName}\" class=\"masthead__intro\">GENERAL.HEADER.GREETING</p>\n" +
+    "            <p id=\"headerMessage\" translate translate-values=\"{objectName: HeaderService.getObjectName(), eventName: HeaderService.getEventName()}\" class=\"masthead__largetype\">{{HeaderService.getHeaderMessageRoot() + '.' + HeaderService.getEventName()}}</p>\n" +
     "        </div>\n" +
     "        <div class=\"masthead__img-container\">\n" +
     "            <!--[if IE 8]><img src=\"assets/svg/bg-masthead-claims.svg\" alt=\"\"><![endif]-->\n" +

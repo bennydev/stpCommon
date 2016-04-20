@@ -1,7 +1,7 @@
 <section class="masthead u-bgcolor-blue-2" ng-show="HeaderService.showIdentificationHeader()">
     <div class="content-wrapper">
         <div class="masthead__content">
-            <p id="headerMessage" class="masthead__intro">{{'GENERAL.HEADER.MESSAGE' | translate}}</p>
+            <p id="headerMessage" class="masthead__intro">{{HeaderService.setHeaderMessageRoot()+'.MESSAGE' | translate}}</p>
         </div>
         <div class="masthead__img-container">
             <!--[if IE 8]><img src="assets/svg/bg-masthead-claims.svg" alt=""><![endif]-->
@@ -14,7 +14,7 @@
     <div class="content-wrapper">
         <div class="masthead__content">
             <p id="headerGreeting" translate translate-values="{firstName: HeaderService.getCustomer().firstName}" class="masthead__intro">GENERAL.HEADER.GREETING</p>
-            <p id="headerMessage" translate translate-values="{objectName: HeaderService.getObjectName(), eventName: HeaderService.getEventName()}" class="masthead__largetype">GENERAL.HEADER.MESSAGE</p>
+            <p id="headerMessage" translate translate-values="{objectName: HeaderService.getObjectName(), eventName: HeaderService.getEventName()}" class="masthead__largetype">{{HeaderService.getHeaderMessageRoot() + '.' + HeaderService.getEventName()}}</p>
         </div>
         <div class="masthead__img-container">
             <!--[if IE 8]><img src="assets/svg/bg-masthead-claims.svg" alt=""><![endif]-->

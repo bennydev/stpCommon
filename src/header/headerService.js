@@ -5,6 +5,7 @@ angular.module('stpCommon.header')
         self.customer = {firstName: '', lastName: '', personId: ''};
         self.policyHolder = {firstName: '',lastName: '', personId: ''};
         self.headerMessageRoot = 'GENERAL.HEADER.MESSAGE';
+        self.siteTopTemplateUrl = 'header/siteTop.tpl.html';
 
         var objectName;
         var eventName;
@@ -30,7 +31,8 @@ angular.module('stpCommon.header')
             hasPolicyHolderPersonId: hasPolicyHolderPersonId,
             setCustomerAsPolicyHolder: setCustomerAsPolicyHolder,
             getHeaderMessageRoot : getHeaderMessageRoot,
-            setHeaderMessageRoot : setHeaderMessageRoot
+            setHeaderMessageRoot : setHeaderMessageRoot,
+            setSiteTopTemplateUrl : setSiteTopTemplateUrl
         };
         return service;
 
@@ -129,6 +131,10 @@ angular.module('stpCommon.header')
         function setHeaderMessageRoot(root){
             self.headerMessageRoot = root;
         }
+        function setSiteTopTemplateUrl(url){
+            self.siteTopTemplateUrl = url;
+        }
+
 
         function toCapitalAndLowerCase(customerObject) {
             if (customerObject.firstName) {
