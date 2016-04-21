@@ -26,6 +26,7 @@ angular.module('stpCommon.modal', ['stpCommon.util'])
 
         function closeFn(){
             $window.fdr.modal.close();
+            service.modalTemplate = null;
         }
 
     }])
