@@ -47,11 +47,13 @@ angular.module('stpCommon.contact', ['fsmQuestion', 'LocalStorageModule', 'pasca
             var phoneValidator = {
                 validate: function(question){
                     var result = {valid: true, cause: 'format', message: question.text.root+'.ERRORS.INVALID'};
-                    if(isSweden(question)) {
                         if (!isEmpty(question)) {
-                            result.valid = question.answer.phoneNumber.length < 15 && QuestionUtils.isNumeric(question.answer.phoneNumber.replace(/[\s\.\-]+/g, ''));
+                            if(isSweden(question)) {
+                                result.valid = question.answer.phoneNumber.length < 15 && QuestionUtils.isNumeric(question.answer.phoneNumber.replace(/[\s\.\-]+/g, ''));
+                            } else {
+                                result.valid = question.answer.phoneNumber.length < 36;
+                            }
                         }
-                    }
                     return result;
                 }
             };

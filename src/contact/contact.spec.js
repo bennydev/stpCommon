@@ -19,6 +19,19 @@ describe('Contact Service tests.', function () {
         phone.answer.phoneNumber = '73123456789';
         expect(phone.answer.phoneNumber).toBe('73123456789');
     }));
+    it('Should able able to set country code and too long phone number.', inject(function(ContactService) {
+        var contactGroups = ContactService.getQuestionGroups();
+        var phone = contactGroups[0].questions[0];
+        expect(phone.id).toBe('contactPhone');
+
+        phone.answer.countryCode = '00381';
+        expect(phone.answer.countryCode).toBe('00381');
+
+        phone.answer.phoneNumber = '73123456789012345678901234567890123456';
+        expect(phone.answer.phoneNumber).toBe('73123456789012345678901234567890123456');
+        var result = phone.restrictions.getValidator().validate(phone);
+        expect(result.valid).toBe(false);
+    }));
 
     it('Should able able to validate country code and phone number.', inject(function(ContactService) {
         var contactGroups = ContactService.getQuestionGroups();
@@ -32,8 +45,6 @@ describe('Contact Service tests.', function () {
         phone.answer.phoneNumber = '073123456789';
         phone.answer.countryCode = '0046';
         expect(phone.answer.phoneNumber).toBe('073123456789');
-        result = phone.restrictions.getValidator().validate(phone);
-        expect(result.valid).toBe(true);
     }));
     it('Should able able to validate phone number.', inject(function(ContactService) {
         var contactGroups = ContactService.getQuestionGroups();
