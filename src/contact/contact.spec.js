@@ -27,8 +27,8 @@ describe('Contact Service tests.', function () {
         phone.answer.countryCode = '00381';
         expect(phone.answer.countryCode).toBe('00381');
 
-        phone.answer.phoneNumber = '73123456789012345678901234567890123456';
-        expect(phone.answer.phoneNumber).toBe('73123456789012345678901234567890123456');
+        phone.answer.phoneNumber = '0123456789012345';
+        expect(phone.answer.phoneNumber).toBe('0123456789012345');
         var result = phone.restrictions.getValidator().validate(phone);
         expect(result.valid).toBe(false);
     }));

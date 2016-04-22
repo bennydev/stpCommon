@@ -51,7 +51,7 @@ angular.module('stpCommon.contact', ['fsmQuestion', 'LocalStorageModule', 'pasca
                             if(isSweden(question)) {
                                 result.valid = question.answer.phoneNumber.length < 15 && QuestionUtils.isNumeric(question.answer.phoneNumber.replace(/[\s\.\-]+/g, ''));
                             } else {
-                                result.valid = question.answer.phoneNumber.length < 36;
+                                result.valid = question.answer.phoneNumber.length < 15;
                             }
                         }
                     return result;
