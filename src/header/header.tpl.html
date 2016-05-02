@@ -1,5 +1,6 @@
 <div ng-controller="HeaderCtrl">
-    <ng-include src="'header/siteTop.tpl.html'"></ng-include>
+    <!--<ng-include src="'header/siteTop.tpl.html'"></ng-include>-->
+    <ng-include src="HeaderService.getSiteTopTemplateUrl();"></ng-include>
 
     <ng-include src="HeaderService.getSiteHeaderTemplateUrl();"></ng-include>
     <!--<ng-include src="'header/siteHeader.tpl.html'"></ng-include>-->

@@ -6,6 +6,7 @@ angular.module('stpCommon.header')
         self.policyHolder = {firstName: '',lastName: '', personId: ''};
         self.headerMessageRoot = 'GENERAL.HEADER.MESSAGE';
         self.siteHeaderTemplateUrl = 'header/siteHeader.tpl.html';
+        self.siteTopTemplateUrl = 'header/siteTop.tpl.html';
 
         var objectName;
         var eventName;
@@ -33,7 +34,9 @@ angular.module('stpCommon.header')
             getHeaderMessageRoot : getHeaderMessageRoot,
             setHeaderMessageRoot : setHeaderMessageRoot,
             getSiteHeaderTemplateUrl : getSiteHeaderTemplateUrl,
-            setSiteHeaderTemplateUrl : setSiteHeaderTemplateUrl
+            setSiteHeaderTemplateUrl : setSiteHeaderTemplateUrl,
+            getSiteTopTemplateUrl : getSiteTopTemplateUrl,
+            setSiteTopTemplateUrl : setSiteTopTemplateUrl
         };
         return service;
 
@@ -137,6 +140,12 @@ angular.module('stpCommon.header')
         }
         function getSiteHeaderTemplateUrl(){
             return self.siteHeaderTemplateUrl;
+        }
+        function setSiteTopTemplateUrl(url){
+            self.siteTopTemplateUrl = url;
+        }
+        function getSiteTopTemplateUrl(){
+            return self.siteTopTemplateUrl;
         }
 
 
