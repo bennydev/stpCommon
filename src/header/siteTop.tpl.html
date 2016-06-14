@@ -7,8 +7,8 @@
                         <a class="site-header__logo icon icon-folksam" tabindex="-1" href="https://www.folksam.se" target="_top">
                             <span>Folksam</span>
                         </a>
-                        <nav role="navigation" aria-label="Huvudmeny" class="site-header__nav" ng-if="HeaderService.historyHref && HeaderService.showBackBtn">
-                            <a ng-href="{{HeaderService.historyHref}}" class="site-header__nav-link">
+                        <nav role="navigation" aria-label="Huvudmeny" class="site-header__nav" ng-if="HeaderService.getHistoryHref() && HeaderService.showBackBtn">
+                            <a ng-href="{{HeaderService.getHistoryHref()}}" class="site-header__nav-link">
                                 Tillbaka
                             </a>
                         </nav>

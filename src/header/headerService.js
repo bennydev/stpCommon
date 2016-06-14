@@ -8,8 +8,8 @@ angular.module('stpCommon.header')
         self.siteHeaderTemplateUrl = 'header/siteHeader.tpl.html';
         self.siteTopTemplateUrl = 'header/siteTop.tpl.html';
 
-        var historyHref;
-        var showBackBtn = false;
+        self.historyHref = undefined;
+        self.showBackBtn = false;
 
         var objectName;
         var eventName;
@@ -40,8 +40,9 @@ angular.module('stpCommon.header')
             setSiteHeaderTemplateUrl : setSiteHeaderTemplateUrl,
             getSiteTopTemplateUrl : getSiteTopTemplateUrl,
             setSiteTopTemplateUrl : setSiteTopTemplateUrl,
-            historyHref : historyHref,
-            showBackBtn : showBackBtn
+            getHistoryHref : getHistoryHref,
+            setHistoryHref : setHistoryHref,
+            showBackBtn : self.showBackBtn
         };
         return service;
 
@@ -152,6 +153,13 @@ angular.module('stpCommon.header')
         function getSiteTopTemplateUrl(){
             return self.siteTopTemplateUrl;
         }
+        function setHistoryHref(href){
+            self.historyHref = href;
+        }
+        function getHistoryHref(){
+            return self.historyHref;
+        }
+
 
 
         function toCapitalAndLowerCase(customerObject) {
