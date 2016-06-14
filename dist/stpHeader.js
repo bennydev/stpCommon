@@ -16,8 +16,8 @@ angular.module('stpCommon.header')
         self.siteHeaderTemplateUrl = 'header/siteHeader.tpl.html';
         self.siteTopTemplateUrl = 'header/siteTop.tpl.html';
 
-        self.historyHref = undefined;
-        self.showBackBtn = false;
+        var historyHref;
+        var showBackBtn = false;
 
         var objectName;
         var eventName;
@@ -48,8 +48,8 @@ angular.module('stpCommon.header')
             setSiteHeaderTemplateUrl : setSiteHeaderTemplateUrl,
             getSiteTopTemplateUrl : getSiteTopTemplateUrl,
             setSiteTopTemplateUrl : setSiteTopTemplateUrl,
-            setHistoryHref : setHistoryHref,
-            getHistoryHref : getHistoryHref
+            historyHref : historyHref,
+            showBackBtn : showBackBtn
         };
         return service;
 
@@ -160,12 +160,6 @@ angular.module('stpCommon.header')
         function getSiteTopTemplateUrl(){
             return self.siteTopTemplateUrl;
         }
-        function setHistoryHref(href){
-            self.historyHref = href;
-        }
-        function getHistoryHref(){
-            return self.historyHref;
-        }
 
 
         function toCapitalAndLowerCase(customerObject) {
@@ -270,7 +264,7 @@ angular.module("header/siteTop.tpl.html", []).run(["$templateCache", function($t
     "                        <a class=\"site-header__logo icon icon-folksam\" tabindex=\"-1\" href=\"https://www.folksam.se\" target=\"_top\">\n" +
     "                            <span>Folksam</span>\n" +
     "                        </a>\n" +
-    "                        <nav role=\"navigation\" aria-label=\"Huvudmeny\" class=\"site-header__nav\" ng-if=\"HeaderService.getHistoryHref() && HeaderService.showBackBtn\">\n" +
+    "                        <nav role=\"navigation\" aria-label=\"Huvudmeny\" class=\"site-header__nav\" ng-if=\"HeaderService.historyHref && HeaderService.showBackBtn\">\n" +
     "                            <a ng-href=\"{{HeaderService.historyHref}}\" class=\"site-header__nav-link\">\n" +
     "                                Tillbaka\n" +
     "                            </a>\n" +
@@ -281,15 +275,5 @@ angular.module("header/siteTop.tpl.html", []).run(["$templateCache", function($t
     "        </header>\n" +
     "    </div>\n" +
     "</div>\n" +
-    "<!--<div class=\"site-top-wrapper\">-->\n" +
-    "    <!--<div class=\"site-top site-top&#45;&#45;non-sticky\">-->\n" +
-    "        <!--<header class=\"site-header\" role=\"banner\">-->\n" +
-    "            <!--<div class=\"content-wrapper\">-->\n" +
-    "                    <!--<a class=\"site-header__logo icon icon-folksam\" tabindex=\"-1\" href=\"https://www.folksam.se\" target=\"_top\">-->\n" +
-    "                        <!--<span>Folksam</span>-->\n" +
-    "                    <!--</a>-->\n" +
-    "            <!--</div>-->\n" +
-    "        <!--</header>-->\n" +
-    "    <!--</div>-->\n" +
-    "<!--</div>-->");
+    "");
 }]);
